@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -18,6 +19,7 @@ export default function App() {
         <Pricing />
       </main>
       <Contact />
+      <SpeedInsights />
     </div>
   )
 }
