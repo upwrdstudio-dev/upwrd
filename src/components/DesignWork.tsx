@@ -27,8 +27,6 @@ const items: DesignItem[] = [
   { title: "Single's Day Sale", category: 'Butcher & Deli', image: '/images/design/butcher-singlesday.jpg' },
   { title: 'Campaign Poster', category: 'Beauty & Wellness', image: '/images/design/ascobeaut-poster.jpg' },
   { title: 'Campaign Banner', category: 'Beauty & Wellness', image: '/images/design/ascobeaut-banner.jpg' },
-  { title: 'Event Poster', category: 'Beauty & Wellness', image: '/images/design/cellrapy-event.jpg' },
-  { title: 'Product Banner', category: 'Beauty & Wellness', image: '/images/design/cellrapy-banner.jpg' },
   { title: 'Sofa Promotion', category: 'Furniture & Home', image: '/images/design/ecofoya-sofa.jpg' },
   { title: 'Mattress Promotion', category: 'Furniture & Home', image: '/images/design/ecofoya-mattress.jpg' },
   { title: 'Custom Cabinetry Poster', category: 'Furniture & Home', image: '/images/design/cabinetry-poster.jpg' },
@@ -36,6 +34,11 @@ const items: DesignItem[] = [
   { title: 'Blind Box Packaging', category: 'Packaging Design', image: '/images/design/pigking-packaging.jpg' },
   { title: 'Promo Poster', category: 'Packaging Design', image: '/images/design/pigking-promo.jpg' },
   { title: 'Packaging Set', category: 'Packaging Design', image: '/images/design/pigking-boxes.jpg' },
+  { title: 'Packaging Set', category: 'Packaging Design', image: '/images/design/pigking-lurou-packaging.jpg' },
+  { title: 'Packaging Set', category: 'Packaging Design', image: '/images/design/pigking-curry-packaging.jpg' },
+  { title: 'Packaging Set', category: 'Packaging Design', image: '/images/design/pigking-rendang-packaging.jpg' },
+  { title: 'Packaging Set', category: 'Packaging Design', image: '/images/design/pigking-soup-packaging.jpg' },
+  { title: 'Packaging Set', category: 'Packaging Design', image: '/images/design/pigking-blackvinegar-packaging.jpg' },
 ]
 
 const categories = ['All', ...Array.from(new Set(items.map((i) => i.category)))]
