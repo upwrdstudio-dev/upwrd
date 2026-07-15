@@ -87,18 +87,22 @@ export default function Nav() {
                 <motion.a
                   key={l.href}
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    setTimeout(() => setOpen(false), 100)
+                  }}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05, duration: 0.3 }}
-                  className="font-mono text-xs uppercase tracking-widest text-ink/70"
+                  className="self-start font-mono text-xs uppercase tracking-widest text-ink/70"
                 >
                   {l.label}
                 </motion.a>
               ))}
               <a
                 href="#contact"
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  setTimeout(() => setOpen(false), 100)
+                }}
                 className="inline-flex items-center justify-center bg-navy text-cream text-sm font-medium px-5 py-2.5 rounded-full"
               >
                 Start a project

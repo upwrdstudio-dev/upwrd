@@ -13,9 +13,6 @@ const variants: Variants = {
   visible: { opacity: 1, y: 0 },
 }
 
-// Scroll-triggered fade+rise. Fires once when ~20% of the element enters
-// the viewport, then stays — no re-triggering on scroll-up, which is what
-// makes repeated-use reveals feel janky instead of intentional.
 export default function Reveal({ children, delay = 0, y = 24, className }: RevealProps) {
   return (
     <motion.div
