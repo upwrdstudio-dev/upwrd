@@ -24,10 +24,28 @@ function NavLink({ href, label }: { href: string; label: string }) {
 export default function Nav() {
   const [open, setOpen] = useState(false)
 
+  const handleMobileNavClick = (href: string) => {
+    setOpen(false)
+
+    setTimeout(() => {
+      const section = document.querySelector(href)
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }
+    }, 50)
+  }
+
   return (
     <header className="sticky top-0 z-50 bg-cream/90 backdrop-blur border-b border-line">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="font-display font-700 text-lg tracking-tight text-navy">
+        <a
+          href="#top"
+          className="font-display font-700 text-lg tracking-tight text-navy"
+        >
           UPWRD<span className="text-teal">.</span>
         </a>
 
@@ -76,32 +94,38 @@ export default function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] as const }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             className="md:hidden border-t border-line bg-cream overflow-hidden"
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
+            <div className="px-6 py-4 flex flex-col items-start gap-4">
               {links.map((l, i) => (
                 <motion.a
                   key={l.href}
                   href={l.href}
-                  onClick={() => {
-                    setTimeout(() => setOpen(false), 100)
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleMobileNavClick(l.href)
                   }}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.3 }}
+                  transition={{
+                    delay: i * 0.05,
+                    duration: 0.3,
+                  }}
                   className="self-start font-mono text-xs uppercase tracking-widest text-ink/70"
                 >
                   {l.label}
                 </motion.a>
               ))}
+
               <a
                 href="#contact"
-                onClick={() => {
-                  setTimeout(() => setOpen(false), 100)
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleMobileNavClick('#contact')
                 }}
                 className="inline-flex items-center justify-center bg-navy text-cream text-sm font-medium px-5 py-2.5 rounded-full"
               >
