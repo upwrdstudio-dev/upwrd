@@ -44,6 +44,7 @@ export default function DesignWork() {
   const [active, setActive] = useState('All')
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const [shuffledItems] = useState(() => shuffle(items))
+
   const filtered =
     active === 'All'
       ? shuffledItems
@@ -96,7 +97,9 @@ export default function DesignWork() {
         <motion.div layout className="columns-3 md:columns-4 lg:columns-5 gap-2.5 md:gap-3">
           <AnimatePresence mode="popLayout">
             {filtered.map((item, i) => {
-              const globalIndex = items.indexOf(item)
+
+              const globalIndex = shuffledItems.indexOf(item)
+
               return (
                 <motion.button
                   key={item.image}
@@ -141,7 +144,7 @@ export default function DesignWork() {
       </div>
 
       <Lightbox
-        items={items}
+        items={shuffledItems}
         index={lightboxIndex}
         onClose={() => setLightboxIndex(null)}
         onNavigate={setLightboxIndex}

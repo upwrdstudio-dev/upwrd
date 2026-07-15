@@ -4,6 +4,11 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -21,6 +26,14 @@ html {
 ::selection {
   background-color: #00C2A8;
   color: #0F1B2D;
+}
+
+@media (pointer: fine) {
+  body,
+  a,
+  button {
+    cursor: none;
+  }
 }
 
 :focus-visible {

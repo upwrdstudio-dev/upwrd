@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import Reveal from './Reveal'
 
 const services = [
@@ -23,9 +24,30 @@ const services = [
 ]
 
 export default function Services() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  })
+
+  // Two soft background orbs drifting at different speeds as the section
+  // scrolls through view — restrained depth cue, not a "parallax hero"
+  // gimmick. Barely noticeable consciously, but reads as polish.
+  const orb1Y = useTransform(scrollYProgress, [0, 1], [60, -60])
+  const orb2Y = useTransform(scrollYProgress, [0, 1], [-40, 80])
+
   return (
-    <section id="services" className="bg-cream py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="services" ref={sectionRef} className="relative bg-cream py-24 md:py-32 overflow-hidden">
+      <motion.div
+        style={{ y: orb1Y }}
+        className="absolute -top-20 -left-32 w-96 h-96 rounded-full bg-teal/[0.07] blur-3xl pointer-events-none"
+      />
+      <motion.div
+        style={{ y: orb2Y }}
+        className="absolute top-40 -right-40 w-[28rem] h-[28rem] rounded-full bg-navy/[0.04] blur-3xl pointer-events-none"
+      />
+
+      <div className="relative max-w-6xl mx-auto px-6">
         <Reveal>
           <div className="max-w-xl mb-16">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal-dim mb-4">

@@ -48,7 +48,8 @@ export default function Nav() {
         </motion.a>
 
         <button
-          className="md:hidden text-navy"
+          type="button"
+          className="md:hidden text-navy touch-manipulation p-1 -m-1"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           aria-expanded={open}

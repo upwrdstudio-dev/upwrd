@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 import Reveal from './Reveal'
+import Logo3D from './Logo3D'
 
 export default function Contact() {
   return (
-    <footer id="contact" className="bg-navy-dark text-cream py-24 md:py-32">
+    <footer id="contact" className="bg-navy-dark text-cream py-24 md:py-32 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 mb-20">
           <Reveal>
@@ -51,6 +52,10 @@ export default function Contact() {
               </motion.a>
             </div>
           </Reveal>
+        </div>
+
+        <div className="flex justify-center mb-16">
+          <Logo3D />
         </div>
 
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-8 border-t border-cream/10">
