@@ -4,8 +4,18 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
-  overscroll-behavior-y: none;
+  scroll-padding-top: 5rem; /* accounts for the sticky nav height (4rem) + breathing room */
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+#root {
+  overflow-x: hidden;
 }
 
 section[id] {
@@ -15,7 +25,6 @@ section[id] {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-    scrollbar-gutter: stable;
   }
   * {
     animation-duration: 0.01ms !important;
