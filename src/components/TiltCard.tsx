@@ -44,7 +44,7 @@ export default function TiltCard({ children, className, maxTilt = 10, glare = tr
       ref={ref}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className={className}
+      className={`${className} overflow-hidden`}
       style={{ perspective: 1000 }}
     >
       <motion.div
