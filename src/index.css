@@ -8,16 +8,28 @@ html {
   overflow-x: hidden;
 }
 
+/* Prevents any single element (glow effects, negative-inset decorative
+   blobs, etc.) from ever making the page wider than the viewport. Without
+   this, mobile browsers widen the layout viewport to fit the overflow,
+   which pushes fixed-position elements like the back-to-top button off
+   to the right — they anchor to the wider layout viewport instead of what's
+   actually visible, only appearing once the page scrolls near the bottom
+   and the browser recalculates.
+
+   IMPORTANT: this is set on `html` only, not `body` or `#root`. Setting
+   overflow-x on any ancestor BETWEEN a `position: sticky` element and the
+   viewport breaks sticky positioning (the sticky element then sticks to
+   that ancestor's scroll context instead of the viewport, which usually
+   means it stops sticking at all). `html` is the outermost scrolling
+   element already, so it's the one safe place to contain overflow without
+   affecting sticky descendants like the nav. */
 body {
-  overflow-x: hidden;
   width: 100%;
-  position: relative;
 }
 
-#root {
-  overflow-x: hidden;
-}
-
+/* Anchor targets get the same offset individually — belt-and-suspenders for
+   browsers/WebViews with inconsistent scroll-padding-top support (notably
+   some older Android WebView / in-app browser combinations). */
 section[id] {
   scroll-margin-top: 5rem;
 }
