@@ -4,26 +4,29 @@ import Logo3D from './Logo3D'
 
 export default function Contact() {
   return (
-    <footer id="contact" className="bg-navy-dark text-cream py-24 md:py-32 overflow-hidden">
+    <footer id="contact" className="bg-navy-dark text-cream py-24 md:py-40 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
+        <Reveal>
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal mb-6">
+            Let's talk
+          </p>
+          <h2 className="font-display font-700 text-[13vw] md:text-8xl tracking-tight leading-[0.85] mb-14 md:mb-20">
+            Let's build
+            <br />
+            something<span className="text-coral">.</span>
+          </h2>
+        </Reveal>
+
         <div className="grid md:grid-cols-2 gap-12 mb-20">
-          <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal mb-5">
-              Let's talk
-            </p>
-            <h2 className="font-display font-700 text-3xl md:text-4xl tracking-tight mb-6">
-              Ready to build something
-              <br />
-              that actually works?
-            </h2>
-            <p className="text-cream/60 text-sm leading-relaxed max-w-sm">
+          <Reveal delay={0.1}>
+            <p className="text-cream/60 text-sm md:text-base leading-relaxed max-w-sm">
               Every project starts with understanding the business problem
               first. Reach out and we'll figure out the right fit together.
             </p>
           </Reveal>
 
-          <Reveal delay={0.15}>
-            <div className="flex flex-col justify-end gap-6">
+          <Reveal delay={0.2}>
+            <div className="flex flex-col gap-6">
               <motion.a
                 href="mailto:upwrdstudio@gmail.com"
                 whileHover={{ x: 4 }}
@@ -32,7 +35,7 @@ export default function Contact() {
               >
                 <span>
                   <span className="block font-mono text-[11px] uppercase tracking-widest text-cream/40 mb-1">Email</span>
-                  <span className="font-display text-lg">upwrdstudio@gmail.com</span>
+                  <span className="font-display text-xl">upwrdstudio@gmail.com</span>
                 </span>
                 <span className="text-teal opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
               </motion.a>
@@ -46,7 +49,7 @@ export default function Contact() {
               >
                 <span>
                   <span className="block font-mono text-[11px] uppercase tracking-widest text-cream/40 mb-1">Instagram</span>
-                  <span className="font-display text-lg">@upwrdstudio</span>
+                  <span className="font-display text-xl">@upwrdstudio</span>
                 </span>
                 <span className="text-teal opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
               </motion.a>

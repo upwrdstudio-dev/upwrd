@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Subtle film-grain texture overlay across the whole site. This single
+   addition does more to kill the "flat corporate SaaS" look than almost
+   anything else — flat solid-color sections read as generic/templated,
+   while a faint grain gives everything a tactile, designed feel closer to
+   print/editorial work. Fixed so it doesn't scroll with content, very low
+   opacity so it's felt more than seen. */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;

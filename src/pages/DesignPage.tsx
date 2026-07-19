@@ -2,11 +2,14 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Reveal from '../components/Reveal'
 import Lightbox from '../components/Lightbox'
+import SEO from '../components/SEO'
 import { designItems, shuffle } from '../data/designItems'
+import { usePageReady } from '../hooks/usePageReady'
 
 const categories = ['All', ...Array.from(new Set(designItems.map((i) => i.category)))]
 
 export default function DesignPage() {
+  usePageReady()
   const [active, setActive] = useState('All')
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const [shuffledItems] = useState(() => shuffle(designItems))
@@ -15,15 +18,22 @@ export default function DesignPage() {
     active === 'All' ? shuffledItems : shuffledItems.filter((i) => i.category === active)
 
   return (
-    <section className="bg-cream py-24 md:py-32 min-h-screen">
+    <section className="bg-cream pt-32 md:pt-40 pb-24 md:pb-32 min-h-screen">
+      <SEO
+        title="Design Portfolio — Campaigns & Packaging"
+        description="Social media campaigns, packaging design, and marketing materials by UPWRD Studio for Malaysian F&B, beauty, and furniture brands."
+        path="/design"
+      />
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
-          <div className="max-w-2xl mb-10">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal-dim mb-4">
+          <div className="max-w-2xl mb-14">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal-dim mb-6">
               Full design portfolio
             </p>
-            <h1 className="font-display font-700 text-4xl md:text-5xl text-navy tracking-tight">
-              Campaigns, packaging, and promotions.
+            <h1 className="font-display font-700 text-[15vw] md:text-8xl leading-[0.82] text-navy tracking-tight">
+              Campaigns
+              <br />
+              &amp; work<span className="text-coral">.</span>
             </h1>
           </div>
         </Reveal>

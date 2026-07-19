@@ -15,6 +15,7 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen">
+      <div className="grain-overlay" aria-hidden="true" />
       <ScrollToHash />
       <ScrollProgress />
       <CustomCursor />

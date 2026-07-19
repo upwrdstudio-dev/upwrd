@@ -15,20 +15,17 @@ export default function DesignTeaser() {
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
-            <div className="max-w-xl">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal-dim mb-4">
-                Design work
-              </p>
-              <h2 className="font-display font-700 text-3xl md:text-4xl text-navy tracking-tight">
-                Campaigns, packaging, and promotions.
-              </h2>
-            </div>
+            <h2 className="font-display font-700 text-[13vw] md:text-7xl leading-[0.85] text-navy tracking-tight">
+              Design
+              <br />
+              work<span className="text-coral">.</span>
+            </h2>
             <Link
               to="/design"
               onClick={() => startLoading()}
               className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-teal-dim border-b border-teal-dim/40 pb-1 hover:border-teal-dim transition-colors"
             >
-              View all design work
+              View all
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           </div>

@@ -14,6 +14,10 @@ export default {
           DEFAULT: '#00C2A8',
           dim: '#0A9C87',
         },
+        coral: {
+          DEFAULT: '#FF6B4A',
+          dim: '#E5502F',
+        },
         ink: '#3A3F44',
         cream: '#F7F7F5',
         line: '#E4E1D8',

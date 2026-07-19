@@ -1,87 +1,103 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Reveal from './Reveal'
 
 const services = [
   {
+    n: '01',
     tag: 'WEB',
     title: 'Website Development',
-    desc: 'WordPress builds designed to convert visitors into enquiries — landing pages, business sites, e-commerce, and redesigns.',
+    desc: 'WordPress builds designed to convert visitors into enquiries.',
     items: ['Business & landing pages', 'E-commerce', 'Website redesigns', 'Ongoing maintenance'],
   },
   {
+    n: '02',
     tag: 'AUTO',
     title: 'AI Automation',
-    desc: 'Built with n8n — automations that remove repetitive manual work from day-to-day operations.',
+    desc: 'Built with n8n — removing repetitive manual work from operations.',
     items: ['Appointment reminders', 'Invoice automation', 'Email workflows', 'Custom multi-step automation'],
   },
   {
+    n: '03',
     tag: 'DSGN',
     title: 'Design',
-    desc: 'Social media, marketing materials, and brand assets — consistent, on-brand, ready to publish.',
+    desc: 'Social media, marketing materials, and brand assets, ready to publish.',
     items: ['Social media design', 'Brand asset kits', 'Posters & marketing collateral', 'Menus & flyers'],
   },
 ]
 
-export default function Services() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-
-  // Two soft background orbs drifting at different speeds as the section
-  // scrolls through view — restrained depth cue, not a "parallax hero"
-  // gimmick. Barely noticeable consciously, but reads as polish.
-  const orb1Y = useTransform(scrollYProgress, [0, 1], [60, -60])
-  const orb2Y = useTransform(scrollYProgress, [0, 1], [-40, 80])
+function ServiceRow({ s, index }: { s: (typeof services)[number]; index: number }) {
+  const [hover, setHover] = useState(false)
 
   return (
-    <section id="services" ref={sectionRef} className="relative bg-cream py-24 md:py-32 overflow-hidden">
-      <motion.div
-        style={{ y: orb1Y }}
-        className="absolute -top-20 -left-32 w-96 h-96 rounded-full bg-teal/[0.07] blur-3xl pointer-events-none"
-      />
-      <motion.div
-        style={{ y: orb2Y }}
-        className="absolute top-40 -right-40 w-[28rem] h-[28rem] rounded-full bg-navy/[0.04] blur-3xl pointer-events-none"
-      />
+    <Reveal delay={index * 0.08}>
+      <div
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        className="group relative border-b border-line py-10 md:py-14 cursor-default"
+      >
+        <div className="flex items-start md:items-center gap-6 md:gap-12">
+          <span className="font-mono text-xs md:text-sm text-ink/30 pt-2 md:pt-0 shrink-0 w-8">
+            {s.n}
+          </span>
 
-      <div className="relative max-w-6xl mx-auto px-6">
-        <Reveal>
-          <div className="max-w-xl mb-16">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal-dim mb-4">
-              What we do
+          <div className="flex-1 flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-8">
+            <h3 className="font-display font-700 text-[9vw] md:text-6xl leading-[0.95] text-navy group-hover:text-teal-dim transition-colors duration-300">
+              {s.title}
+            </h3>
+            <p className="hidden md:block text-ink/50 text-sm max-w-xs text-right shrink-0">
+              {s.desc}
             </p>
-            <h2 className="font-display font-700 text-3xl md:text-4xl text-navy tracking-tight">
-              Three disciplines. One system.
-            </h2>
           </div>
+
+          <span className="hidden md:block font-mono text-[10px] uppercase tracking-widest text-teal-dim bg-teal/10 px-2.5 py-1 rounded-full shrink-0">
+            {s.tag}
+          </span>
+        </div>
+
+        <div className="md:hidden mt-4 pl-14 flex flex-wrap gap-x-4 gap-y-1">
+          {s.items.map((it) => (
+            <span key={it} className="text-xs text-ink/50">{it}</span>
+          ))}
+        </div>
+
+        <AnimatePresence>
+          {hover && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="hidden md:block overflow-hidden"
+            >
+              <div className="flex flex-wrap gap-x-8 gap-y-2 pl-20 pt-6">
+                {s.items.map((it) => (
+                  <span key={it} className="font-mono text-xs text-ink/60">
+                    {it}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </Reveal>
+  )
+}
+
+export default function Services() {
+  return (
+    <section id="services" className="relative bg-cream py-24 md:py-32">
+      <div className="max-w-6xl mx-auto px-6">
+        <Reveal>
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal-dim mb-4">
+            What we do
+          </p>
         </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="mt-6">
           {services.map((s, i) => (
-            <Reveal key={s.tag} delay={i * 0.12}>
-              <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className="h-full border border-line rounded-2xl p-8 bg-white hover:border-teal/50 hover:shadow-lg hover:shadow-navy/5 transition-[border-color,box-shadow] duration-300"
-              >
-                <span className="inline-block font-mono text-[11px] tracking-widest text-teal-dim bg-teal/10 px-2.5 py-1 rounded-full mb-6">
-                  {s.tag}
-                </span>
-                <h3 className="font-display font-600 text-xl text-navy mb-3">{s.title}</h3>
-                <p className="text-ink/70 text-sm leading-relaxed mb-6">{s.desc}</p>
-                <ul className="space-y-2">
-                  {s.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-ink/80">
-                      <span className="text-teal-dim mt-1">›</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </Reveal>
+            <ServiceRow key={s.tag} s={s} index={i} />
           ))}
         </div>
       </div>
