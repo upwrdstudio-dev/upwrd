@@ -3,16 +3,17 @@ import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { setLenis } from '../lib/scroll'
-import { prefersReducedMotion } from '../lib/motion'
+import { hasFinePointer, prefersReducedMotion } from '../lib/motion'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function SmoothScroll() {
   useEffect(() => {
-    if (prefersReducedMotion()) return
+    // Mouse/trackpad only. Phones already scroll natively (Lenis leaves touch
+    // alone anyway), so running it there adds nothing but another layer
+    // listening to touch input.
+    if (prefersReducedMotion() || !hasFinePointer()) return
 
-    // Touch devices keep native scrolling (Lenis' default); only wheel input
-    // is smoothed, which is where the effect actually reads as polish.
     const lenis = new Lenis({
       duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

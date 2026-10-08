@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import Logo from './Logo'
@@ -53,11 +53,26 @@ export default function Nav() {
     setSurface(overDark ? 'dark' : 'light')
   }, [])
 
+  // Hide only after sustained downward travel. Phones produce a few pixels of
+  // scroll around almost every tap (a fling settling, the toolbar resizing,
+  // a finger landing); reacting to those slid the bar away mid-tap, so the
+  // menu button seemed dead anywhere but the top of the page.
+  const travel = useRef(0)
+  const holdUntil = useRef(0)
   useMotionValueEvent(scrollY, 'change', (y) => {
-    const prev = scrollY.getPrevious() ?? 0
-    setHidden(y > prev && y > 160)
+    const d = y - (scrollY.getPrevious() ?? y)
+    if (d !== 0) travel.current = d > 0 === travel.current > 0 ? travel.current + d : d
+    if (y < 160 || travel.current < -6) setHidden(false)
+    else if (travel.current > 48 && performance.now() > holdUntil.current) setHidden(true)
     probe()
   })
+
+  // Touching the bar pins it in place long enough for the tap to land.
+  const holdVisible = () => {
+    holdUntil.current = performance.now() + 1200
+    travel.current = 0
+    setHidden(false)
+  }
 
   useEffect(() => {
     setOpen(false)
@@ -81,6 +96,7 @@ export default function Nav() {
   return (
     <>
       <motion.header
+        onPointerDownCapture={holdVisible}
         animate={{ y: hidden && !open ? '-140%' : '0%' }}
         transition={{ duration: 0.6, ease: EASE_OUT }}
         className="fixed inset-x-0 top-0 z-[300] px-3 pt-3 md:px-6 md:pt-5"
