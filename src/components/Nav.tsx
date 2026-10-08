@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import Logo from './Logo'
 import RollText from './RollText'
 import { lockScroll } from '../lib/scroll'
-import { EASE_IN_OUT, EASE_OUT } from '../lib/motion'
+import { EASE_IN_OUT, EASE_OUT, hasFinePointer } from '../lib/motion'
 import { CONTACT } from '../data/site'
 
 const links = [
@@ -53,18 +53,23 @@ export default function Nav() {
     setSurface(overDark ? 'dark' : 'light')
   }, [])
 
-  // Hide only after sustained downward travel. Phones produce a few pixels of
-  // scroll around almost every tap (a fling settling, the toolbar resizing,
-  // a finger landing); reacting to those slid the bar away mid-tap, so the
-  // menu button seemed dead anywhere but the top of the page.
+  // Hide-on-scroll is for mouse/trackpad only. On iOS Safari, a fixed bar that
+  // has been slid away and back with a transform keeps receiving taps at its
+  // old position, so the visible menu button stops responding anywhere but
+  // the top of the page. On touch screens the bar simply stays pinned.
+  const [autoHide] = useState(hasFinePointer)
+
+  // Hide only after sustained downward travel, so small scroll jitter can't
+  // pull the bar away just as someone reaches for it.
   const travel = useRef(0)
   const holdUntil = useRef(0)
   useMotionValueEvent(scrollY, 'change', (y) => {
+    probe()
+    if (!autoHide) return
     const d = y - (scrollY.getPrevious() ?? y)
     if (d !== 0) travel.current = d > 0 === travel.current > 0 ? travel.current + d : d
     if (y < 160 || travel.current < -6) setHidden(false)
     else if (travel.current > 48 && performance.now() > holdUntil.current) setHidden(true)
-    probe()
   })
 
   // Touching the bar pins it in place long enough for the tap to land.
@@ -97,7 +102,8 @@ export default function Nav() {
     <>
       <motion.header
         onPointerDownCapture={holdVisible}
-        animate={{ y: hidden && !open ? '-140%' : '0%' }}
+        // No animate prop on touch screens: the header never gets a transform.
+        animate={autoHide ? { y: hidden && !open ? '-140%' : '0%' } : undefined}
         transition={{ duration: 0.6, ease: EASE_OUT }}
         className="fixed inset-x-0 top-0 z-[300] px-3 pt-3 md:px-6 md:pt-5"
       >
