@@ -1,6 +1,6 @@
 # UPWRD Studio — Website
 
-Built with React + TypeScript + Tailwind CSS (Vite).
+Built with React + TypeScript + Tailwind CSS (Vite), animated with Framer Motion, GSAP ScrollTrigger and Lenis smooth scroll.
 
 ## Run locally
 
@@ -20,43 +20,35 @@ npm run build
 Output goes to the `dist/` folder — upload that to any static host
 (Vercel, Netlify, Cloudflare Pages, or your own server).
 
-## Deploying
-
-**Vercel / Netlify (easiest):**
-1. Push this folder to a GitHub repo
-2. Import the repo on vercel.com or netlify.com
-3. Build command: `npm run build`, output directory: `dist`
-
 ## Structure
 
 ```
 src/
   components/
-    Nav.tsx        — sticky nav bar
-    Hero.tsx        — hero section with node-network signature graphic
-    NodeNetwork.tsx — the animated SVG signature element
-    Services.tsx    — 3 service cards (Web / Automation / Design)
-    Portfolio.tsx   — 4 real client projects with screenshots
-    Process.tsx     — Discover → Build → Grow steps
-    Pricing.tsx     — pricing teaser + Digital Foundation bundle CTA
-    Contact.tsx     — footer with email + Instagram
-  App.tsx           — assembles all sections
-  index.css         — Tailwind directives + base styles
+    home/            — homepage sections (Hero, Services, Work, Process, Pricing, FAQ…)
+    Logo.tsx         — the UPWRD mark + wordmark (single source for the logo geometry)
+    Nav.tsx          — floating nav + mobile menu
+    Footer.tsx       — contact section + footer
+    Preloader.tsx    — first-visit intro (once per session)
+    RouteCurtain.tsx — page-change transition
+  data/
+    projects.ts      — website portfolio
+    designItems.ts   — design portfolio images
+    site.ts          — email, Instagram, site URL
+  pages/             — Home, Work, Design, 404
+public/brand/        — logo files (SVG), app icon, social share image
 ```
 
 ## Editing content
 
-- **Portfolio projects:** edit the `projects` array in `src/components/Portfolio.tsx`
-- **Services copy:** edit the `services` array in `src/components/Services.tsx`
-- **Pricing numbers:** edit the `tiers` array in `src/components/Pricing.tsx`
-- **Contact details:** edit `src/components/Contact.tsx`
-- **Brand colors:** edit `tailwind.config.ts` (navy / teal / ink / cream tokens)
+- **Portfolio projects:** edit `src/data/projects.ts` (screenshots go in `public/images/`)
+- **Design work:** edit `src/data/designItems.ts` (images go in `public/images/design/`)
+- **Contact details:** edit `src/data/site.ts`
+- **Services / pricing / FAQ copy:** the arrays at the top of each file in `src/components/home/`
 
-## Notes
+## Brand
 
-- Portfolio screenshots live in `public/images/` — replace with higher-res
-  or updated screenshots any time by swapping the file with the same name.
-- Fonts (Space Grotesk, Inter, IBM Plex Mono) load from Google Fonts in
-  `index.html` — no local font files needed.
-- Fully responsive down to mobile, keyboard-navigable, and respects
-  `prefers-reduced-motion`.
+- Colours: Ink `#0A0A0A`, Paper `#F3F3EF`, Electric blue `#3651FF`
+- Type: Geist (headings & body), Instrument Serif italic (accent words), Geist Mono (labels)
+- Logo files: `public/brand/` — `upwrd-logo.svg` (for light backgrounds), `upwrd-logo-white.svg` (dark),
+  `upwrd-mark.svg` / `upwrd-mark-white.svg` (symbol only), `upwrd-app-icon.png` (profile pictures, app icon)

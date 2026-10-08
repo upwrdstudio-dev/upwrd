@@ -1,0 +1,35 @@
+import { useEffect } from 'react'
+import Lenis from 'lenis'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { setLenis } from '../lib/scroll'
+import { prefersReducedMotion } from '../lib/motion'
+
+gsap.registerPlugin(ScrollTrigger)
+
+export default function SmoothScroll() {
+  useEffect(() => {
+    if (prefersReducedMotion()) return
+
+    // Touch devices keep native scrolling (Lenis' default); only wheel input
+    // is smoothed, which is where the effect actually reads as polish.
+    const lenis = new Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    })
+    setLenis(lenis)
+
+    lenis.on('scroll', ScrollTrigger.update)
+    const tick = (time: number) => lenis.raf(time * 1000)
+    gsap.ticker.add(tick)
+    gsap.ticker.lagSmoothing(0)
+
+    return () => {
+      gsap.ticker.remove(tick)
+      lenis.destroy()
+      setLenis(null)
+    }
+  }, [])
+
+  return null
+}

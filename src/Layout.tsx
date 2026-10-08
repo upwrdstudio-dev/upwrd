@@ -1,33 +1,30 @@
 import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
 import Nav from './components/Nav'
-import Contact from './components/Contact'
-import CustomCursor from './components/CustomCursor'
-import ScrollProgress from './components/ScrollProgress'
+import Footer from './components/Footer'
+import Cursor from './components/Cursor'
 import ScrollToHash from './components/ScrollToHash'
 import BackToTop from './components/BackToTop'
-import LoadingScreen from './components/LoadingScreen'
-import { useRouteLoading } from './RouteLoadingContext'
+import SmoothScroll from './components/SmoothScroll'
+import Preloader from './components/Preloader'
+import RouteCurtain from './components/RouteCurtain'
 
 export default function Layout() {
-  const { loading } = useRouteLoading()
-
   return (
     <div className="min-h-screen">
-      <div className="grain-overlay" aria-hidden="true" />
+      <SmoothScroll />
       <ScrollToHash />
-      <ScrollProgress />
-      <CustomCursor />
+      <Preloader />
+      <RouteCurtain />
+      <Cursor />
       <Nav />
       <main>
-        <Suspense fallback={null}>
+        <Suspense fallback={<div className="min-h-[100svh] bg-paper" />}>
           <Outlet />
         </Suspense>
       </main>
-      <Contact />
+      <Footer />
       <BackToTop />
-      <AnimatePresence>{loading && <LoadingScreen />}</AnimatePresence>
     </div>
   )
 }

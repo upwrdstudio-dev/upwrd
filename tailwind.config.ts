@@ -5,36 +5,33 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: {
-          DEFAULT: '#0F1B2D',
-          light: '#16233A',
-          dark: '#0A1320',
+        ink: {
+          DEFAULT: '#0A0A0A',
+          900: '#111111',
+          800: '#1A1A1A',
+          700: '#2A2A2A',
         },
-        teal: {
-          DEFAULT: '#00C2A8',
-          dim: '#0A9C87',
+        paper: {
+          DEFAULT: '#F3F3EF',
+          dim: '#E8E8E2',
         },
-        coral: {
-          DEFAULT: '#FF6B4A',
-          dim: '#E5502F',
+        accent: {
+          DEFAULT: '#2B5BFF',
+          soft: '#8EB0FF',
+          deep: '#1A44E0',
         },
-        ink: '#3A3F44',
-        cream: '#F7F7F5',
-        line: '#E4E1D8',
       },
       fontFamily: {
-        display: ['"Bebas Neue"', 'sans-serif'],
-        body: ['"Manrope"', 'sans-serif'],
-        mono: ['"IBM Plex Mono"', 'monospace'],
+        sans: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'ui-serif', 'Georgia', 'serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
       },
-      keyframes: {
-        'gradient-x': {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-        },
+      transitionTimingFunction: {
+        'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'in-out-quart': 'cubic-bezier(0.76, 0, 0.24, 1)',
       },
-      animation: {
-        'gradient-x': 'gradient-x 4s ease infinite',
+      letterSpacing: {
+        tightest: '-0.055em',
       },
     },
   },

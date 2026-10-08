@@ -1,79 +1,55 @@
-import ClipReveal from '../components/ClipReveal'
 import SEO from '../components/SEO'
+import PageHeader from '../components/PageHeader'
+import ProjectCard from '../components/ProjectCard'
+import Reveal from '../components/Reveal'
+import Button from '../components/Button'
+import TextReveal from '../components/TextReveal'
 import { projects } from '../data/projects'
-import { usePageReady } from '../hooks/usePageReady'
 
 export default function WorkPage() {
-  usePageReady()
+  const [featured, ...rest] = projects
+
   return (
-    <div className="bg-navy min-h-screen">
+    <div className="bg-paper">
       <SEO
         title="Our Work — Website Portfolio"
-        description="Real client websites built by UPWRD Studio — restaurants, wine bars, seafood dining, and corporate trust services across Malaysia."
+        description="Real client websites built by UPWRD Studio — restaurants, wine bars and corporate trust services across Malaysia."
         path="/work"
       />
 
-      <section className="pt-32 md:pt-40 pb-16 md:pb-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <ClipReveal>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal mb-6">
-              Full portfolio
-            </p>
-            <h1 className="font-display font-700 text-[15vw] md:text-8xl leading-[0.82] text-cream tracking-tight">
-              Every
-              <br />
-              project<span className="text-coral">.</span>
-            </h1>
-            <p className="text-cream/50 text-base md:text-lg leading-relaxed mt-8 max-w-md">
-              From neighbourhood restaurants to corporate trust brands — real
-              client work, built with the same care regardless of size.
-            </p>
-          </ClipReveal>
+      <PageHeader eyebrow="Portfolio" title="Work" count={projects.length}>
+        <p className="max-w-md text-[15px] leading-relaxed text-ink/65 md:text-base">
+          From neighbourhood restaurants to corporate trust brands — real client work, built with the same care
+          regardless of size. Hover a project to browse it.
+        </p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/50">Hospitality · Corporate</p>
+      </PageHeader>
+
+      <section className="mx-auto max-w-7xl px-5 pb-28 md:px-8 md:pb-40">
+        <Reveal>
+          <ProjectCard project={featured} index={0} tone="light" frameClassName="aspect-[4/3] md:aspect-[16/8]" />
+        </Reveal>
+        <div className="mt-20 grid gap-20 md:mt-28 md:grid-cols-2 md:gap-6">
+          {rest.map((p, i) => (
+            <Reveal key={p.name} delay={i * 0.12} className={i % 2 === 1 ? 'md:mt-32' : ''}>
+              <ProjectCard project={p} index={i + 1} tone="light" frameClassName="aspect-[4/3] md:aspect-[4/5]" />
+            </Reveal>
+          ))}
         </div>
       </section>
 
-      <section className="pb-24 md:pb-32">
-        {projects.map((p, i) => {
-          const imageFirst = i % 2 === 0
-          return (
-            <ClipReveal key={p.name} delay={0}>
-              <a
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group grid md:grid-cols-2 border-b border-cream/10"
-              >
-                <div
-                  className={`relative h-[280px] md:h-[440px] overflow-hidden ${
-                    imageFirst ? 'md:order-1' : 'md:order-2'
-                  }`}
-                >
-                  <img
-                    src={p.image}
-                    alt={`${p.name} website screenshot`}
-                    className="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-                  />
-                </div>
-                <div
-                  className={`flex flex-col justify-center px-6 md:px-16 py-10 md:py-0 ${
-                    imageFirst ? 'md:order-2' : 'md:order-1'
-                  }`}
-                >
-                  <span className="font-mono text-xs text-teal mb-4">0{i + 1}</span>
-                  <h2 className="font-display font-700 text-4xl md:text-6xl text-cream leading-[0.95] mb-4 flex items-center gap-4">
-                    {p.name}
-                    <span className="text-coral text-3xl opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
-                      ↗
-                    </span>
-                  </h2>
-                  <p className="text-cream/50 text-sm md:text-base leading-relaxed max-w-sm">
-                    {p.desc}
-                  </p>
-                </div>
-              </a>
-            </ClipReveal>
-          )
-        })}
+      <section className="border-t border-ink/10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-10 px-5 py-24 md:flex-row md:items-end md:justify-between md:px-8 md:py-32">
+          <TextReveal
+            lines={['Your project', <span className="font-serif font-normal italic tracking-[-0.02em] text-accent">could be next.</span>]}
+            className="text-[12vw] font-medium leading-[0.92] tracking-tightest md:text-7xl"
+          />
+          <Reveal delay={0.2}>
+            <Button to="/#contact" variant="dark">
+              Start a project
+            </Button>
+          </Reveal>
+        </div>
       </section>
     </div>
   )

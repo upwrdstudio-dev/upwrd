@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async'
+import { SITE_URL } from '../data/site'
 
 type SEOProps = {
   title: string
@@ -8,7 +9,6 @@ type SEOProps = {
 }
 
 const SITE_NAME = 'UPWRD Studio'
-const SITE_URL = 'https://upwrd.vercel.app'
 
 export default function SEO({ title, description, path, jsonLd }: SEOProps) {
   const fullTitle = `${title} | ${SITE_NAME}`
@@ -25,14 +25,14 @@ export default function SEO({ title, description, path, jsonLd }: SEOProps) {
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:image" content={`${SITE_URL}/brand/upwrd-og.png`} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={`${SITE_URL}/brand/upwrd-og.png`} />
 
-      {jsonLd && (
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      )}
+      {jsonLd && <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
     </Helmet>
   )
 }
