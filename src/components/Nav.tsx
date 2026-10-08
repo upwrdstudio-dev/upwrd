@@ -100,12 +100,67 @@ export default function Nav() {
 
   return (
     <>
+      {/* A zero-height sticky rail rather than position: fixed. Recent iOS
+          Safari can paint a fixed top bar well below where it hit-tests
+          (drawn ~100pt down the page, taps still going to the top), which
+          made the menu button unresponsive once scrolled. Sticky elements
+          scroll with the document itself, so paint and hit area stay in
+          sync; the zero height lets the bar float over the hero as before. */}
+      <div className="sticky top-0 z-[300] h-0">
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="menu-sheet absolute inset-x-0 top-0 flex flex-col justify-between bg-ink px-6 pb-8 pt-28 text-paper md:px-10 lg:hidden"
+            initial={{ clipPath: 'circle(0% at 92% 6%)' }}
+            animate={{ clipPath: 'circle(150% at 92% 6%)' }}
+            exit={{ clipPath: 'circle(0% at 92% 6%)' }}
+            transition={{ duration: 0.8, ease: EASE_IN_OUT }}
+          >
+            <nav className="flex flex-col">
+              {[...links, { to: '/#contact', label: 'Contact' }].map((l, i) => (
+                <div key={l.to} className="overflow-hidden border-b border-white/10">
+                  <motion.div
+                    initial={{ y: '100%' }}
+                    animate={{ y: 0 }}
+                    exit={{ y: '100%' }}
+                    transition={{ duration: 0.7, delay: 0.15 + i * 0.05, ease: EASE_OUT }}
+                  >
+                    <Link
+                      to={l.to}
+                      onClick={() => setOpen(false)}
+                      className="flex items-baseline justify-between py-3 text-[2.6rem] font-medium leading-tight tracking-tightest md:text-6xl"
+                    >
+                      {l.label}
+                      <span className="font-mono text-xs tracking-normal text-white/50">0{i + 1}</span>
+                    </Link>
+                  </motion.div>
+                </div>
+              ))}
+            </nav>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: EASE_OUT }}
+              className="flex flex-col gap-2 text-sm text-white/65"
+            >
+              <a href={`mailto:${CONTACT.email}`} className="text-paper">
+                {CONTACT.email}
+              </a>
+              <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer">
+                Instagram — {CONTACT.instagram}
+              </a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <motion.header
         onPointerDownCapture={holdVisible}
         // No animate prop on touch screens: the header never gets a transform.
         animate={autoHide ? { y: hidden && !open ? '-140%' : '0%' } : undefined}
         transition={{ duration: 0.6, ease: EASE_OUT }}
-        className="fixed inset-x-0 top-0 z-[300] px-3 pt-3 md:px-6 md:pt-5"
+        className="relative px-3 pt-3 md:px-6 md:pt-5"
       >
         <div
           className={`mx-auto flex h-14 max-w-6xl items-center justify-between rounded-full border pl-5 pr-2 backdrop-blur-xl backdrop-saturate-150 transition-[background-color,border-color,color,box-shadow] duration-500 md:pl-6 ${t.bar}`}
@@ -168,55 +223,7 @@ export default function Nav() {
           </div>
         </div>
       </motion.header>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className="fixed inset-0 z-[290] flex flex-col justify-between bg-ink px-6 pb-8 pt-28 text-paper md:px-10 lg:hidden"
-            initial={{ clipPath: 'circle(0% at 92% 6%)' }}
-            animate={{ clipPath: 'circle(150% at 92% 6%)' }}
-            exit={{ clipPath: 'circle(0% at 92% 6%)' }}
-            transition={{ duration: 0.8, ease: EASE_IN_OUT }}
-          >
-            <nav className="flex flex-col">
-              {[...links, { to: '/#contact', label: 'Contact' }].map((l, i) => (
-                <div key={l.to} className="overflow-hidden border-b border-white/10">
-                  <motion.div
-                    initial={{ y: '100%' }}
-                    animate={{ y: 0 }}
-                    exit={{ y: '100%' }}
-                    transition={{ duration: 0.7, delay: 0.15 + i * 0.05, ease: EASE_OUT }}
-                  >
-                    <Link
-                      to={l.to}
-                      onClick={() => setOpen(false)}
-                      className="flex items-baseline justify-between py-3 text-[2.6rem] font-medium leading-tight tracking-tightest md:text-6xl"
-                    >
-                      {l.label}
-                      <span className="font-mono text-xs tracking-normal text-white/50">0{i + 1}</span>
-                    </Link>
-                  </motion.div>
-                </div>
-              ))}
-            </nav>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, delay: 0.5, ease: EASE_OUT }}
-              className="flex flex-col gap-2 text-sm text-white/65"
-            >
-              <a href={`mailto:${CONTACT.email}`} className="text-paper">
-                {CONTACT.email}
-              </a>
-              <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer">
-                Instagram — {CONTACT.instagram}
-              </a>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </div>
     </>
   )
 }
