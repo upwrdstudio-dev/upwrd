@@ -4,7 +4,9 @@ import ProjectCard from '../components/ProjectCard'
 import Reveal from '../components/Reveal'
 import Button from '../components/Button'
 import TextReveal from '../components/TextReveal'
+import SectionHeading from '../components/SectionHeading'
 import { projects } from '../data/projects'
+import { concepts } from '../data/concepts'
 
 export default function WorkPage() {
   const [featured, ...rest] = projects
@@ -35,6 +37,33 @@ export default function WorkPage() {
               <ProjectCard project={p} index={i + 1} tone="light" frameClassName="aspect-[4/3] md:aspect-[4/5]" />
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      <section id="concepts" data-nav="dark" className="bg-ink text-paper">
+        <div className="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-36">
+          <SectionHeading
+            index="C"
+            label="Concepts"
+            tone="dark"
+            lines={[
+              'Concept work.',
+              <span className="font-serif font-normal italic tracking-[-0.02em] text-accent-soft">What we’d build for you.</span>,
+            ]}
+            aside={
+              <p className="max-w-xs text-[15px] leading-relaxed text-white/65">
+                Self-initiated sites for fictional businesses — how we’d approach industries beyond our client list. Open
+                one to explore it.
+              </p>
+            }
+          />
+          <div className="mt-16 grid gap-16 md:mt-24 md:grid-cols-3 md:gap-6">
+            {concepts.map((c, i) => (
+              <Reveal key={c.name} delay={i * 0.1}>
+                <ProjectCard project={c} index={i} frameClassName="aspect-[4/3] md:aspect-[4/5]" />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import TextReveal from './TextReveal'
 import Reveal from './Reveal'
 import Magnetic from './Magnetic'
+import CircleText from './CircleText'
 import { Eyebrow } from './SectionHeading'
 import { Arrow } from './Button'
 import { MARK_BLOCK, MARK_U } from './Logo'
@@ -37,18 +38,12 @@ function SpinningCTA() {
         className="group relative grid h-36 w-36 place-items-center rounded-full bg-accent text-white transition-transform duration-500 ease-out-expo hover:scale-105 md:h-44 md:w-44"
         aria-label="Start a project — email us"
       >
-        <svg
-          viewBox="0 0 100 100"
-          className="absolute inset-0 h-full w-full animate-[spin-slow_18s_linear_infinite]"
-          aria-hidden="true"
-        >
-          <defs>
-            <path id="cta-circle" d="M50 50m-37 0a37 37 0 1 1 74 0a37 37 0 1 1-74 0" />
-          </defs>
-          <text className="fill-current font-mono text-[7.6px] uppercase">
-            <textPath href="#cta-circle" textLength="230" lengthAdjust="spacing">Start a project • Start a project • </textPath>
-          </text>
-        </svg>
+        <span className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
+          <CircleText
+            text="Start a project • Start a project • "
+            className="animate-[spin-slow_18s_linear_infinite] font-mono text-[10px] uppercase [--r:61px] md:text-[11px] md:[--r:76px]"
+          />
+        </span>
         <Arrow className="h-7 w-7 transition-transform duration-500 ease-out-expo group-hover:rotate-45" />
       </a>
     </Magnetic>

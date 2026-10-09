@@ -34,7 +34,9 @@ export default function ProjectCard({ project, index, tone = 'dark', className =
           <span
             className={`ml-3 truncate font-mono text-[10px] ${dark ? 'text-white/45' : 'text-ink/50'}`}
           >
-            {project.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
+            {(project.url.startsWith('/') ? `upwrd.vercel.app${project.url}` : project.url)
+              .replace(/^https?:\/\/(www\.)?/, '')
+              .replace(/\/$/, '')}
           </span>
         </div>
         <div className={`relative overflow-hidden rounded-xl md:rounded-2xl ${frameClassName}`}>

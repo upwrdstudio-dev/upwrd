@@ -134,3 +134,29 @@ html.lenis body {
   height: 100vh;
   height: 100lvh;
 }
+
+/* Northline concept: tax estimator slider */
+.northline-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+.northline-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #f4f2ec;
+  border: 6px solid #b8925a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+.northline-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f4f2ec;
+  border: 6px solid #b8925a;
+}
