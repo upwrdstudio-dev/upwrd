@@ -3,28 +3,48 @@ import { AnimatePresence, motion } from 'framer-motion'
 import SectionHeading from '../SectionHeading'
 import Reveal from '../Reveal'
 import { EASE_OUT } from '../../lib/motion'
-import { CONTACT } from '../../data/site'
+import { CONTACT, whatsappLink } from '../../data/site'
 
 export const faqs = [
   {
-    q: 'How much does a website cost in Malaysia?',
-    a: 'Most SME websites with UPWRD Studio range from RM 800 for a single landing page to RM 4,500 for a full business website with 5–8 pages. E-commerce builds start from RM 4,500. Pricing depends on scope, not hourly rate.',
+    q: 'How much does a website cost?',
+    a: 'A landing page is RM 1,500, a 5–8 page business website starts from RM 3,800, and online stores start from RM 6,500. You get a fixed quote before we begin — no hourly billing and no surprise invoices.',
+  },
+  {
+    q: 'How does payment work?',
+    a: '50% to start the project and the remaining 50% on completion, before your website goes live.',
+  },
+  {
+    q: 'Do I own my website and domain?',
+    a: 'Yes. Your domain is registered in your name, and once the project is fully paid the website is 100% yours — including all the files and access.',
+  },
+  {
+    q: 'Are there any yearly or monthly costs?',
+    a: 'Only hosting and your domain. If you already have hosting, we can use it. Otherwise our Care Plan (RM 150/month) covers hosting, SSL, backups, updates and small edits. Domains usually cost around RM 50–150 a year.',
+  },
+  {
+    q: 'How many revisions are included?',
+    a: 'Three rounds of revisions are included, so you can fine-tune the design and content before launch.',
+  },
+  {
+    q: 'What do I need to prepare?',
+    a: 'Just your logo, business details and any photos you already have. We handle the copywriting, structure and design — and we’ll tell you exactly what’s missing, if anything.',
+  },
+  {
+    q: 'How long does a project take?',
+    a: 'A landing page usually takes about a week, a business website 3–4 weeks, and an online store 6–8 weeks — depending on how quickly content and feedback come in.',
+  },
+  {
+    q: 'Can I update the website myself?',
+    a: 'Yes. We build on a system that’s easy to edit and walk you through it at handover. If you’d rather not touch it, the Care Plan includes small edits every month.',
   },
   {
     q: 'What is AI automation and do I need it?',
-    a: 'AI automation removes repetitive manual tasks — appointment reminders, invoice follow-ups, email replies — using tools like n8n. If your team spends time on the same message or task daily, automation usually pays for itself within a few months.',
+    a: 'AI automation removes repetitive manual tasks — appointment reminders, invoice follow-ups, replies to common questions. If your team sends the same messages or does the same admin every day, automation usually pays for itself within a few months.',
   },
   {
-    q: 'Do you only work with restaurants and F&B businesses?',
-    a: 'No. Past projects span restaurants, wine bars and corporate trust/fiduciary services. The approach applies to any SME regardless of industry.',
-  },
-  {
-    q: 'How long does a typical website project take?',
-    a: 'A landing page usually takes 1–2 weeks. A full business website takes 3–5 weeks depending on content readiness and revisions.',
-  },
-  {
-    q: 'What makes UPWRD different from other agencies?',
-    a: 'Website, automation and design are built as one connected system rather than sold separately. Most agencies specialise in one; UPWRD combines all three.',
+    q: 'What makes UPWRD different?',
+    a: 'Website, automation and design are built as one connected system instead of being bought from three different vendors. Most studios do one of these; we plan all three together around what brings you more customers.',
   },
 ]
 
@@ -85,8 +105,13 @@ export default function FAQ() {
             <Reveal delay={0.2}>
               <p className="mt-8 max-w-xs text-[15px] leading-relaxed text-ink/65">
                 Something else on your mind?{' '}
-                <a href={`mailto:${CONTACT.email}`} className="text-ink underline decoration-ink/20 underline-offset-4 hover:decoration-accent">
-                  Email us
+                <a
+                  href={whatsappLink('Hi UPWRD! I have a question about a website for my business.')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ink underline decoration-ink/20 underline-offset-4 hover:decoration-accent"
+                >
+                  Ask us on WhatsApp
                 </a>
                 .
               </p>

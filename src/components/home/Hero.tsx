@@ -70,8 +70,8 @@ export default function Hero() {
               less busywork and more growth.
             </motion.p>
             <motion.div {...fade(0.6)} className="flex flex-wrap gap-3 md:col-span-6 md:justify-end">
-              <Button to="/#contact" variant="accent">
-                Start a project
+              <Button to="/#enquire" variant="accent">
+                Free website check
               </Button>
               <Button to="/#work" variant="outline-light">
                 See our work

@@ -74,7 +74,7 @@ export default function WorkPage() {
             className="text-[12vw] font-medium leading-[0.92] tracking-tightest md:text-7xl"
           />
           <Reveal delay={0.2}>
-            <Button to="/#contact" variant="dark">
+            <Button to="/#enquire" variant="dark">
               Start a project
             </Button>
           </Reveal>

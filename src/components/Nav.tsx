@@ -5,7 +5,7 @@ import Logo from './Logo'
 import RollText from './RollText'
 import { lockScroll } from '../lib/scroll'
 import { EASE_IN_OUT, EASE_OUT, hasFinePointer } from '../lib/motion'
-import { CONTACT } from '../data/site'
+import { CONTACT, whatsappLink } from '../data/site'
 
 const links = [
   { to: '/#services', label: 'Services' },
@@ -117,7 +117,7 @@ export default function Nav() {
             transition={{ duration: 0.8, ease: EASE_IN_OUT }}
           >
             <nav className="flex flex-col">
-              {[...links, { to: '/#contact', label: 'Contact' }].map((l, i) => (
+              {[...links, { to: '/#enquire', label: 'Contact' }].map((l, i) => (
                 <div key={l.to} className="overflow-hidden border-b border-white/10">
                   <motion.div
                     initial={{ y: '100%' }}
@@ -145,9 +145,10 @@ export default function Nav() {
               transition={{ duration: 0.6, delay: 0.5, ease: EASE_OUT }}
               className="flex flex-col gap-2 text-sm text-white/65"
             >
-              <a href={`mailto:${CONTACT.email}`} className="text-paper">
-                {CONTACT.email}
+              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="text-paper">
+                WhatsApp {CONTACT.whatsappDisplay}
               </a>
+              <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
               <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer">
                 Instagram — {CONTACT.instagram}
               </a>
@@ -195,10 +196,10 @@ export default function Nav() {
 
           <div className="flex items-center gap-2">
             <Link
-              to="/#contact"
+              to="/#enquire"
               className="group hidden items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-deep sm:inline-flex"
             >
-              <RollText>Start a project</RollText>
+              <RollText>Free website check</RollText>
             </Link>
             <button
               type="button"

@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Cursor from './components/Cursor'
 import ScrollToHash from './components/ScrollToHash'
 import BackToTop from './components/BackToTop'
+import WhatsAppFloat from './components/WhatsAppFloat'
 import SmoothScroll from './components/SmoothScroll'
 import Preloader from './components/Preloader'
 import RouteCurtain from './components/RouteCurtain'
@@ -24,6 +25,7 @@ export default function Layout() {
         </Suspense>
       </main>
       <Footer />
+      <WhatsAppFloat />
       <BackToTop />
     </div>
   )
