@@ -13,11 +13,7 @@ export default function WorkPage() {
 
   return (
     <div className="bg-paper">
-      <SEO
-        title="Our Work — Website Portfolio"
-        description="Real client websites built by UPWRD Studio — restaurants, wine bars and corporate trust services across Malaysia."
-        path="/work"
-      />
+      <SEO path="/work" />
 
       <PageHeader eyebrow="Portfolio" title="Work" count={projects.length}>
         <p className="max-w-md text-[15px] leading-relaxed text-ink/65 md:text-base">

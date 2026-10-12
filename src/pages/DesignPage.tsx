@@ -17,11 +17,7 @@ export default function DesignPage() {
 
   return (
     <div className="bg-paper">
-      <SEO
-        title="Design Portfolio — Campaigns & Packaging"
-        description="Social media campaigns, packaging design and marketing materials by UPWRD Studio for Malaysian F&B, beauty and furniture brands."
-        path="/design"
-      />
+      <SEO path="/design" />
 
       <PageHeader eyebrow="Design portfolio" title="Design" count={designItems.length}>
         <p className="max-w-md text-[15px] leading-relaxed text-ink/65 md:text-base">

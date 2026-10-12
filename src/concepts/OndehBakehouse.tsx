@@ -101,8 +101,7 @@ export default function OndehBakehouse() {
 
   return (
     <ConceptShell
-      title="Ondeh Bakehouse"
-      description="A Malaysian–French bakehouse in Bangsar. Concept website by UPWRD Studio."
+      path="/concepts/ondeh-bakehouse"
       fontsHref={FONTS}
       themeColor={C.pandan}
     >

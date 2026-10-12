@@ -1,0 +1,35 @@
+{
+  "/": {
+    "title": "Websites, AI Automation & Design for Malaysian SMEs | UPWRD Studio",
+    "description": "UPWRD Studio helps Malaysian SMEs grow through websites, AI automation and design — built as one connected system, not sold as separate favours.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/work": {
+    "title": "Our Work — Website Portfolio | UPWRD Studio",
+    "description": "Real client websites by UPWRD Studio — restaurants, wine bars and corporate trust services across Malaysia — plus concept sites for cafés, spas and accounting firms.",
+    "image": "/og/work.jpg"
+  },
+  "/design": {
+    "title": "Design Portfolio — Campaigns & Packaging | UPWRD Studio",
+    "description": "Social media campaigns, packaging design and marketing materials by UPWRD Studio for Malaysian F&B, beauty and furniture brands.",
+    "image": "/og/design.jpg"
+  },
+  "/concepts/ondeh-bakehouse": {
+    "title": "Ondeh Bakehouse — Concept by UPWRD Studio",
+    "description": "A concept website for a Malaysian–French bakehouse: menu tabs, WhatsApp pre-orders and a warm, editorial feel. Designed by UPWRD Studio.",
+    "image": "/og/ondeh-bakehouse.jpg",
+    "noindex": true
+  },
+  "/concepts/halia-house": {
+    "title": "Halia House — Concept by UPWRD Studio",
+    "description": "A concept website for a spa & skin studio: treatment previews, an online booking picker and a calm, image-led design. Designed by UPWRD Studio.",
+    "image": "/og/halia-house.jpg",
+    "noindex": true
+  },
+  "/concepts/northline-advisory": {
+    "title": "Northline Advisory — Concept by UPWRD Studio",
+    "description": "A concept website for an SME accounting firm, with a live SME tax estimator and fixed-fee plans. Designed by UPWRD Studio.",
+    "image": "/og/northline-advisory.jpg",
+    "noindex": true
+  }
+}

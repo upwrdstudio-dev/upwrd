@@ -43,12 +43,7 @@ const jsonLd = {
 export default function HomePage() {
   return (
     <>
-      <SEO
-        title="Websites, AI Automation & Design for Malaysian SMEs"
-        description="UPWRD Studio helps Malaysian SMEs grow through websites, AI automation, and design — built as one connected system, not sold as separate favours."
-        path="/"
-        jsonLd={jsonLd}
-      />
+      <SEO path="/" jsonLd={jsonLd} />
       <Hero />
       <Ticker />
       <Manifesto />

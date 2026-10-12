@@ -294,8 +294,7 @@ export default function HaliaHouse() {
 
   return (
     <ConceptShell
-      title="Halia House"
-      description="Spa & skin studio in Damansara Heights. Concept website by UPWRD Studio."
+      path="/concepts/halia-house"
       fontsHref={FONTS}
       themeColor={C.deep}
     >

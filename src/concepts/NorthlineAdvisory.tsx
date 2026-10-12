@@ -194,8 +194,7 @@ export default function NorthlineAdvisory() {
 
   return (
     <ConceptShell
-      title="Northline Advisory"
-      description="Accounting, tax and company secretarial for Malaysian SMEs. Concept website by UPWRD Studio."
+      path="/concepts/northline-advisory"
       fontsHref={FONTS}
       themeColor={C.forest}
     >

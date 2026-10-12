@@ -3,11 +3,12 @@ import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { LogoMark } from '../components/Logo'
+import SEO from '../components/SEO'
 import { EASE_OUT } from '../lib/motion'
 
 type ConceptShellProps = {
-  title: string
-  description: string
+  /** Route path; title, description and preview image come from pageMeta.json. */
+  path: string
   fontsHref: string
   themeColor: string
   children: ReactNode
@@ -16,17 +17,15 @@ type ConceptShellProps = {
 // Wraps a concept site: its own fonts and title, no UPWRD chrome, and a small
 // tag making clear the business is fictional. Concepts are noindexed so they
 // never compete in search with a real business that shares the name.
-export default function ConceptShell({ title, description, fontsHref, themeColor, children }: ConceptShellProps) {
+export default function ConceptShell({ path, fontsHref, themeColor, children }: ConceptShellProps) {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
   return (
     <>
+      <SEO path={path} />
       <Helmet>
-        <title>{`${title} — Concept by UPWRD Studio`}</title>
-        <meta name="description" content={description} />
-        <meta name="robots" content="noindex" />
         <meta name="theme-color" content={themeColor} />
         <link rel="stylesheet" href={fontsHref} />
       </Helmet>
