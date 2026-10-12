@@ -9,6 +9,7 @@ import Process from '../components/home/Process'
 import Pricing from '../components/home/Pricing'
 import FAQ, { faqs } from '../components/home/FAQ'
 import { CONTACT, SITE_URL } from '../data/site'
+import { servicePages } from '../data/servicePages'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -20,14 +21,22 @@ const jsonLd = {
         'UPWRD Studio helps Malaysian SMEs grow through websites, AI automation, and design, built as one connected system.',
       url: SITE_URL,
       logo: `${SITE_URL}/brand/upwrd-app-icon.png`,
+      image: `${SITE_URL}/brand/upwrd-og.png`,
       email: CONTACT.email,
-      areaServed: { '@type': 'Country', name: 'Malaysia' },
-      sameAs: [CONTACT.instagramUrl],
-      makesOffer: [
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Website Development' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Automation' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Design' } },
+      telephone: `+${CONTACT.whatsapp}`,
+      priceRange: 'RM 150 – RM 6,500+',
+      // Service-area business: city only, no street address.
+      address: { '@type': 'PostalAddress', addressLocality: 'Kuala Lumpur', addressCountry: 'MY' },
+      areaServed: [
+        { '@type': 'City', name: 'Kuala Lumpur' },
+        { '@type': 'State', name: 'Selangor' },
+        { '@type': 'Country', name: 'Malaysia' },
       ],
+      sameAs: [CONTACT.instagramUrl],
+      makesOffer: servicePages.map((s) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: s.label, url: `${SITE_URL}/services/${s.slug}` },
+      })),
     },
     {
       '@type': 'FAQPage',

@@ -35,5 +35,7 @@ function subscribe(listener: () => void) {
 }
 
 export function useIntroDone() {
-  return useSyncExternalStore(subscribe, () => done)
+  // Server snapshot (build-time prerender): treat the intro as finished so
+  // the hero renders its final content.
+  return useSyncExternalStore(subscribe, () => done, () => true)
 }

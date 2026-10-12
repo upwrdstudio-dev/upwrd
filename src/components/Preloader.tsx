@@ -10,7 +10,8 @@ const COUNT_DURATION = 1.7
 // First-visit intro: the mark assembles while a counter runs to 100, then the
 // whole panel lifts away to reveal the hero. Plays once per session.
 export default function Preloader() {
-  const [visible, setVisible] = useState(shouldPlayIntro)
+  // Never part of the build-time prerender; it only plays in the browser.
+  const [visible, setVisible] = useState(() => typeof window !== "undefined" && shouldPlayIntro)
   const [count, setCount] = useState(0)
 
   useEffect(() => {

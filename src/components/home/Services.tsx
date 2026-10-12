@@ -1,4 +1,5 @@
 import { useRef, type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
 import SectionHeading from '../SectionHeading'
 import Reveal from '../Reveal'
@@ -16,6 +17,7 @@ type Service = {
   rule: string
   visual: ReactNode
   visualClass: string
+  href: string
 }
 
 const services: Service[] = [
@@ -30,6 +32,7 @@ const services: Service[] = [
     rule: 'border-ink/10',
     visual: <WebVisual />,
     visualClass: 'bg-paper-dim p-5 md:p-10',
+    href: '/services/website-design-kuala-lumpur',
   },
   {
     n: '02',
@@ -42,6 +45,7 @@ const services: Service[] = [
     rule: 'border-white/10',
     visual: <AutomationVisual />,
     visualClass: 'bg-ink p-4 md:p-8',
+    href: '/services/ai-automation-malaysia',
   },
   {
     n: '03',
@@ -54,6 +58,7 @@ const services: Service[] = [
     rule: 'border-white/20',
     visual: <DesignVisual />,
     visualClass: 'bg-accent-deep p-6 md:p-12',
+    href: '/design',
   },
 ]
 
@@ -97,6 +102,9 @@ function ServiceCard({
               </li>
             ))}
           </ul>
+          <Link to={s.href} className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-medium underline decoration-current/30 underline-offset-4 transition-opacity hover:opacity-70">
+            Learn more →
+          </Link>
         </div>
         <div className={`flex h-56 items-center justify-center sm:h-72 lg:h-auto ${s.visualClass}`}>{s.visual}</div>
         {stack && <motion.div className="pointer-events-none absolute inset-0 bg-ink" style={{ opacity: dim }} />}

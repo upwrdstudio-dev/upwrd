@@ -12,6 +12,7 @@ import { LOCKUP_WIDTH, WORDMARK_PATH } from './logoPaths'
 import EnquiryForm from './EnquiryForm'
 import WhatsAppIcon from './WhatsAppIcon'
 import { CONTACT, whatsappLink } from '../data/site'
+import { servicePages } from '../data/servicePages'
 
 function LocalTime() {
   const [time, setTime] = useState('')
@@ -148,8 +149,9 @@ export default function Footer() {
           <div>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">Based in</p>
             <p className="text-lg">
-              Malaysia <span className="text-white/50">·</span> <LocalTime />
+              Kuala Lumpur <span className="text-white/50">·</span> <LocalTime />
             </p>
+            <p className="mt-1 text-sm text-white/55">Serving the Klang Valley &amp; Malaysia</p>
           </div>
           <div>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">Explore</p>
@@ -164,6 +166,19 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+
+        <nav aria-label="Services" className="mt-10 border-t border-white/10 pt-8">
+          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">Services</p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-white/70">
+            {servicePages.map((s) => (
+              <li key={s.slug}>
+                <Link to={`/services/${s.slug}`} className="transition-colors hover:text-white">
+                  {s.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
 
       <div ref={wordmarkRef} className="mx-auto mt-20 max-w-[1800px] overflow-hidden px-5 md:mt-28 md:px-8" aria-hidden="true">

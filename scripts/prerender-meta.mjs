@@ -5,16 +5,31 @@
 // baked in: "/" → dist/index.html, "/work" → dist/work.html,
 // "/concepts/x" → dist/concepts/x.html. Cloudflare serves "/work" from
 // work.html directly; the React app then boots exactly as before.
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+//
+// It also renders each page's content (via the SSR bundle built from
+// src/entry-server.tsx) into a hidden container inside #root, so crawlers
+// that don't run JavaScript still see the text and links. React replaces it
+// on load, so visitors never see it. Finally it writes dist/sitemap.xml from
+// the same route list.
+import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const dist = join(root, 'dist')
+const ssrDir = join(root, 'dist-ssr')
 const SITE_URL = 'https://upwrdstudio.com'
 
 const pages = JSON.parse(readFileSync(join(root, 'src/data/pageMeta.json'), 'utf8'))
 const template = readFileSync(join(dist, 'index.html'), 'utf8')
+
+// Server rendering logs a harmless warning for every useLayoutEffect.
+const consoleError = console.error
+console.error = (msg, ...rest) => {
+  if (typeof msg === 'string' && msg.includes('useLayoutEffect does nothing on the server')) return
+  consoleError(msg, ...rest)
+}
+const { render: renderApp } = await import(pathToFileURL(join(ssrDir, 'entry-server.js')).href)
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
@@ -43,15 +58,30 @@ function render(path, meta) {
     .filter(Boolean)
     .join('\n    ')
 
+  const body = renderApp(path)
+
   return template
     .replace(/<title>[\s\S]*?<\/title>/, `<title data-rh="true">${esc(meta.title)}</title>`)
     .replace(/<meta name="description"[^>]*>/, tag('name', 'description', meta.description))
     .replace('</head>', `    ${head}\n  </head>`)
+    .replace('<div id="root"></div>', `<div id="root"><div data-prerendered style="display:none">${body}</div></div>`)
 }
 
 for (const [path, meta] of Object.entries(pages)) {
   const file = path === '/' ? join(dist, 'index.html') : join(dist, `${path.slice(1)}.html`)
   mkdirSync(dirname(file), { recursive: true })
   writeFileSync(file, render(path, meta))
-  console.log(`prerender-meta: ${path} → ${file.slice(dist.length + 1)}`)
+  console.log(`prerender: ${path} → ${file.slice(dist.length + 1)}`)
 }
+
+const today = new Date().toISOString().slice(0, 10)
+const urls = Object.entries(pages)
+  .filter(([, meta]) => !meta.noindex)
+  .map(([path]) => `  <url>\n    <loc>${SITE_URL}${path}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`)
+writeFileSync(
+  join(dist, 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`,
+)
+console.log(`prerender: sitemap.xml (${urls.length} URLs)`)
+
+rmSync(ssrDir, { recursive: true, force: true })

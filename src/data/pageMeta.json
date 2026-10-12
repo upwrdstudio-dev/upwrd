@@ -14,6 +14,31 @@
     "description": "Social media campaigns, packaging design and marketing materials by UPWRD Studio for Malaysian F&B, beauty and furniture brands.",
     "image": "/og/design.jpg"
   },
+  "/services/website-design-kuala-lumpur": {
+    "title": "Website Design Kuala Lumpur — Websites for SMEs | UPWRD Studio",
+    "description": "Website design in Kuala Lumpur for small and medium businesses. Fast, mobile-friendly websites with WhatsApp enquiries and SEO, from RM 1,500. Free website check on WhatsApp.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/services/restaurant-website-design": {
+    "title": "Restaurant & Café Website Design Malaysia | UPWRD Studio",
+    "description": "Websites for restaurants, cafés, bakeries and bars in Malaysia — easy-to-update menus, WhatsApp reservations and orders, maps and bilingual content.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/services/spa-salon-website-design": {
+    "title": "Spa & Salon Website Design Malaysia | UPWRD Studio",
+    "description": "Websites for spas, salons and beauty studios in Malaysia — treatment menus, easy WhatsApp booking, packages and automated appointment reminders.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/services/professional-services-website-design": {
+    "title": "Websites for Accounting, Law & Advisory Firms | UPWRD Studio",
+    "description": "Trust-first websites for accounting firms, law firms, trust companies and consultancies in Malaysia — clear services, multilingual content and lead capture.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/services/ai-automation-malaysia": {
+    "title": "AI Automation for Malaysian SMEs — Reminders, Invoices & Replies | UPWRD Studio",
+    "description": "AI automation for Malaysian SMEs: booking reminders, invoice follow-ups, auto-replies and lead routing, built with n8n and AI. From RM 1,200 per workflow.",
+    "image": "/brand/upwrd-og.png"
+  },
   "/concepts/ondeh-bakehouse": {
     "title": "Ondeh Bakehouse — Concept by UPWRD Studio",
     "description": "A concept website for a Malaysian–French bakehouse: menu tabs, WhatsApp pre-orders and a warm, editorial feel. Designed by UPWRD Studio.",
