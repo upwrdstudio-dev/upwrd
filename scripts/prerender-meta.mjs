@@ -58,12 +58,12 @@ function render(path, meta) {
     .filter(Boolean)
     .join('\n    ')
 
-  const body = renderApp(path)
+  const { html: body, jsonLd } = renderApp(path)
 
   return template
     .replace(/<title>[\s\S]*?<\/title>/, `<title data-rh="true">${esc(meta.title)}</title>`)
     .replace(/<meta name="description"[^>]*>/, tag('name', 'description', meta.description))
-    .replace('</head>', `    ${head}\n  </head>`)
+    .replace('</head>', `    ${head}${jsonLd ? `\n    ${jsonLd}` : ''}\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root"><div data-prerendered style="display:none">${body}</div></div>`)
 }
 

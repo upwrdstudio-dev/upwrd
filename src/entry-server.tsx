@@ -5,7 +5,7 @@
 // directly instead of lazily, so everything renders in one pass.
 import { renderToString } from 'react-dom/server'
 import { StaticRouter, Routes, Route } from 'react-router-dom'
-import { HelmetProvider } from 'react-helmet-async'
+import { HelmetProvider, type HelmetServerState } from 'react-helmet-async'
 import Layout from './Layout'
 import HomePage from './pages/HomePage'
 import WorkPage from './pages/WorkPage'
@@ -16,9 +16,14 @@ import OndehBakehouse from './concepts/OndehBakehouse'
 import HaliaHouse from './concepts/HaliaHouse'
 import NorthlineAdvisory from './concepts/NorthlineAdvisory'
 
+type HelmetContext = { helmet?: HelmetServerState | null }
+
+// Returns the page markup plus any JSON-LD the page declared through Helmet,
+// so structured data is in the static HTML too.
 export function render(url: string) {
-  return renderToString(
-    <HelmetProvider context={{}}>
+  const helmetContext: HelmetContext = {}
+  const html = renderToString(
+    <HelmetProvider context={helmetContext}>
       <StaticRouter location={url}>
         <Routes>
           <Route element={<Layout />}>
@@ -35,4 +40,5 @@ export function render(url: string) {
       </StaticRouter>
     </HelmetProvider>,
   )
+  return { html, jsonLd: helmetContext.helmet?.script.toString() ?? '' }
 }
