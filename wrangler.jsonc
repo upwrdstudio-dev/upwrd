@@ -1,0 +1,12 @@
+// Cloudflare Workers config: serves the Vite build as static assets.
+// "name" must match the Worker in the Cloudflare dashboard.
+{
+  "name": "upwrd",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./dist",
+    // Unknown paths (/work, /concepts/…) return index.html so the React
+    // router can handle them, instead of a 404 on direct visits.
+    "not_found_handling": "single-page-application"
+  }
+}

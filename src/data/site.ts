@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://upwrd.vercel.app'
+export const SITE_URL = 'https://upwrdstudio.com'
 
 export const CONTACT = {
   email: 'upwrdstudio@gmail.com',

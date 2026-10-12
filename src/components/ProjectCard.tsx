@@ -1,5 +1,6 @@
 import type { Project } from '../data/projects'
 import { Arrow } from './Button'
+import { SITE_URL } from '../data/site'
 
 type ProjectCardProps = {
   project: Project
@@ -34,7 +35,7 @@ export default function ProjectCard({ project, index, tone = 'dark', className =
           <span
             className={`ml-3 truncate font-mono text-[10px] ${dark ? 'text-white/45' : 'text-ink/50'}`}
           >
-            {(project.url.startsWith('/') ? `upwrd.vercel.app${project.url}` : project.url)
+            {(project.url.startsWith('/') ? `${SITE_URL}${project.url}` : project.url)
               .replace(/^https?:\/\/(www\.)?/, '')
               .replace(/\/$/, '')}
           </span>
