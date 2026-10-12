@@ -1,5 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "redirects": [
+    { "source": "/:path*", "destination": "https://upwrdstudio.com/:path*", "permanent": true }
   ]
 }
