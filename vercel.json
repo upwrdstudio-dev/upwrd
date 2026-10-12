@@ -1,4 +1,5 @@
 {
+  "ignoreCommand": "exit 0",
   "redirects": [
     { "source": "/", "destination": "https://upwrdstudio.com/", "permanent": true },
     { "source": "/:path*", "destination": "https://upwrdstudio.com/:path*", "permanent": true }
