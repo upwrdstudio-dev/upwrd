@@ -145,6 +145,14 @@ export default function Footer() {
             >
               Instagram {CONTACT.instagram}
             </a>
+            <a
+              href={CONTACT.googleProfileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 block w-fit bg-gradient-to-r from-accent-soft to-accent-soft bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-1 text-white/70 transition-[background-size] duration-500 ease-out-expo hover:bg-[length:100%_1px]"
+            >
+              Google reviews ★
+            </a>
           </div>
           <div>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">Based in</p>

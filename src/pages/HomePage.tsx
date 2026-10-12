@@ -32,7 +32,7 @@ const jsonLd = {
         { '@type': 'State', name: 'Selangor' },
         { '@type': 'Country', name: 'Malaysia' },
       ],
-      sameAs: [CONTACT.instagramUrl],
+      sameAs: [CONTACT.instagramUrl, CONTACT.googleProfileUrl],
       makesOffer: servicePages.map((s) => ({
         '@type': 'Offer',
         itemOffered: { '@type': 'Service', name: s.label, url: `${SITE_URL}/services/${s.slug}` },
