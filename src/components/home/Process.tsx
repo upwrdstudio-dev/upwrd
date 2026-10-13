@@ -12,13 +12,13 @@ const steps = [
   {
     n: '02',
     title: 'Build',
-    desc: 'Website, automation and design are built as one connected system, sequenced around what moves the needle first.',
-    points: ['Design & development', 'Automation set-up'],
+    desc: 'Your website and design are built together, starting with what brings in customers first.',
+    points: ['Design & development', 'Launch & Google setup'],
   },
   {
     n: '03',
     title: 'Grow',
-    desc: 'Maintenance, new automations and monthly design support — the system keeps working long after launch.',
+    desc: 'Maintenance, updates and monthly design support — your website and socials keep working long after launch.',
     points: ['Ongoing support', 'Monthly design'],
   },
 ]

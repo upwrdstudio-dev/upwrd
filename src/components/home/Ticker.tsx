@@ -1,6 +1,6 @@
 import Marquee from '../Marquee'
 
-const items = ['Websites', 'AI Automation', 'Social Design', 'E-commerce', 'Brand Assets', 'Packaging', 'Maintenance']
+const items = ['Websites', 'Landing Pages', 'Online Stores', 'Social Design', 'Brand Assets', 'Packaging', 'Maintenance']
 
 export default function Ticker() {
   return (

@@ -18,7 +18,7 @@ const jsonLd = {
       '@type': 'ProfessionalService',
       name: 'UPWRD Studio',
       description:
-        'UPWRD Studio helps Malaysian SMEs grow through websites, AI automation, and design, built as one connected system.',
+        'UPWRD Studio designs and builds websites and social media design for Malaysian small businesses — made to work together.',
       url: SITE_URL,
       logo: `${SITE_URL}/brand/upwrd-app-icon.png`,
       image: `${SITE_URL}/brand/upwrd-og.png`,

@@ -45,14 +45,6 @@ const websites: Package[] = [
 
 const addOns = [
   {
-    tag: 'Automation',
-    name: 'AI Automation',
-    price: 'from RM 1,200',
-    unit: 'per workflow',
-    items: ['Booking & appointment reminders', 'Invoice follow-ups', 'Auto-replies for email & chat'],
-    ask: "Hi UPWRD! I'm interested in AI automation for my business.",
-  },
-  {
     tag: 'Design',
     name: 'Social Media Design',
     price: 'RM 800',
@@ -166,8 +158,8 @@ export default function Pricing() {
           ))}
         </div>
 
-        <p className="mt-14 font-mono text-[11px] uppercase tracking-[0.18em] text-ink/60">Automation, design &amp; care</p>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
+        <p className="mt-14 font-mono text-[11px] uppercase tracking-[0.18em] text-ink/60">Design &amp; care</p>
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
           {addOns.map((a, i) => (
             <Reveal key={a.name} delay={i * 0.08} className="h-full">
               <a
@@ -221,11 +213,11 @@ export default function Pricing() {
                     <span className="font-serif font-normal italic tracking-[-0.02em] text-accent-soft">Foundation</span>
                   </h3>
                   <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/65">
-                    A Business Website, one automation and three months of social media design — planned and built as one
-                    system from day one.
+                    A Business Website plus three months of social media design — so your brand looks the same on your
+                    website and your socials from day one.
                   </p>
                   <ul className="mt-6 flex flex-wrap gap-2">
-                    {['Business Website', '1 AI automation', '3 months · 8 posts/mo'].map((x) => (
+                    {['Business Website', '3 months social design', '8 posts / month'].map((x) => (
                       <li key={x} className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/70">
                         {x}
                       </li>
@@ -234,12 +226,12 @@ export default function Pricing() {
                 </div>
                 <div className="flex shrink-0 flex-col items-start gap-5 md:items-end">
                   <div className="md:text-right">
-                    <p className="text-sm text-white/50 line-through">RM 7,400 separately</p>
+                    <p className="text-sm text-white/50 line-through">RM 6,200 separately</p>
                     <p className="mt-1 flex items-baseline gap-2">
                       <span className="text-sm text-white/60">RM</span>
-                      <span className="text-6xl font-medium tracking-tightest">5,900</span>
+                      <span className="text-6xl font-medium tracking-tightest">5,200</span>
                     </p>
-                    <p className="mt-1 text-sm text-accent-soft">Save RM 1,500</p>
+                    <p className="mt-1 text-sm text-accent-soft">Save RM 1,000</p>
                   </div>
                   <Button to={whatsappLink("Hi UPWRD! I'm interested in the Digital Foundation bundle.")} variant="accent">
                     Ask on WhatsApp

@@ -208,7 +208,7 @@ export default function Footer() {
 
       <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-8 text-xs text-white/60 md:flex-row md:justify-between md:px-8">
         <p>© {new Date().getFullYear()} UPWRD Studio. All rights reserved.</p>
-        <p>Websites · AI Automation · Design — made in Malaysia.</p>
+        <p>Websites · Online stores · Design — made in Malaysia.</p>
       </div>
     </footer>
   )

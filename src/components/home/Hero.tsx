@@ -72,8 +72,8 @@ export default function Hero() {
 
           <div className="mt-10 grid gap-8 border-t border-white/15 pt-6 md:mt-14 md:grid-cols-12 md:items-center">
             <motion.p {...fade(0.3)} className="max-w-md text-base leading-relaxed text-white/65 md:col-span-6 md:text-lg">
-              Websites, AI automation and design — built as one connected system for Malaysian businesses that want
-              less busywork and more growth.
+              Websites and design for Malaysian businesses — fast, beautiful sites and on-brand social media design,
+              made to work together and bring in more customers.
             </motion.p>
             <motion.div {...fade(0.4)} className="flex flex-wrap gap-3 md:col-span-6 md:justify-end">
               <Button to="/#enquire" variant="accent">

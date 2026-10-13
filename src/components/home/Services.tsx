@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion
 import SectionHeading from '../SectionHeading'
 import Reveal from '../Reveal'
 import { useMediaQuery } from '../../lib/useMediaQuery'
-import { AutomationVisual, DesignVisual, WebVisual } from './ServiceVisuals'
+import { DesignVisual, StoreVisual, WebVisual } from './ServiceVisuals'
 
 type Service = {
   n: string
@@ -36,16 +36,16 @@ const services: Service[] = [
   },
   {
     n: '02',
-    title: 'AI Automation',
-    desc: 'Workflows built with n8n and AI that take repetitive work off your team — reminders, follow-ups, replies.',
-    items: ['Appointment reminders', 'Invoice automation', 'Email & WhatsApp flows', 'Custom multi-step automation'],
-    from: 'RM 1,200',
+    title: 'Online Stores',
+    desc: 'E-commerce websites your customers can browse and pay on directly — with FPX and card payments built in.',
+    items: ['Product & stock management', 'FPX & card payments', 'Delivery & pickup options', 'Order management walkthrough'],
+    from: 'RM 6,500',
     theme: 'bg-ink-800 text-paper',
     muted: 'text-white/65',
     rule: 'border-white/10',
-    visual: <AutomationVisual />,
+    visual: <StoreVisual />,
     visualClass: 'bg-ink p-4 md:p-8',
-    href: '/services/ai-automation-malaysia',
+    href: '/services/website-design-kuala-lumpur',
   },
   {
     n: '03',
@@ -130,10 +130,10 @@ export default function Services() {
         <SectionHeading
           index="01"
           label="Services"
-          lines={['Three disciplines,', 'one system.']}
+          lines={['Websites & design,', 'made to work together.']}
           aside={
             <p className="max-w-xs text-[15px] leading-relaxed text-ink/65">
-              Most agencies specialise in one. We connect all three, so each part makes the others work harder.
+              Most studios do one or the other. We do both, so your website and your social media look and feel like the same brand.
             </p>
           }
         />

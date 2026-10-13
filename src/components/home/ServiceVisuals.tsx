@@ -56,73 +56,69 @@ export function WebVisual() {
   )
 }
 
-const flowNodes = [
-  { id: 'in', x: 20, y: 96, w: 82, label: 'New enquiry' },
-  { id: 'ai', x: 140, y: 96, w: 62, label: 'AI agent' },
-  { id: 'wa', x: 238, y: 34, w: 84, label: 'WhatsApp' },
-  { id: 'inv', x: 238, y: 96, w: 84, label: 'Invoice' },
-  { id: 'crm', x: 238, y: 158, w: 84, label: 'Calendar' },
+const products = [
+  { name: 'Pandan Croissant', price: 'RM 12.90', tone: 'bg-[#E9D9B8]' },
+  { name: 'Kaya Bun', price: 'RM 7.50', tone: 'bg-[#D7E4C6]' },
+  { name: 'Gift Box', price: 'RM 48.00', tone: 'bg-[#E6CFC5]' },
+  { name: 'Coffee Beans', price: 'RM 36.00', tone: 'bg-[#D6D3CC]' },
 ]
 
-const flowPaths = [
-  { id: 'p1', d: 'M102 111H140' },
-  { id: 'p2', d: 'M202 111C222 111 218 49 238 49' },
-  { id: 'p3', d: 'M202 111H238' },
-  { id: 'p4', d: 'M202 111C222 111 218 173 238 173' },
-]
-
-// A workflow that runs on its own: data pulses travel from trigger to actions.
-export function AutomationVisual() {
+// A shop that sells itself: products get added to the cart on a loop, the
+// cart count ticks up and the header briefly confirms the paid order.
+export function StoreVisual() {
+  const cycle = { duration: 4.8, repeat: Infinity, ease: [0.16, 1, 0.3, 1] as const }
   return (
-    <svg viewBox="0 0 340 222" className="h-full w-full" role="img" aria-label="Automation workflow diagram">
-      <defs>
-        <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
-          <circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.08)" />
-        </pattern>
-      </defs>
-      <rect width="340" height="222" fill="url(#dots)" />
-      {flowPaths.map((p) => (
-        <path
-          key={p.id}
-          id={p.id}
-          d={p.d}
-          fill="none"
-          stroke="rgba(255,255,255,0.25)"
-          strokeWidth="1.2"
-          strokeDasharray="4 4"
-          style={{ animation: 'dash-flow 1.2s linear infinite' }}
-        />
-      ))}
-      {flowPaths.map((p, i) => (
-        <circle key={`dot-${p.id}`} r="3.5" fill="#2B5BFF">
-          <animateMotion dur="2.4s" repeatCount="indefinite" begin={`${i === 0 ? 0 : 0.6 + i * 0.25}s`}>
-            <mpath href={`#${p.id}`} />
-          </animateMotion>
-        </circle>
-      ))}
-      {flowNodes.map((n) => (
-        <g key={n.id}>
-          <rect
-            x={n.x}
-            y={n.y}
-            width={n.w}
-            height="30"
-            rx="8"
-            fill={n.id === 'ai' ? '#2B5BFF' : '#1A1A1A'}
-            stroke={n.id === 'ai' ? '#2B5BFF' : 'rgba(255,255,255,0.14)'}
+    <div className="flex h-full w-full max-w-[420px] flex-col overflow-hidden rounded-2xl md:h-auto border border-white/10 bg-[#141414] shadow-[0_30px_60px_-30px_rgba(0,0,0,0.8)]">
+      <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+        <span className="relative h-6 flex-1">
+          <motion.span
+            className="absolute left-0 top-1.5 h-3 w-14 rounded-full bg-white/80"
+            animate={{ opacity: [1, 1, 0, 0, 1] }}
+            transition={{ ...cycle, times: [0, 0.42, 0.48, 0.88, 0.94] }}
           />
-          <text
-            x={n.x + n.w / 2}
-            y={n.y + 19}
-            textAnchor="middle"
-            className="fill-white font-sans text-[10.5px]"
-            style={{ letterSpacing: '-0.01em' }}
+          <motion.span
+            className="absolute left-0 top-0 flex h-6 items-center gap-1.5 whitespace-nowrap rounded-full bg-accent px-2.5 text-[10px] font-medium text-white"
+            animate={{ opacity: [0, 0, 1, 1, 0], x: [-6, -6, 0, 0, -6] }}
+            transition={{ ...cycle, times: [0, 0.42, 0.5, 0.88, 0.94] }}
           >
-            {n.label}
-          </text>
-        </g>
-      ))}
-    </svg>
+            <svg viewBox="0 0 16 16" className="h-3 w-3" aria-hidden="true">
+              <path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" strokeWidth="2" />
+            </svg>
+            Order paid · FPX
+          </motion.span>
+        </span>
+        <span className="relative grid h-7 w-7 place-items-center rounded-full bg-white/10">
+          <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 text-white" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <path d="M6 7h12l-1.2 11H7.2L6 7Zm3 0a3 3 0 0 1 6 0" />
+          </svg>
+          <motion.span
+            className="absolute -right-1 -top-1 grid h-4 min-w-4 place-items-center rounded-full bg-accent px-1 text-[9px] font-semibold text-white"
+            animate={{ scale: [0, 0, 1.3, 1, 1, 0] }}
+            transition={{ ...cycle, times: [0, 0.25, 0.32, 0.38, 0.9, 1] }}
+          >
+            1
+          </motion.span>
+        </span>
+      </div>
+      <div className="grid flex-1 grid-cols-2 content-start gap-2.5 p-3 md:gap-3 md:p-4">
+        {products.map((p, i) => (
+          <div key={p.name} className={`flex-col rounded-xl bg-white/[0.04] p-2 ${i > 1 ? 'hidden md:flex' : 'flex'}`}>
+            <div className={`aspect-[4/3] rounded-lg ${p.tone}`} />
+            <span className="mt-2 truncate text-[10px] text-white/80 md:text-[11px]">{p.name}</span>
+            <div className="mt-1 flex items-center justify-between">
+              <span className="text-[10px] font-semibold text-white md:text-[11px]">{p.price}</span>
+              <motion.span
+                className="grid h-5 w-5 place-items-center rounded-full bg-white/10 text-[11px] leading-none text-white"
+                animate={i === 0 ? { backgroundColor: ['rgba(255,255,255,0.1)', 'rgba(255,255,255,0.1)', '#2B5BFF', '#2B5BFF', 'rgba(255,255,255,0.1)'] , scale: [1, 1, 0.85, 1, 1] } : undefined}
+                transition={i === 0 ? { ...cycle, times: [0, 0.2, 0.26, 0.4, 1] } : undefined}
+              >
+                +
+              </motion.span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 

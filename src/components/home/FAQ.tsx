@@ -39,12 +39,8 @@ export const faqs = [
     a: 'Yes. We build on a system that’s easy to edit and walk you through it at handover. If you’d rather not touch it, the Care Plan includes small edits every month.',
   },
   {
-    q: 'What is AI automation and do I need it?',
-    a: 'AI automation removes repetitive manual tasks — appointment reminders, invoice follow-ups, replies to common questions. If your team sends the same messages or does the same admin every day, automation usually pays for itself within a few months.',
-  },
-  {
     q: 'What makes UPWRD different?',
-    a: 'Website, automation and design are built as one connected system instead of being bought from three different vendors. Most studios do one of these; we plan all three together around what brings you more customers.',
+    a: 'Your website and your design are planned together, so your brand looks the same everywhere customers find you — online and on social media. And you work directly with the person designing and building it, not an account manager.',
   },
 ]
 

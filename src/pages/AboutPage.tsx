@@ -71,7 +71,7 @@ export default function AboutPage() {
       <PageHeader eyebrow="About UPWRD" title="About" count="Est. 2025">
         <p className="max-w-xl text-base leading-relaxed text-ink/70 md:text-lg">
           UPWRD Studio is a founder-led web design studio in Kuala Lumpur. We design and build websites — and the
-          automations and design around them — for small businesses that want to look professional, get found online and
+          brand and social media design around them — for small businesses that want to look professional, get found online and
           win more customers.
         </p>
       </PageHeader>

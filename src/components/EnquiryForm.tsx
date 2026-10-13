@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { whatsappLink } from '../data/site'
 import { Arrow } from './Button'
 
-const needs = ['A new website', 'Redesign my website', 'AI automation', 'Design / social media', 'Not sure yet']
+const needs = ['A new website', 'Redesign my website', 'Online store', 'Design / social media', 'Not sure yet']
 
 const field =
   'w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-paper placeholder:text-white/35 outline-none transition-colors focus:border-accent-soft/60 focus:bg-white/[0.07]'

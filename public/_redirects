@@ -1,0 +1,3 @@
+# Cloudflare static-asset redirects (also read on deploy from dist/).
+# Removed pages point somewhere useful instead of 404ing.
+/services/ai-automation-malaysia /services/website-design-kuala-lumpur 301

@@ -1,7 +1,7 @@
 {
   "/": {
-    "title": "Websites, AI Automation & Design for Malaysian SMEs | UPWRD Studio",
-    "description": "UPWRD Studio helps Malaysian SMEs grow through websites, AI automation and design — built as one connected system, not sold as separate favours.",
+    "title": "Website & Design Studio for Malaysian Small Businesses | UPWRD Studio",
+    "description": "UPWRD Studio designs and builds fast, beautiful websites and on-brand social media design for Malaysian small businesses — made to work together. Fixed prices, from RM 1,500.",
     "image": "/brand/upwrd-og.png"
   },
   "/work": {
@@ -26,17 +26,12 @@
   },
   "/services/spa-salon-website-design": {
     "title": "Spa & Salon Website Design Malaysia | UPWRD Studio",
-    "description": "Websites for spas, salons and beauty studios in Malaysia — treatment menus, easy WhatsApp booking, packages and automated appointment reminders.",
+    "description": "Websites for spas, salons and beauty studios in Malaysia — treatment menus, easy WhatsApp booking, packages and matching social media design.",
     "image": "/brand/upwrd-og.png"
   },
   "/services/professional-services-website-design": {
     "title": "Websites for Accounting, Law & Advisory Firms | UPWRD Studio",
     "description": "Trust-first websites for accounting firms, law firms, trust companies and consultancies in Malaysia — clear services, multilingual content and lead capture.",
-    "image": "/brand/upwrd-og.png"
-  },
-  "/services/ai-automation-malaysia": {
-    "title": "AI Automation for Malaysian SMEs — Reminders, Invoices & Replies | UPWRD Studio",
-    "description": "AI automation for Malaysian SMEs: booking reminders, invoice follow-ups, auto-replies and lead routing, built with n8n and AI. From RM 1,200 per workflow.",
     "image": "/brand/upwrd-og.png"
   },
   "/about": {

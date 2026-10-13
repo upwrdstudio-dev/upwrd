@@ -110,18 +110,18 @@ export const servicePages: ServicePage[] = [
       { title: 'Packages & memberships', body: 'Pages for packages, memberships and promotions that you can update yourself.' },
       { title: 'Instagram-quality visuals', body: 'A design that matches the look and feel of your space and your feed.' },
       { title: 'Reviews & trust', body: 'Space for testimonials and Google reviews, which matter most in this industry.' },
-      { title: 'Automated reminders', body: 'Optional AI automation for appointment reminders and follow-ups, so fewer no-shows.' },
+      { title: 'Matching social design', body: 'Social media posts for your promotions that match your website — from RM 800/month for 8 posts.' },
     ],
     work: ['Halia House'],
-    price: { label: 'Spa or salon website', value: 'from RM 3,800', note: 'Booking reminders via AI Automation from RM 1,200' },
+    price: { label: 'Spa or salon website', value: 'from RM 3,800', note: 'Matching social media design from RM 800/month' },
     faqs: [
       {
         q: 'Can customers book appointments on the website?',
         a: 'Yes — through a pre-filled WhatsApp booking message, or by connecting an online booking system if you already use one.',
       },
       {
-        q: 'Can you send automatic appointment reminders?',
-        a: 'Yes. Our AI Automation service can send reminders and follow-ups automatically, which helps reduce no-shows.',
+        q: 'Can we update treatments and prices ourselves?',
+        a: 'Yes. The site is built so you can edit treatments, prices and promotions yourself — or our Care Plan can handle updates for you.',
       },
       {
         q: 'Do you also design our social media posts?',
@@ -160,44 +160,9 @@ export const servicePages: ServicePage[] = [
       },
       {
         q: 'Can enquiries go directly into our system?',
-        a: 'Enquiries can go to email or WhatsApp, and with AI Automation we can route them into a CRM, spreadsheet or calendar.',
+        a: 'Enquiries go straight to your email or WhatsApp, so the right person sees them right away.',
       },
     ],
     whatsapp: "Hi UPWRD! I'm interested in a website for our firm.",
-  },
-  {
-    slug: 'ai-automation-malaysia',
-    label: 'AI Automation for SMEs',
-    eyebrow: 'AI automation · Malaysia',
-    heading: 'AI automation for',
-    headingAccent: 'Malaysian SMEs.',
-    intro:
-      'We take repetitive admin off your team’s plate — reminders, follow-ups, invoices and replies to common questions — with automations built in n8n and AI that run quietly in the background.',
-    includesTitle: 'What we automate',
-    includes: [
-      { title: 'Booking reminders', body: 'Automatic WhatsApp or email reminders before appointments, so fewer no-shows.' },
-      { title: 'Invoice follow-ups', body: 'Polite, automatic payment reminders until invoices are paid.' },
-      { title: 'Auto-replies', body: 'Instant answers to common questions on email and chat, handing over to you when needed.' },
-      { title: 'Lead routing', body: 'New enquiries from your website saved to a spreadsheet or CRM and sent to the right person.' },
-      { title: 'Reports & summaries', body: 'Daily or weekly summaries of bookings, sales or enquiries, sent to you automatically.' },
-      { title: 'Custom workflows', body: 'Multi-step workflows connecting the tools you already use.' },
-    ],
-    work: [],
-    price: { label: 'AI Automation', value: 'from RM 1,200', note: 'Per workflow · scoped with you before we start' },
-    faqs: [
-      {
-        q: 'What is AI automation?',
-        a: 'Software that handles repetitive tasks for you — sending reminders, following up on invoices, replying to common questions or moving data between tools — without someone doing it by hand.',
-      },
-      {
-        q: 'Do I need to change the tools I already use?',
-        a: 'Usually not. We connect the tools you already have, like WhatsApp, Gmail, Google Sheets and your calendar.',
-      },
-      {
-        q: 'How do I know if automation is worth it?',
-        a: 'If your team sends the same messages or does the same admin every day, it’s a good candidate. We’ll look at your workflow and tell you honestly what’s worth automating.',
-      },
-    ],
-    whatsapp: "Hi UPWRD! I'm interested in AI automation for my business.",
   },
 ]

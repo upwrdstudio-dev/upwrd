@@ -4,9 +4,9 @@ import { Eyebrow } from '../SectionHeading'
 import Reveal from '../Reveal'
 
 const statement =
-  'Most agencies hand you a website and disappear. We build the system your business actually runs on — site, automations and design working as one — and we stay to keep it moving upward.'
+  'Most agencies hand you a website and disappear. We design how your business shows up online — website and design working as one — and we stay to keep it moving upward.'
 
-const highlights = new Set(['system', 'one', 'upward.'])
+const highlights = new Set(['online', 'one', 'upward.'])
 
 function Word({ children, progress, range }: { children: string; progress: MotionValue<number>; range: [number, number] }) {
   const accent = highlights.has(children)
@@ -23,9 +23,9 @@ function Word({ children, progress, range }: { children: string; progress: Motio
 }
 
 const pillars = [
-  { k: '01', title: 'One system', body: 'Website, automation and design planned together, not bought from three vendors.' },
-  { k: '02', title: 'Built on outcomes', body: 'Judged by enquiries won and hours saved — not by how it looks in a portfolio.' },
-  { k: '03', title: 'Here after launch', body: 'Maintenance, new automations and monthly design support, long after go-live.' },
+  { k: '01', title: 'One brand, everywhere', body: 'Website and social design planned together, so you look the same wherever customers find you.' },
+  { k: '02', title: 'Built on outcomes', body: 'Judged by the enquiries and customers it brings in — not by how it looks in a portfolio.' },
+  { k: '03', title: 'Here after launch', body: 'Maintenance, updates and monthly design support, long after go-live.' },
 ]
 
 // The statement "reads itself": each word brightens as the paragraph scrolls
