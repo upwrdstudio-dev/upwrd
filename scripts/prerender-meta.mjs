@@ -31,16 +31,6 @@ console.error = (msg, ...rest) => {
 }
 const { render: renderApp } = await import(pathToFileURL(join(ssrDir, 'entry-server.js')).href)
 
-// The app's entry script. When it finishes downloading before the HTML is
-// parsed, Chrome runs it before painting anything, so the prerendered page
-// never gets a chance to show on slow phones. Instead: fetch it right away
-// (modulepreload), but only start it once the first frame has been painted.
-const entryTag = template.match(/<script type="module" crossorigin src="([^"]+)"><\/script>/)
-if (!entryTag) throw new Error('prerender: entry <script type="module"> not found in dist/index.html')
-const deferredEntry =
-  `<link rel="modulepreload" crossorigin href="${entryTag[1]}">\n` +
-  `    <script type="module">requestAnimationFrame(() => setTimeout(() => import(${JSON.stringify(entryTag[1])})))</script>`
-
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
 function render(path, meta) {
@@ -70,7 +60,6 @@ function render(path, meta) {
   const { html: body, head: helmetHead } = renderApp(path)
 
   return template
-    .replace(entryTag[0], deferredEntry)
     .replace(/<title>[\s\S]*?<\/title>/, `<title data-rh="true">${esc(meta.title)}</title>`)
     .replace(/<meta name="description"[^>]*>/, tag('name', 'description', meta.description))
     .replace('</head>', `    ${head}${helmetHead ? `\n    ${helmetHead}` : ''}\n  </head>`)
