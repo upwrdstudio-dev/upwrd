@@ -7,9 +7,9 @@
 // work.html directly; the React app then boots exactly as before.
 //
 // It also renders each page's content (via the SSR bundle built from
-// src/entry-server.tsx) into a hidden container inside #root, so crawlers
-// that don't run JavaScript still see the text and links. React replaces it
-// on load, so visitors never see it. Finally it writes dist/sitemap.xml from
+// src/entry-server.tsx) into #root, so the page paints before any JavaScript
+// runs and crawlers that skip JavaScript still see the text and links. React
+// replaces it with the live app on load. Finally it writes dist/sitemap.xml from
 // the same route list.
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -40,7 +40,6 @@ function render(path, meta) {
   // load instead of leaving duplicates in the live page.
   const tag = (attr, key, value) => `<meta ${attr}="${key}" content="${esc(value)}" data-rh="true" />`
   const head = [
-    `<link rel="canonical" href="${url}" data-rh="true" />`,
     meta.noindex ? tag('name', 'robots', 'noindex') : '',
     tag('property', 'og:type', 'website'),
     tag('property', 'og:site_name', 'UPWRD Studio'),
@@ -58,13 +57,13 @@ function render(path, meta) {
     .filter(Boolean)
     .join('\n    ')
 
-  const { html: body, jsonLd } = renderApp(path)
+  const { html: body, head: helmetHead } = renderApp(path)
 
   return template
     .replace(/<title>[\s\S]*?<\/title>/, `<title data-rh="true">${esc(meta.title)}</title>`)
     .replace(/<meta name="description"[^>]*>/, tag('name', 'description', meta.description))
-    .replace('</head>', `    ${head}${jsonLd ? `\n    ${jsonLd}` : ''}\n  </head>`)
-    .replace('<div id="root"></div>', `<div id="root"><div data-prerendered style="display:none">${body}</div></div>`)
+    .replace('</head>', `    ${head}${helmetHead ? `\n    ${helmetHead}` : ''}\n  </head>`)
+    .replace('<div id="root"></div>', `<div id="root"><div data-prerendered>${body}</div></div>`)
 }
 
 for (const [path, meta] of Object.entries(pages)) {

@@ -4,6 +4,7 @@ import SEO from '../components/SEO'
 import PageHeader from '../components/PageHeader'
 import Lightbox from '../components/Lightbox'
 import { designItems, shuffle } from '../data/designItems'
+import { thumb } from '../lib/images'
 import { EASE_OUT } from '../lib/motion'
 
 const categories = ['All', ...Array.from(new Set(designItems.map((i) => i.category)))]
@@ -65,7 +66,8 @@ export default function DesignPage() {
                 className="group relative mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl bg-ink/5 text-left md:mb-4"
               >
                 <img
-                  src={item.image}
+                  src={thumb(item.image, 720)}
+                  decoding="async"
                   alt={`${item.category} — ${item.title}`}
                   loading="lazy"
                   className="block h-auto w-full transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"

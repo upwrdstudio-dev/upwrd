@@ -40,5 +40,9 @@ export function render(url: string) {
       </StaticRouter>
     </HelmetProvider>,
   )
-  return { html, jsonLd: helmetContext.helmet?.script.toString() ?? '' }
+  const helmet = helmetContext.helmet
+  // Head tags the page declared through Helmet: JSON-LD, plus links such as
+  // the canonical URL and a concept site's own font stylesheet.
+  const head = [helmet?.link.toString(), helmet?.script.toString()].filter(Boolean).join('\n')
+  return { html, head }
 }

@@ -54,7 +54,7 @@ const services: Service[] = [
     items: ['Social media design', 'Brand asset kits', 'Posters & collateral', 'Packaging, menus & flyers'],
     from: 'RM 150',
     theme: 'bg-accent text-white',
-    muted: 'text-white/75',
+    muted: 'text-white',
     rule: 'border-white/20',
     visual: <DesignVisual />,
     visualClass: 'bg-accent-deep p-6 md:p-12',
@@ -87,7 +87,7 @@ function ServiceCard({
       >
         <div className="flex flex-col p-6 md:p-10 xl:p-12">
           <div className="flex items-center justify-between">
-            <span className="font-mono text-xs opacity-60">({s.n})</span>
+            <span className={`font-mono text-xs ${s.muted}`}>({s.n})</span>
             <span className={`rounded-full border px-3 py-1 text-xs ${s.rule} ${s.muted}`}>From {s.from}</span>
           </div>
           <h3 className="mt-8 text-[2.4rem] font-medium leading-[0.95] tracking-tightest md:text-5xl lg:mt-auto lg:text-[3.25rem] xl:text-6xl">

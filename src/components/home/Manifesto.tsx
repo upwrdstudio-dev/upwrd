@@ -9,8 +9,10 @@ const statement =
 const highlights = new Set(['system', 'one', 'upward.'])
 
 function Word({ children, progress, range }: { children: string; progress: MotionValue<number>; range: [number, number] }) {
-  const opacity = useTransform(progress, range, [0.12, 1])
   const accent = highlights.has(children)
+  // Starts at a readable grey (WCAG AA contrast) rather than near-invisible;
+  // scrolling still brightens each word to full ink.
+  const opacity = useTransform(progress, range, [accent ? 1 : 0.62, 1])
   return (
     <span className="relative mr-[0.22em] inline-block">
       <motion.span style={{ opacity }} className={accent ? 'font-serif italic tracking-[-0.01em] text-accent' : undefined}>
@@ -35,6 +37,8 @@ export default function Manifesto() {
 
   return (
     <section className="bg-paper py-28 md:py-44">
+      {/* Gives the pillar cards' h3s a parent heading for screen readers. */}
+      <h2 className="sr-only">Why UPWRD Studio</h2>
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-3">

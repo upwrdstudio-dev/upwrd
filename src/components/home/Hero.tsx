@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import HeroShader from './HeroShader'
 import TextReveal from '../TextReveal'
 import Button from '../Button'
-import { useIntroDone } from '../../lib/intro'
+import { shouldPlayIntro, useIntroDone } from '../../lib/intro'
 import { EASE_OUT } from '../../lib/motion'
 
 export default function Hero() {
@@ -14,11 +14,17 @@ export default function Hero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0])
   const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.2])
 
-  const fade = (delay: number) => ({
-    initial: { opacity: 0, y: 20 },
-    animate: ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-    transition: { duration: 1, delay, ease: EASE_OUT },
-  })
+  // After the desktop intro, the supporting copy fades in. Without an intro
+  // (phones, return visits) it's visible from the very first paint — it's
+  // usually the page's largest text block, so this keeps load fast.
+  const fade = (delay: number) =>
+    shouldPlayIntro
+      ? {
+          initial: { opacity: 0, y: 20 },
+          animate: ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          transition: { duration: 0.9, delay, ease: EASE_OUT },
+        }
+      : {}
 
   return (
     <section ref={ref} data-nav="dark" className="relative h-[100svh] min-h-[640px] overflow-hidden bg-ink text-paper">
@@ -65,11 +71,11 @@ export default function Hero() {
           />
 
           <div className="mt-10 grid gap-8 border-t border-white/15 pt-6 md:mt-14 md:grid-cols-12 md:items-center">
-            <motion.p {...fade(0.5)} className="max-w-md text-base leading-relaxed text-white/65 md:col-span-6 md:text-lg">
+            <motion.p {...fade(0.3)} className="max-w-md text-base leading-relaxed text-white/65 md:col-span-6 md:text-lg">
               Websites, AI automation and design — built as one connected system for Malaysian businesses that want
               less busywork and more growth.
             </motion.p>
-            <motion.div {...fade(0.6)} className="flex flex-wrap gap-3 md:col-span-6 md:justify-end">
+            <motion.div {...fade(0.4)} className="flex flex-wrap gap-3 md:col-span-6 md:justify-end">
               <Button to="/#enquire" variant="accent">
                 Free website check
               </Button>

@@ -1,6 +1,7 @@
 import type { Project } from '../data/projects'
 import { Arrow } from './Button'
 import { SITE_URL } from '../data/site'
+import { screenshotSrcSet, thumb } from '../lib/images'
 
 type ProjectCardProps = {
   project: Project
@@ -42,7 +43,10 @@ export default function ProjectCard({ project, index, tone = 'dark', className =
         </div>
         <div className={`relative overflow-hidden rounded-xl md:rounded-2xl ${frameClassName}`}>
           <img
-            src={project.image}
+            src={thumb(project.image, 800)}
+            srcSet={screenshotSrcSet(project.image)}
+            sizes="(min-width: 768px) 45vw, 100vw"
+            decoding="async"
             alt={`${project.name} website`}
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover object-top group-hover:scale-[1.02] group-hover:object-bottom"

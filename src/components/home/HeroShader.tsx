@@ -98,6 +98,113 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
   return s
 }
 
+// Sets up the WebGL field inside host and returns its cleanup.
+function startShader(host: HTMLDivElement): (() => void) | undefined {
+  // A fresh canvas per mount. A canvas keeps its context for life, so once
+  // that context is lost (our own cleanup on remount, or the GPU dropping it)
+  // the element can only ever paint as a blank white box. Owning the element
+  // here means every mount gets a live context, and a lost one is simply
+  // removed, leaving the dark section and CSS glow underneath.
+  const canvas = document.createElement('canvas')
+  canvas.className = 'absolute inset-0 h-full w-full'
+  // Fades in over the static CSS glow once the first frame is drawn.
+  canvas.style.opacity = '0'
+  canvas.style.transition = 'opacity 1.2s ease'
+  const gl = canvas.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'low-power' })
+  if (!gl) return
+
+  const program = gl.createProgram()
+  if (!program) return
+  gl.attachShader(program, compile(gl, gl.VERTEX_SHADER, VERT))
+  gl.attachShader(program, compile(gl, gl.FRAGMENT_SHADER, FRAG))
+  gl.linkProgram(program)
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return
+  gl.useProgram(program)
+  host.appendChild(canvas)
+
+  const buffer = gl.createBuffer()
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW)
+  const aPos = gl.getAttribLocation(program, 'aPos')
+  gl.enableVertexAttribArray(aPos)
+  gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0)
+
+  const uRes = gl.getUniformLocation(program, 'uRes')
+  const uTime = gl.getUniformLocation(program, 'uTime')
+  const uMouse = gl.getUniformLocation(program, 'uMouse')
+
+  // The field is soft by nature, so render well under native resolution
+  // and let the browser upscale — big savings on phones and 4K screens.
+  const isSmall = window.innerWidth < 768
+  const scale = isSmall ? 0.35 : 0.5
+
+  const resize = () => {
+    const w = Math.max(1, Math.round(canvas.clientWidth * scale))
+    const h = Math.max(1, Math.round(canvas.clientHeight * scale))
+    canvas.width = w
+    canvas.height = h
+    gl.viewport(0, 0, w, h)
+    gl.uniform2f(uRes, w, h)
+  }
+  resize()
+  const ro = new ResizeObserver(resize)
+  ro.observe(canvas)
+
+  const mouse = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 }
+  const onMove = (e: PointerEvent) => {
+    const r = canvas.getBoundingClientRect()
+    mouse.tx = (e.clientX - r.left) / r.width
+    mouse.ty = 1 - (e.clientY - r.top) / r.height
+  }
+  window.addEventListener('pointermove', onMove, { passive: true })
+
+  let visible = true
+  const io = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting
+    if (visible) loop()
+  })
+  io.observe(canvas)
+
+  const start = performance.now()
+  let frame = 0
+  const render = () => {
+    mouse.x += (mouse.tx - mouse.x) * 0.04
+    mouse.y += (mouse.ty - mouse.y) * 0.04
+    gl.uniform1f(uTime, (performance.now() - start) / 1000 + 20)
+    gl.uniform2f(uMouse, mouse.x, mouse.y)
+    gl.drawArrays(gl.TRIANGLES, 0, 3)
+  }
+
+  const reduced = prefersReducedMotion()
+  function loop() {
+    cancelAnimationFrame(frame)
+    if (!visible || document.hidden) return
+    render()
+    if (!reduced) frame = requestAnimationFrame(loop)
+  }
+  const onVisibility = () => !document.hidden && loop()
+  document.addEventListener('visibilitychange', onVisibility)
+
+  const onLost = () => {
+    cancelAnimationFrame(frame)
+    canvas.remove()
+  }
+  canvas.addEventListener('webglcontextlost', onLost)
+  requestAnimationFrame(() => requestAnimationFrame(() => (canvas.style.opacity = '1')))
+  loop()
+
+  return () => {
+    cancelAnimationFrame(frame)
+    ro.disconnect()
+    io.disconnect()
+    window.removeEventListener('pointermove', onMove)
+    document.removeEventListener('visibilitychange', onVisibility)
+    canvas.removeEventListener('webglcontextlost', onLost)
+    gl.getExtension('WEBGL_lose_context')?.loseContext()
+    canvas.remove()
+  }
+}
+
 export default function HeroShader({ className = '' }: { className?: string }) {
   const hostRef = useRef<HTMLDivElement>(null)
 
@@ -105,104 +212,17 @@ export default function HeroShader({ className = '' }: { className?: string }) {
     const host = hostRef.current
     if (!host) return
 
-    // A fresh canvas per mount. A canvas keeps its context for life, so once
-    // that context is lost (our own cleanup on remount, or the GPU dropping it)
-    // the element can only ever paint as a blank white box. Owning the element
-    // here means every mount gets a live context, and a lost one is simply
-    // removed, leaving the dark section and CSS glow underneath.
-    const canvas = document.createElement('canvas')
-    canvas.className = 'absolute inset-0 h-full w-full'
-    const gl = canvas.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'low-power' })
-    if (!gl) return
-
-    const program = gl.createProgram()
-    if (!program) return
-    gl.attachShader(program, compile(gl, gl.VERTEX_SHADER, VERT))
-    gl.attachShader(program, compile(gl, gl.FRAGMENT_SHADER, FRAG))
-    gl.linkProgram(program)
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return
-    gl.useProgram(program)
-    host.appendChild(canvas)
-
-    const buffer = gl.createBuffer()
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW)
-    const aPos = gl.getAttribLocation(program, 'aPos')
-    gl.enableVertexAttribArray(aPos)
-    gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0)
-
-    const uRes = gl.getUniformLocation(program, 'uRes')
-    const uTime = gl.getUniformLocation(program, 'uTime')
-    const uMouse = gl.getUniformLocation(program, 'uMouse')
-
-    // The field is soft by nature, so render well under native resolution
-    // and let the browser upscale — big savings on phones and 4K screens.
-    const isSmall = window.innerWidth < 768
-    const scale = isSmall ? 0.35 : 0.5
-
-    const resize = () => {
-      const w = Math.max(1, Math.round(canvas.clientWidth * scale))
-      const h = Math.max(1, Math.round(canvas.clientHeight * scale))
-      canvas.width = w
-      canvas.height = h
-      gl.viewport(0, 0, w, h)
-      gl.uniform2f(uRes, w, h)
-    }
-    resize()
-    const ro = new ResizeObserver(resize)
-    ro.observe(canvas)
-
-    const mouse = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 }
-    const onMove = (e: PointerEvent) => {
-      const r = canvas.getBoundingClientRect()
-      mouse.tx = (e.clientX - r.left) / r.width
-      mouse.ty = 1 - (e.clientY - r.top) / r.height
-    }
-    window.addEventListener('pointermove', onMove, { passive: true })
-
-    let visible = true
-    const io = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting
-      if (visible) loop()
-    })
-    io.observe(canvas)
-
-    const start = performance.now()
-    let frame = 0
-    const render = () => {
-      mouse.x += (mouse.tx - mouse.x) * 0.04
-      mouse.y += (mouse.ty - mouse.y) * 0.04
-      gl.uniform1f(uTime, (performance.now() - start) / 1000 + 20)
-      gl.uniform2f(uMouse, mouse.x, mouse.y)
-      gl.drawArrays(gl.TRIANGLES, 0, 3)
-    }
-
-    const reduced = prefersReducedMotion()
-    function loop() {
-      cancelAnimationFrame(frame)
-      if (!visible || document.hidden) return
-      render()
-      if (!reduced) frame = requestAnimationFrame(loop)
-    }
-    const onVisibility = () => !document.hidden && loop()
-    document.addEventListener('visibilitychange', onVisibility)
-
-    const onLost = () => {
-      cancelAnimationFrame(frame)
-      canvas.remove()
-    }
-    canvas.addEventListener('webglcontextlost', onLost)
-    loop()
-
+    // Compiling the shader is the heaviest job on page load, so wait until the
+    // browser is idle; the static CSS glow below shows in the meantime.
+    let stop: (() => void) | undefined
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 200))
+    const cancelIdle = window.cancelIdleCallback ?? window.clearTimeout
+    const id = idle(() => {
+      stop = startShader(host)
+    }, { timeout: 2500 })
     return () => {
-      cancelAnimationFrame(frame)
-      ro.disconnect()
-      io.disconnect()
-      window.removeEventListener('pointermove', onMove)
-      document.removeEventListener('visibilitychange', onVisibility)
-      canvas.removeEventListener('webglcontextlost', onLost)
-      gl.getExtension('WEBGL_lose_context')?.loseContext()
-      canvas.remove()
+      cancelIdle(id)
+      stop?.()
     }
   }, [])
 

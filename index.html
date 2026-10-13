@@ -8,9 +8,23 @@
     <meta name="theme-color" content="#0A0A0A" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/brand/upwrd-app-icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <script>
+      // The prerendered page paints before JavaScript loads. On a desktop
+      // first visit the intro animation will cover it, so hide it until then
+      // rather than flashing the page first. Mirrors shouldPlayIntro in src/lib/intro.ts.
+      try {
+        if (
+          !location.pathname.startsWith('/concepts/') &&
+          matchMedia('(min-width: 768px) and (pointer: fine)').matches &&
+          sessionStorage.getItem('upwrd-intro-seen') !== '1'
+        )
+          document.documentElement.classList.add('intro')
+      } catch (e) {}
+    </script>
+    <style>
+      html.intro body { background: #0a0a0a }
+      html.intro [data-prerendered] { visibility: hidden }
+    </style>
   </head>
   <body>
     <div id="root"></div>

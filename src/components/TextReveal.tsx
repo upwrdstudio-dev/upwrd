@@ -21,7 +21,9 @@ const container = (delay: number, stagger: number): Variants => ({
 })
 
 const line: Variants = {
-  hidden: { y: '115%', rotate: 2 },
+  // Far enough below the mask (incl. its descender padding) that no sliver
+  // of the line shows before the reveal — visible in the prerendered paint.
+  hidden: { y: '145%', rotate: 2 },
   visible: { y: '0%', rotate: 0, transition: { duration: 1.1, ease: EASE_OUT } },
 }
 

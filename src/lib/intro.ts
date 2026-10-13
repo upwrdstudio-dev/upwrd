@@ -13,7 +13,14 @@ function readSeen() {
   }
 }
 
-export const shouldPlayIntro = !readSeen()
+// Desktop only. On phones the intro would hold back the first meaningful
+// paint on slower CPUs and networks — exactly where speed matters most (and
+// where Google measures it) — so mobile visitors go straight to the hero.
+function isDesktop() {
+  return typeof window !== 'undefined' && window.matchMedia('(min-width: 768px) and (pointer: fine)').matches
+}
+
+export const shouldPlayIntro = isDesktop() && !readSeen()
 
 let done = !shouldPlayIntro
 const listeners = new Set<() => void>()
@@ -21,6 +28,7 @@ const listeners = new Set<() => void>()
 export function markIntroDone() {
   if (done) return
   done = true
+  document.documentElement.classList.remove('intro')
   try {
     sessionStorage.setItem(SESSION_KEY, '1')
   } catch {

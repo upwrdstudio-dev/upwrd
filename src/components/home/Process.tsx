@@ -27,7 +27,8 @@ function Step({ step, i, progress }: { step: (typeof steps)[number]; i: number; 
   const at = i / steps.length + 0.05
   const lit = useTransform(progress, [at - 0.05, at], [0, 1])
   const color = useTransform(lit, [0, 1], ['rgba(255,255,255,0.18)', '#2B5BFF'])
-  const textOpacity = useTransform(lit, [0, 1], [0.35, 1])
+  // Unlit steps stay readable (AA contrast); the marker still lights up.
+  const textOpacity = useTransform(lit, [0, 1], [0.8, 1])
 
   return (
     <motion.div style={{ opacity: textOpacity }} className="relative pl-10 md:pl-0 md:pt-14">
@@ -35,7 +36,7 @@ function Step({ step, i, progress }: { step: (typeof steps)[number]; i: number; 
         style={{ backgroundColor: color }}
         className="absolute left-[3px] top-1.5 h-3 w-3 md:left-0 md:top-[-5px]"
       />
-      <span className="font-mono text-xs text-white/50">({step.n})</span>
+      <span className="font-mono text-xs text-white/60">({step.n})</span>
       <h3 className="mt-3 text-4xl font-medium tracking-tightest md:text-5xl">{step.title}</h3>
       <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-white/65">{step.desc}</p>
       <ul className="mt-6 flex flex-wrap gap-2">

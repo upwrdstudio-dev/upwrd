@@ -4,6 +4,7 @@ import SectionHeading from '../SectionHeading'
 import Button from '../Button'
 import Reveal from '../Reveal'
 import { designItems, type DesignItem } from '../../data/designItems'
+import { thumb } from '../../lib/images'
 
 const half = Math.ceil(designItems.length / 2)
 const rows = [designItems.slice(0, half), designItems.slice(half)]
@@ -12,7 +13,8 @@ function Tile({ item }: { item: DesignItem }) {
   return (
     <div className="group/tile mr-3 h-[200px] shrink-0 overflow-hidden rounded-2xl bg-ink/5 md:mr-4 md:h-[300px]">
       <img
-        src={item.image}
+        src={thumb(item.image, 720)}
+        decoding="async"
         alt={`${item.category} — ${item.title}`}
         loading="lazy"
         draggable={false}

@@ -5,7 +5,7 @@ import { markIntroDone, shouldPlayIntro } from '../lib/intro'
 import { lockScroll } from '../lib/scroll'
 import { EASE_IN_OUT, EASE_OUT, prefersReducedMotion } from '../lib/motion'
 
-const COUNT_DURATION = 1.7
+const COUNT_DURATION = 1
 
 // First-visit intro: the mark assembles while a counter runs to 100, then the
 // whole panel lifts away to reveal the hero. Plays once per session.
@@ -31,7 +31,7 @@ export default function Preloader() {
           setVisible(false)
           markIntroDone()
           lockScroll(false)
-        }, 250)
+        }, 150)
       },
     })
     return () => {

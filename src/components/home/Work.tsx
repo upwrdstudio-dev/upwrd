@@ -1,6 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import ProjectCard from '../ProjectCard'
 import Button, { Arrow } from '../Button'
@@ -8,8 +6,6 @@ import { Eyebrow } from '../SectionHeading'
 import TextReveal from '../TextReveal'
 import Reveal from '../Reveal'
 import { projects } from '../../data/projects'
-
-gsap.registerPlugin(ScrollTrigger)
 
 function Intro() {
   return (
@@ -42,15 +38,24 @@ export default function Work() {
   const trackRef = useRef<HTMLDivElement>(null)
   const barRef = useRef<HTMLDivElement>(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const section = sectionRef.current
     const track = trackRef.current
     if (!section || !track) return
 
-    const mm = gsap.matchMedia()
     // Desktop only: the section pins and vertical scroll drives the track
-    // sideways. Phones get a plain vertical stack.
-    mm.add('(min-width: 768px) and (prefers-reduced-motion: no-preference)', () => {
+    // sideways. Phones get a plain vertical stack and never download GSAP.
+    const query = '(min-width: 768px) and (prefers-reduced-motion: no-preference)'
+    if (!window.matchMedia(query).matches) return
+
+    let revert: (() => void) | undefined
+    let cancelled = false
+    Promise.all([import('gsap'), import('gsap/ScrollTrigger')]).then(([{ default: gsap }, { ScrollTrigger }]) => {
+      if (cancelled) return
+      gsap.registerPlugin(ScrollTrigger)
+      const mm = gsap.matchMedia()
+      revert = () => mm.revert()
+      mm.add(query, () => {
       const distance = () => track.scrollWidth - window.innerWidth
       gsap.to(track, {
         x: () => -distance(),
@@ -67,9 +72,13 @@ export default function Work() {
           },
         },
       })
+      })
     })
 
-    return () => mm.revert()
+    return () => {
+      cancelled = true
+      revert?.()
+    }
   }, [])
 
   return (
