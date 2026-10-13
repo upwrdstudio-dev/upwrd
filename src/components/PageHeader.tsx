@@ -6,7 +6,8 @@ import { Eyebrow } from './SectionHeading'
 type PageHeaderProps = {
   eyebrow: string
   title: string
-  count: number
+  /** A number is shown zero-padded, e.g. (03); text is shown as-is. */
+  count: number | string
   children?: ReactNode
 }
 
@@ -25,7 +26,7 @@ export default function PageHeader({ eyebrow, title, count, children }: PageHead
         />
         <Reveal delay={0.5} y={10}>
           <span className="mt-[1vw] block font-mono text-sm text-ink/50 md:mt-6 md:text-base">
-            ({String(count).padStart(2, '0')})
+            ({typeof count === 'number' ? String(count).padStart(2, '0') : count})
           </span>
         </Reveal>
       </div>

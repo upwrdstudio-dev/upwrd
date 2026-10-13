@@ -13,6 +13,7 @@ const links = [
   { to: '/design', label: 'Design' },
   { to: '/#process', label: 'Process' },
   { to: '/#pricing', label: 'Pricing' },
+  { to: '/about', label: 'About' },
 ]
 
 // Vertical centre of the floating bar, where we sample what's underneath.

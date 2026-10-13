@@ -15,11 +15,15 @@ const loadHome = () => import('./pages/HomePage')
 const loadWork = () => import('./pages/WorkPage')
 const loadDesign = () => import('./pages/DesignPage')
 const loadService = () => import('./pages/ServicePage')
+const loadAbout = () => import('./pages/AboutPage')
 
 const HomePage = lazy(loadHome)
 const WorkPage = lazy(loadWork)
 const DesignPage = lazy(loadDesign)
 const ServicePage = lazy(loadService)
+const AboutPage = lazy(loadAbout)
+const GuidesPage = lazy(() => import('./pages/GuidesPage'))
+const GuidePage = lazy(() => import('./pages/GuidePage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 // Concept sites render outside the UPWRD layout, so each looks like a
@@ -40,6 +44,7 @@ idle(() => {
   loadWork()
   loadDesign()
   loadService()
+  loadAbout()
 })
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -52,6 +57,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path="/work" element={<WorkPage />} />
             <Route path="/design" element={<DesignPage />} />
             <Route path="/services/:slug" element={<ServicePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/guides" element={<GuidesPage />} />
+            <Route path="/guides/:slug" element={<GuidePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
           <Route path="/concepts/ondeh-bakehouse" element={concept(OndehBakehouse)} />

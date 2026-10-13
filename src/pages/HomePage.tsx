@@ -25,6 +25,8 @@ const jsonLd = {
       email: CONTACT.email,
       telephone: `+${CONTACT.whatsapp}`,
       priceRange: 'RM 150 – RM 6,500+',
+      foundingDate: '2025',
+      knowsLanguage: ['en', 'ms', 'zh', 'yue'],
       // Service-area business: city only, no street address.
       address: { '@type': 'PostalAddress', addressLocality: 'Kuala Lumpur', addressCountry: 'MY' },
       areaServed: [

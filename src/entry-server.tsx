@@ -11,6 +11,9 @@ import HomePage from './pages/HomePage'
 import WorkPage from './pages/WorkPage'
 import DesignPage from './pages/DesignPage'
 import ServicePage from './pages/ServicePage'
+import AboutPage from './pages/AboutPage'
+import GuidesPage from './pages/GuidesPage'
+import GuidePage from './pages/GuidePage'
 import NotFoundPage from './pages/NotFoundPage'
 import OndehBakehouse from './concepts/OndehBakehouse'
 import HaliaHouse from './concepts/HaliaHouse'
@@ -31,6 +34,9 @@ export function render(url: string) {
             <Route path="/work" element={<WorkPage />} />
             <Route path="/design" element={<DesignPage />} />
             <Route path="/services/:slug" element={<ServicePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/guides" element={<GuidesPage />} />
+            <Route path="/guides/:slug" element={<GuidePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
           <Route path="/concepts/ondeh-bakehouse" element={<OndehBakehouse />} />

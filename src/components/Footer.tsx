@@ -62,6 +62,8 @@ const footerLinks = [
   { to: '/#process', label: 'Process' },
   { to: '/#pricing', label: 'Pricing' },
   { to: '/#faq', label: 'FAQ' },
+  { to: '/about', label: 'About' },
+  { to: '/guides', label: 'Guides' },
 ]
 
 export default function Footer() {

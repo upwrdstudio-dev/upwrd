@@ -39,6 +39,31 @@
     "description": "AI automation for Malaysian SMEs: booking reminders, invoice follow-ups, auto-replies and lead routing, built with n8n and AI. From RM 1,200 per workflow.",
     "image": "/brand/upwrd-og.png"
   },
+  "/about": {
+    "title": "About UPWRD Studio — Founder-led Web Design Studio in Kuala Lumpur",
+    "description": "UPWRD Studio is a founder-led web design studio in Kuala Lumpur, building websites for small businesses since 2025. We work in English, Bahasa Malaysia, Mandarin and Cantonese.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/guides": {
+    "title": "Website Guides for Small Businesses | UPWRD Studio",
+    "description": "Straight answers for small business owners in Malaysia: what a website costs, whether you need one, and WordPress vs Wix vs custom.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/guides/website-cost-malaysia": {
+    "title": "How Much Does a Website Cost in Malaysia? (2026 Guide) | UPWRD Studio",
+    "description": "Real 2026 price ranges for landing pages, business websites and online stores in Malaysia — plus the hidden costs most website quotes leave out.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/guides/does-my-business-need-a-website": {
+    "title": "Does My Small Business Need a Website in 2026? | UPWRD Studio",
+    "description": "Why most small businesses still need a website alongside social media, and what a good small-business website needs to do.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/guides/wordpress-vs-wix-vs-custom": {
+    "title": "WordPress vs Wix vs Custom Website: Which Is Right for You? | UPWRD Studio",
+    "description": "A plain-language comparison of WordPress, Wix and custom-coded websites for small businesses — cost, ownership, flexibility and upkeep.",
+    "image": "/brand/upwrd-og.png"
+  },
   "/concepts/ondeh-bakehouse": {
     "title": "Ondeh Bakehouse — Concept by UPWRD Studio",
     "description": "A concept website for a Malaysian–French bakehouse: menu tabs, WhatsApp pre-orders and a warm, editorial feel. Designed by UPWRD Studio.",
