@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import ProjectCard from '../ProjectCard'
 import Button, { Arrow } from '../Button'
@@ -38,7 +38,10 @@ export default function Work() {
   const trackRef = useRef<HTMLDivElement>(null)
   const barRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  // Layout effect on purpose: its cleanup runs before React removes the DOM,
+  // so GSAP can unwrap its pin-spacer first (otherwise leaving the page
+  // throws a removeChild error).
+  useLayoutEffect(() => {
     const section = sectionRef.current
     const track = trackRef.current
     if (!section || !track) return
