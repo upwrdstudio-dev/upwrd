@@ -14,9 +14,20 @@ import { servicePages } from '../data/servicePages'
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
+    // Tells Google the site's name, so brand searches show "UPWRD Studio".
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      name: 'UPWRD Studio',
+      alternateName: ['UPWRD', 'Upwrd Studio', 'upwrdstudio.com'],
+      url: `${SITE_URL}/`,
+      publisher: { '@id': `${SITE_URL}/#studio` },
+    },
     {
       '@type': 'ProfessionalService',
+      '@id': `${SITE_URL}/#studio`,
       name: 'UPWRD Studio',
+      alternateName: 'UPWRD',
       description:
         'UPWRD Studio designs and builds websites and social media design for Malaysian small businesses — made to work together.',
       url: SITE_URL,
