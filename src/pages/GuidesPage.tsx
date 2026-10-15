@@ -11,8 +11,8 @@ export default function GuidesPage() {
       <SEO path="/guides" />
       <PageHeader eyebrow="Guides" title="Guides" count={guides.length}>
         <p className="max-w-md text-[15px] leading-relaxed text-ink/65 md:text-base">
-          Straight answers to the questions small business owners ask us most — costs, platforms, and whether you need a
-          website at all.
+          Straight answers to the questions small business owners ask us most — costs, platforms, Google Maps, domains and
+          whether you need a website at all.
         </p>
       </PageHeader>
 

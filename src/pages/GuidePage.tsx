@@ -10,16 +10,39 @@ import { SITE_URL, whatsappLink } from '../data/site'
 const date = (iso: string) =>
   new Date(iso + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
 
+const linkClass = 'text-ink underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent'
+
+// Turns "[label](/path)" in guide copy into links: internal paths use the
+// router, full URLs open in a new tab.
+function rich(text: string) {
+  const parts = text.split(/\[([^\]]+)\]\(([^)]+)\)/)
+  if (parts.length === 1) return text
+  return parts.map((part, i) => {
+    if (i % 3 === 0) return part
+    if (i % 3 === 2) return null
+    const to = parts[i + 1]
+    return to.startsWith('/') ? (
+      <Link key={i} to={to} className={linkClass}>
+        {part}
+      </Link>
+    ) : (
+      <a key={i} href={to} target="_blank" rel="noopener noreferrer" className={linkClass}>
+        {part}
+      </a>
+    )
+  })
+}
+
 function BlockView({ block }: { block: Block }) {
-  if ('p' in block) return <p className="text-[17px] leading-[1.75] text-ink/80">{block.p}</p>
-  if ('note' in block) return <p className="rounded-2xl bg-ink/[0.04] px-5 py-4 text-sm leading-relaxed text-ink/65">{block.note}</p>
+  if ('p' in block) return <p className="text-[17px] leading-[1.75] text-ink/80">{rich(block.p)}</p>
+  if ('note' in block) return <p className="rounded-2xl bg-ink/[0.04] px-5 py-4 text-sm leading-relaxed text-ink/65">{rich(block.note)}</p>
   if ('list' in block)
     return (
       <ul className="space-y-3 text-[17px] leading-[1.65] text-ink/80">
         {block.list.map((item) => (
           <li key={item} className="flex gap-3">
             <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 bg-accent" />
-            <span>{item}</span>
+            <span>{rich(item)}</span>
           </li>
         ))}
       </ul>
@@ -75,7 +98,11 @@ function jsonLd(g: Guide) {
       },
       {
         '@type': 'FAQPage',
-        mainEntity: g.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+        mainEntity: g.faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') },
+        })),
       },
       {
         '@type': 'BreadcrumbList',
@@ -140,7 +167,7 @@ export default function GuidePage() {
             {guide.faqs.map((f) => (
               <div key={f.q} className="py-5">
                 <dt className="text-lg font-medium tracking-[-0.02em]">{f.q}</dt>
-                <dd className="mt-2 text-[16px] leading-relaxed text-ink/70">{f.a}</dd>
+                <dd className="mt-2 text-[16px] leading-relaxed text-ink/70">{rich(f.a)}</dd>
               </div>
             ))}
           </dl>

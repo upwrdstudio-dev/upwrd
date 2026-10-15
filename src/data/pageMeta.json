@@ -41,7 +41,7 @@
   },
   "/guides": {
     "title": "Website Guides for Small Businesses | UPWRD Studio",
-    "description": "Straight answers for small business owners in Malaysia: what a website costs, whether you need one, and WordPress vs Wix vs custom.",
+    "description": "Straight answers for small business owners in Malaysia: website costs, getting on Google Maps, choosing a domain, landing pages vs websites, and more.",
     "image": "/brand/upwrd-og.png"
   },
   "/guides/website-cost-malaysia": {
@@ -57,6 +57,26 @@
   "/guides/wordpress-vs-wix-vs-custom": {
     "title": "WordPress vs Wix vs Custom Website: Which Is Right for You? | UPWRD Studio",
     "description": "A plain-language comparison of WordPress, Wix and custom-coded websites for small businesses — cost, ownership, flexibility and upkeep.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/guides/google-business-profile-malaysia": {
+    "title": "How to Get Your Business on Google Maps in Malaysia (2026) | UPWRD Studio",
+    "description": "Set up and verify a free Google Business Profile step by step — categories, verification, service areas for home-based businesses, and tips to rank higher.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/guides/com-vs-my-vs-com-my-domain": {
+    "title": ".com vs .my vs .com.my Domain: Which Should Your Business Choose? | UPWRD Studio",
+    "description": "Who can register .com, .my and .com.my domains in Malaysia, what documents you need, what they cost, and how to choose a good domain name.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/guides/landing-page-vs-website": {
+    "title": "Landing Page vs Full Website: Which Does Your Business Need? | UPWRD Studio",
+    "description": "When a one-page landing page is enough, when a multi-page business website is worth it, and what to put on each — with Malaysian prices.",
+    "image": "/brand/upwrd-og.png"
+  },
+  "/guides/restaurant-cafe-website-checklist": {
+    "title": "Café & Restaurant Website Checklist for Malaysia | UPWRD Studio",
+    "description": "What a café, restaurant or bakery website in Malaysia needs: a mobile menu, location and parking, WhatsApp booking, halal status and mistakes to avoid.",
     "image": "/brand/upwrd-og.png"
   },
   "/concepts/ondeh-bakehouse": {

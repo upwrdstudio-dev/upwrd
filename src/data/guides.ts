@@ -76,7 +76,7 @@ export const guides: Guide[] = [
           { p: 'Many cheap quotes leave out costs you’ll pay anyway. Before you agree to anything, ask whether the price includes:' },
           {
             list: [
-              'Domain name — usually around RM50–150 a year for a .com or .my.',
+              'Domain name — usually around RM50–150 a year for a .com or .my ([which to choose](/guides/com-vs-my-vs-com-my-domain)).',
               'Hosting — the server your site runs on, paid monthly or yearly.',
               'Copywriting and photos — writing good copy takes time; some quotes assume you’ll provide it.',
               'Maintenance — security updates, backups and small edits after launch.',
@@ -186,7 +186,7 @@ export const guides: Guide[] = [
         heading: 'Start small',
         blocks: [
           {
-            p: 'You don’t need a big website to start. A single, well-made landing page with your key information and contact buttons is often enough for a new business — you can grow it into a full website later.',
+            p: 'You don’t need a big website to start. A single, well-made landing page with your key information and contact buttons is often enough for a new business — you can grow it into a full website later. Compare the two in [landing page vs full website](/guides/landing-page-vs-website).',
           },
         ],
       },
@@ -198,7 +198,7 @@ export const guides: Guide[] = [
       },
       {
         q: 'Will a website help me show up on Google Maps?',
-        a: 'Your Google Business Profile is what appears on Maps, and linking it to a website with matching details helps Google trust and understand your business.',
+        a: 'Your Google Business Profile is what appears on Maps, and linking it to a website with matching details helps Google trust and understand your business. See [how to set up your Google Business Profile](/guides/google-business-profile-malaysia).',
       },
       {
         q: 'Can I update the website myself?',
@@ -298,6 +298,434 @@ export const guides: Guide[] = [
     related: [
       { label: 'Website design in Kuala Lumpur', to: '/services/website-design-kuala-lumpur' },
       { label: 'Concept sites we’ve built', to: '/work#concepts' },
+    ],
+  },
+  {
+    slug: 'google-business-profile-malaysia',
+    label: 'Get on Google Maps',
+    title: 'How to get your business on Google Maps in Malaysia (Google Business Profile guide)',
+    summary: 'Set up and verify a free Google Business Profile step by step — including what to do if you work from home or don’t have a shop.',
+    published: '2026-10-15',
+    updated: '2026-10-15',
+    readMins: 7,
+    answer:
+      'Create a free Google Business Profile at business.google.com: add your business name, category, location or service area, phone number and website, then verify that you run the business. Google chooses which verification options you get — usually a video, a live video call, a phone or SMS code, or email — and reviews take up to 5 business days. If customers don’t come to you (for example, you work from home), set it up as a service-area business and hide your address.',
+    sections: [
+      {
+        heading: 'What you need before you start',
+        blocks: [
+          {
+            list: [
+              'A Google account — ideally one you’ll keep using for the business, not a staff member’s personal account.',
+              'Your business name exactly as customers see it on your signage, packaging or social media. Google’s rules don’t allow extra keywords in the name (e.g. “Ali Bakery – Best Cakes KL”), and doing it can get your profile suspended.',
+              'A phone number customers can reach, and your opening hours.',
+              'Your website, if you have one. A profile that links to a proper website with matching details is easier for Google to trust.',
+              'A few real photos of your products, premises or work.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Step by step',
+        blocks: [
+          {
+            list: [
+              'Go to business.google.com and sign in, then choose to add your business.',
+              'Enter your business name and pick the category that describes your main business as specifically as possible — “Bakery” rather than “Store”.',
+              'Answer whether customers can visit you at a staffed location. Say yes only if you have a shop, office or studio open to customers during your hours.',
+              'Add your address (if customers visit) and/or the areas you serve — cities, postcodes or regions.',
+              'Add your phone number and website.',
+              'Verify your business using one of the options Google offers you (see below).',
+              'Once verified, finish your profile: hours, photos, services or menu, and a description.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Working from home? Set up a service-area business',
+        blocks: [
+          {
+            p: 'You don’t need a shop to be on Google Maps. If you deliver, travel to customers or work online — a home baker who delivers, a mobile hairdresser, a cleaning service, a freelance designer — you can create a service-area business. Google’s rules say that if you don’t have a storefront where you receive customers, you must hide your address. Your profile then shows the areas you serve instead, and you can add up to 20 of them (for example Kuala Lumpur, Petaling Jaya, Subang Jaya).',
+          },
+          {
+            note: 'Google still asks for your real address during setup to verify you — it just won’t be shown to customers. Virtual offices and addresses you don’t actually operate from aren’t allowed.',
+          },
+        ],
+      },
+      {
+        heading: 'How verification works',
+        blocks: [
+          { p: 'Verification proves you really run the business. Google decides which methods you’re offered, based on your business type and details, and you need to verify before you can edit your profile or reply to customers. Options include:' },
+          {
+            list: [
+              'Video recording — a short, continuous video recorded on your phone, usually through Google Maps. New profiles are often asked to verify this way.',
+              'Live video call — a Google support agent checks your business with you over video, during your business hours.',
+              'Phone or SMS — a code sent to your business number.',
+              'Email — a code or link sent to your business email.',
+              'Postcard — a code mailed to your address (offered less often).',
+            ],
+          },
+          {
+            p: 'For video, Google wants to see three things: where you are (for example the street outside, a nearby sign or your shopfront), your business itself (your equipment, products, tools or workspace), and proof that you manage it (for example unlocking the premises, an employee-only area, or tools only the business would have). Record it in one take. Verification reviews usually take up to 5 business days.',
+          },
+        ],
+      },
+      {
+        heading: 'After you’re verified: how to show up higher',
+        blocks: [
+          { p: 'Google says local results are based mainly on relevance, distance and prominence. You can’t change how far people are from you, but you can improve the other two:' },
+          {
+            list: [
+              'Fill in everything — categories, services or menu, hours, description and attributes. A complete profile matches more searches.',
+              'Add special hours for public holidays like Hari Raya, Chinese New Year and Deepavali, so customers don’t turn up to a closed shop.',
+              'Upload real photos regularly. Profiles with up-to-date photos look active and trustworthy.',
+              'Ask happy customers for reviews, and reply to every review — good or bad — politely.',
+              'Link to your website, and keep your name, phone and address exactly the same on your website, profile and social media.',
+              'Post updates and offers from time to time.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Why your profile needs a website behind it',
+        blocks: [
+          {
+            p: 'Your profile gets you found; your website is what convinces people. It’s where customers check your full menu or services, prices and photos before they call — and a website with clear, matching business details helps Google understand who you are. Read more in [Does my small business need a website?](/guides/does-my-business-need-a-website), or see [what a small-business website costs in Malaysia](/guides/website-cost-malaysia).',
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Is a Google Business Profile free?',
+        a: 'Yes. Creating, verifying and managing a Google Business Profile is free. Be careful of anyone who calls claiming you must pay Google to stay listed.',
+      },
+      {
+        q: 'Do I need SSM registration to get on Google Maps?',
+        a: 'Google doesn’t ask for SSM registration to create a profile. It does need you to prove you operate the business during verification, for example by showing your location, equipment and something that shows you manage it.',
+      },
+      {
+        q: 'Can I have a Google Business Profile if I work from home?',
+        a: 'Yes. Set it up as a service-area business and hide your home address. Your profile will show the areas you serve instead.',
+      },
+      {
+        q: 'Why isn’t my business showing on Google Maps yet?',
+        a: 'Usually the profile isn’t verified yet, is still under review, or is new and has few reviews and photos. After verification, complete every section, add photos, collect reviews and make sure it links to your website.',
+      },
+    ],
+    related: [
+      { label: 'Website design in Kuala Lumpur', to: '/services/website-design-kuala-lumpur' },
+      { label: 'Our pricing', to: '/#pricing' },
+    ],
+    sources: [
+      { label: 'Google — Verify your business on Google', url: 'https://support.google.com/business/answer/7107242' },
+      { label: 'Google — Sign up for Business Profile (service areas)', url: 'https://support.google.com/business/answer/10514137' },
+      { label: 'Google — Guidelines for representing your business', url: 'https://support.google.com/business/answer/3038177' },
+      { label: 'Google — Tips to improve your local ranking', url: 'https://support.google.com/business/answer/7091' },
+    ],
+  },
+  {
+    slug: 'com-vs-my-vs-com-my-domain',
+    label: '.com vs .my vs .com.my',
+    title: '.com vs .my vs .com.my: which domain should a Malaysian business choose?',
+    summary: 'The differences between .com, .my and .com.my domains, who can register each one, and how to pick a good domain name for your business.',
+    published: '2026-10-15',
+    updated: '2026-10-15',
+    readMins: 5,
+    answer:
+      'If your customers are mainly in Malaysia, a .com.my or .my domain tells them you’re local; a .com is the most familiar worldwide and works for any business. A .com.my needs an SSM-registered business or company, while .my is also open to individuals with a MyKad. Whichever you choose, register it in your own name, keep it short and easy to spell, and turn on auto-renew.',
+    sections: [
+      {
+        heading: 'The differences at a glance',
+        blocks: [
+          {
+            table: {
+              head: ['', '.com', '.my', '.com.my'],
+              rows: [
+                ['Who can register', 'Anyone', 'Individuals, businesses and organisations', 'Businesses and companies registered in Malaysia'],
+                ['Documents', 'None', 'MyKad (or passport) for individuals; registration documents for businesses', 'SSM registration (e.g. Borang D for a business)'],
+                ['Signals', 'Global, familiar', 'Malaysian, short', 'Malaysian business'],
+                ['Best for', 'Brands selling beyond Malaysia, or if your .my is taken', 'Malaysian brands that want a short address', 'Registered Malaysian businesses'],
+              ],
+            },
+          },
+          {
+            note: 'Malaysian domains (.my and .com.my) are managed by MYNIC and sold through accredited registrars, who may ask for supporting documents. Check the current requirements with your registrar before you buy.',
+          },
+        ],
+      },
+      {
+        heading: 'Which one should you choose?',
+        blocks: [
+          {
+            list: [
+              'Your customers are in Malaysia and you’re SSM-registered → .com.my is a safe, familiar choice.',
+              'You want a shorter Malaysian address, or you aren’t registered yet → .my.',
+              'You sell overseas, or plan to → .com.',
+              'Your first choice is taken → try the same name on another extension before changing the name itself.',
+            ],
+          },
+          {
+            p: 'If budget allows, it’s worth registering both your .com and your Malaysian domain and pointing one at the other, so no one else can take your name.',
+          },
+        ],
+      },
+      {
+        heading: 'How to pick a good domain name',
+        blocks: [
+          {
+            list: [
+              'Use your business name, so people can guess it.',
+              'Keep it short and easy to say out loud — you’ll be spelling it over the phone.',
+              'Avoid hyphens, numbers and unusual spellings that people will get wrong.',
+              'Check that the matching Instagram, Facebook or TikTok handle is free.',
+              'Make sure it isn’t someone else’s brand name.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Register it in your own name',
+        blocks: [
+          {
+            p: 'This is the most important part. Your domain should be registered under your name or your business’s name, with a login you control — not your designer’s or a former staff member’s. If someone else holds it, they control your website and email, and getting it back can be difficult. At UPWRD, the client’s domain is always registered in the client’s name, and you own your website once it’s paid.',
+          },
+        ],
+      },
+      {
+        heading: 'What a domain costs',
+        blocks: [
+          {
+            p: 'Prices depend on the extension and the registrar, but most common domains cost roughly RM50–150 a year. First-year promotional prices are often lower than renewal prices, so check the renewal price too. The domain is only the address — you also need hosting for the website itself (see our [website cost guide](/guides/website-cost-malaysia)).',
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Can I register a .com.my without SSM registration?',
+        a: 'Generally no. A .com.my is meant for registered Malaysian businesses and companies, so registrars ask for SSM documents. Individuals can register a .my with their MyKad, or any .com.',
+      },
+      {
+        q: 'Does a .my domain help me rank on Google in Malaysia?',
+        a: 'Google uses country domains like .my as a signal that a site is aimed at that country, which can help with local searches. A .com can still rank well in Malaysia — your content, Google Business Profile and reviews matter much more.',
+      },
+      {
+        q: 'Can I change my domain later?',
+        a: 'Yes. Point the old domain at the new one with permanent (301) redirects, so visitors and Google rankings carry over, and update your Google Business Profile and social media links.',
+      },
+      {
+        q: 'What happens if my domain expires?',
+        a: 'Your website and any email on that domain stop working. There’s usually a short grace period to renew, but after that someone else can register it. Turn on auto-renew and keep your contact email up to date.',
+      },
+    ],
+    related: [
+      { label: 'Website cost in Malaysia', to: '/guides/website-cost-malaysia' },
+      { label: 'Our pricing', to: '/#pricing' },
+    ],
+    sources: [
+      { label: 'MYNIC — Domain FAQ', url: 'https://mynic.my/resources/domains/faq' },
+      { label: 'Shinjiru — supporting documents for .MY domains', url: 'https://www.shinjiru.com.my/blog/supporting-document-requirement-for-my-domain-registration-full-guide/' },
+      { label: 'SSM — .COM.MY domain registration', url: 'https://ssm.com.my/Pages/Domain_Registration.aspx' },
+      { label: 'Google Search Central — managing multi-regional sites', url: 'https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites' },
+    ],
+  },
+  {
+    slug: 'landing-page-vs-website',
+    label: 'Landing page vs full website',
+    title: 'Landing page vs full website: which does your small business need?',
+    summary: 'What a one-page landing page can and can’t do, when a multi-page website is worth it, and what to put on each.',
+    published: '2026-10-15',
+    updated: '2026-10-15',
+    readMins: 5,
+    answer:
+      'A landing page is a single page with one job: get visitors to WhatsApp, call or book you. It suits new businesses, a single service or a campaign, and it’s quicker and cheaper to build. A full business website has separate pages for your services, about, contact and more, gives Google more to show in search, and suits businesses with several services or more to explain. Many businesses start with a landing page and grow it into a full website later.',
+    sections: [
+      {
+        heading: 'The differences at a glance',
+        blocks: [
+          {
+            table: {
+              head: ['', 'Landing page', 'Business website'],
+              rows: [
+                ['Pages', '1 long page', 'Usually 5–8 pages'],
+                ['Goal', 'One action (WhatsApp, call, book)', 'Inform, build trust and convert'],
+                ['Google', 'Ranks for your name and a few related searches', 'Each page can target its own searches'],
+                ['Build time (UPWRD)', 'About 1 week', '3–4 weeks'],
+                ['Price (UPWRD)', 'RM1,500', 'from RM3,800'],
+                ['Best for', 'New businesses, one service, campaigns', 'Established businesses, several services'],
+              ],
+            },
+          },
+        ],
+      },
+      {
+        heading: 'Choose a landing page if…',
+        blocks: [
+          {
+            list: [
+              'You’re just starting and need to look professional fast.',
+              'You offer one main product or service.',
+              'You’re running ads or a promotion and want one clear page to send people to.',
+              'Your budget is tight and you’d rather start small and grow.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Choose a full website if…',
+        blocks: [
+          {
+            list: [
+              'You offer several services that each deserve their own explanation.',
+              'You want to show up on Google for different searches — for example each service or each area you serve.',
+              'Customers need more detail before buying: menus, packages, team, case studies or FAQs.',
+              'You want room to grow with new pages, guides or an online store.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'What to put on a landing page',
+        blocks: [
+          { p: 'A good landing page answers the questions people have, in the order they have them:' },
+          {
+            list: [
+              'A headline that says what you do and where — “Custom cakes in Petaling Jaya” beats “Welcome”.',
+              'A clear button to WhatsApp, call or book, near the top and again at the bottom.',
+              'Your main products or services, with prices or “from” prices if you can.',
+              'Real photos of your work, products or space.',
+              'Reviews or testimonials from real customers.',
+              'Location, hours and a map, or the areas you serve.',
+              'A short FAQ that handles the usual questions before people ask.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Start small, then grow',
+        blocks: [
+          {
+            p: 'Starting with a landing page isn’t a dead end. The design, copy and photos can be reused when you’re ready for more pages, so you’re building on what you already have. You can see how both work in our [concept sites](/work#concepts), or compare prices on [our pricing](/#pricing).',
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Can a landing page rank on Google?',
+        a: 'Yes — especially for your business name and a few closely related searches. To show up for many different searches (each service, each area), you’ll want separate pages, which is where a full website helps.',
+      },
+      {
+        q: 'Is a landing page the same as a link-in-bio page?',
+        a: 'No. A link-in-bio page is a list of links. A landing page explains your business, shows your work and prices, and is built to turn visitors into enquiries on your own domain.',
+      },
+      {
+        q: 'How much does a landing page cost in Malaysia?',
+        a: 'At UPWRD a landing page is RM1,500, including copywriting and mobile-first design. See [what websites cost in Malaysia](/guides/website-cost-malaysia) for market ranges.',
+      },
+    ],
+    related: [
+      { label: 'Our pricing', to: '/#pricing' },
+      { label: 'Website design in Kuala Lumpur', to: '/services/website-design-kuala-lumpur' },
+    ],
+  },
+  {
+    slug: 'restaurant-cafe-website-checklist',
+    label: 'Café & restaurant website checklist',
+    title: 'What should a café or restaurant website have? A checklist for Malaysian F&B',
+    summary: 'The must-haves for a café, restaurant or bakery website in Malaysia — menu, location, booking, halal status and the mistakes to avoid.',
+    published: '2026-10-15',
+    updated: '2026-10-15',
+    readMins: 6,
+    answer:
+      'A good café or restaurant website answers a hungry customer’s questions in seconds: what you serve (a mobile-friendly menu with prices), where you are (map, parking and landmarks), when you’re open, and how to book or order (one-tap WhatsApp, call or delivery links). Add real photos of your food and space, your halal status if you’re certified, and keep every detail matching your Google Business Profile.',
+    sections: [
+      {
+        heading: 'The must-haves',
+        blocks: [
+          {
+            list: [
+              'Your menu with prices, readable on a phone.',
+              'Address with a Google Maps link, plus parking tips and nearby landmarks or MRT/LRT stations.',
+              'Opening hours, including rest days and public holiday hours.',
+              'One-tap buttons to WhatsApp, call, reserve or order.',
+              'Real photos of your dishes, drinks and space.',
+              'Payment options — cash, cards, DuitNow QR or e-wallets — so no one is caught out.',
+              'Links to your Instagram, TikTok or Facebook, and your delivery app listings.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Put your menu on the page, not in a PDF',
+        blocks: [
+          {
+            p: 'PDF or photo menus are hard to read on a phone — customers have to download, pinch and zoom. A menu written on the page loads faster, can be searched by Google (so someone looking for “nasi lemak near me” can find your dishes), and is easy to update when prices change.',
+          },
+        ],
+      },
+      {
+        heading: 'Make booking and ordering one tap',
+        blocks: [
+          {
+            p: 'The easiest setup for most cafés is a WhatsApp button that opens a pre-filled message — “Hi, I’d like to book a table for 4 on Saturday at 7pm.” If you already use a reservation system, link to it directly. Delivery apps are great for reach, but they charge commission on every order, so give regulars a way to order or book with you directly too.',
+          },
+        ],
+      },
+      {
+        heading: 'Details Malaysian diners look for',
+        blocks: [
+          {
+            list: [
+              'Halal status. Only show the halal logo if you hold a valid halal certificate from JAKIM or your state religious authority. “Pork-free” or “no pork, no lard” isn’t the same as halal-certified, so describe it accurately.',
+              'Parking — it’s often the first question people ask.',
+              'Language — a bilingual menu (English with Bahasa Malaysia or Chinese) if that’s what your customers read.',
+              'Dietary info — vegetarian options, spice levels and common allergens.',
+              'Private events, catering or festive menus, with a way to enquire.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Keep it in sync with Google',
+        blocks: [
+          {
+            p: 'Most diners find you on Google Maps first, then tap through to your website. Make sure your name, address, phone number and hours match exactly on both — mismatched details confuse customers and Google. Here’s [how to set up your Google Business Profile](/guides/google-business-profile-malaysia).',
+          },
+        ],
+      },
+      {
+        heading: 'Common mistakes to avoid',
+        blocks: [
+          {
+            list: [
+              'Outdated prices or hours — update them whenever they change, especially around festive seasons.',
+              'Huge, slow-loading photos that make the site crawl on mobile data.',
+              'No way to contact you without scrolling to the very bottom.',
+              'Relying only on Instagram, where your menu and hours get buried under new posts.',
+            ],
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Do I still need a website if I’m on GrabFood or foodpanda?',
+        a: 'Delivery apps help people discover you, but they charge commission and you don’t control how you’re shown. A website gives you a place for your full menu, booking and direct orders. More in [Does my business need a website?](/guides/does-my-business-need-a-website).',
+      },
+      {
+        q: 'How much does a restaurant website cost?',
+        a: 'At UPWRD, a single-page site is RM1,500 and a full restaurant website starts from RM3,800. See our [restaurant & café website service](/services/restaurant-website-design) for what’s included.',
+      },
+      {
+        q: 'Can I update the menu and prices myself?',
+        a: 'Yes. We build menus so you can edit dishes and prices yourself, or our Care Plan can handle updates for you.',
+      },
+    ],
+    related: [
+      { label: 'Restaurant & café websites', to: '/services/restaurant-website-design' },
+      { label: 'See a café concept site', to: '/concepts/ondeh-bakehouse' },
     ],
   },
 ]
