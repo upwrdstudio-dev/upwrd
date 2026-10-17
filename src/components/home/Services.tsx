@@ -45,7 +45,7 @@ const services: Service[] = [
     rule: 'border-white/10',
     visual: <StoreVisual />,
     visualClass: 'bg-ink p-4 md:p-8',
-    href: '/services/website-design-kuala-lumpur',
+    href: '/services/ecommerce-website-malaysia',
   },
   {
     n: '03',

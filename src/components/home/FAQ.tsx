@@ -97,7 +97,7 @@ export default function FAQ() {
       <div className="mx-auto grid max-w-7xl gap-14 px-5 md:grid-cols-12 md:px-8">
         <div className="md:col-span-5">
           <div className="md:sticky md:top-32">
-            <SectionHeading index="06" label="FAQ" lines={['Questions,', 'answered.']} />
+            <SectionHeading index="07" label="FAQ" lines={['Questions,', 'answered.']} />
             <Reveal delay={0.2}>
               <p className="mt-8 max-w-xs text-[15px] leading-relaxed text-ink/65">
                 Something else on your mind?{' '}

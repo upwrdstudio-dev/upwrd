@@ -165,4 +165,47 @@ export const servicePages: ServicePage[] = [
     ],
     whatsapp: "Hi UPWRD! I'm interested in a website for our firm.",
   },
+  {
+    slug: 'ecommerce-website-malaysia',
+    label: 'E-commerce Websites',
+    eyebrow: 'Online stores · Malaysia',
+    heading: 'E-commerce website',
+    headingAccent: 'design in Malaysia.',
+    intro:
+      'Online stores for Malaysian businesses, where customers can browse your products and pay you directly with FPX online banking or card, on a store you can manage yourself.',
+    includesTitle: 'Every online store includes',
+    includes: [
+      { title: 'FPX & card payments', body: 'Customers pay by FPX online banking or card through a Malaysian payment gateway.' },
+      { title: 'Products you manage', body: 'Add products, update prices and stock, and run promotions yourself.' },
+      { title: 'Delivery & pickup', body: 'Shipping rates, delivery areas or self-pickup, set up the way you sell.' },
+      { title: 'Mobile-first checkout', body: 'A short, simple checkout designed for phones, where most people shop.' },
+      { title: 'Order management', body: 'New orders and customer details in one place, with a walkthrough at handover.' },
+      { title: 'Google-ready SEO', body: 'Product and category pages set up so people can find them on Google.' },
+    ],
+    work: [],
+    price: { label: 'Online store', value: 'from RM 6,500', note: 'Usually 6–8 weeks · Care Plan from RM 150/month' },
+    faqs: [
+      {
+        q: 'Can customers pay with FPX online banking?',
+        a: 'Yes. We connect a Malaysian payment gateway so customers can pay by FPX online banking or card. Many gateways also support e-wallets, depending on the one you choose.',
+      },
+      {
+        q: 'What do I need to accept online payments?',
+        a: 'Payment gateways usually ask for your SSM business registration and a business bank account. We check what you need before we start, so there are no surprises at launch.',
+      },
+      {
+        q: 'Should I sell on Shopee or Lazada instead?',
+        a: 'Marketplaces are good for reach, but they charge fees on each sale and your products sit next to your competitors’. Your own store gives you your own branding and customer list, with only payment gateway fees. Many businesses use both.',
+      },
+      {
+        q: 'Can I manage products and orders myself?',
+        a: 'Yes. You can add products, change prices and stock, and manage orders yourself, and we walk you through it at handover.',
+      },
+      {
+        q: 'How long does an online store take?',
+        a: 'Usually 6–8 weeks, depending on how many products you have and how quickly photos and product details come in.',
+      },
+    ],
+    whatsapp: "Hi UPWRD! I'm interested in an online store for my business.",
+  },
 ]

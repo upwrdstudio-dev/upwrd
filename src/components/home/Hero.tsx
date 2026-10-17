@@ -52,9 +52,9 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-soft opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-soft" />
             </span>
-            Digital studio
+            Web design studio
           </span>
-          <span>Malaysia</span>
+          <span>Kuala Lumpur</span>
         </motion.div>
 
         <div>
@@ -63,17 +63,17 @@ export default function Hero() {
             play={ready}
             stagger={0.1}
             lines={[
-              'Digital systems',
-              'that move you',
+              'Websites that',
+              'move your business',
               <span className="font-serif font-normal italic tracking-[-0.02em] text-accent-soft">upward.</span>,
             ]}
-            className="text-[11.5vw] font-medium leading-[0.9] tracking-tightest md:text-[8vw] 2xl:text-[8.75rem]"
+            className="text-[9.4vw] font-medium leading-[0.92] tracking-tightest md:text-[7vw] 2xl:text-[7.75rem]"
           />
 
           <div className="mt-10 grid gap-8 border-t border-white/15 pt-6 md:mt-14 md:grid-cols-12 md:items-center">
             <motion.p {...fade(0.3)} className="max-w-md text-base leading-relaxed text-white/65 md:col-span-6 md:text-lg">
-              Websites and design for Malaysian businesses — fast, beautiful sites and on-brand social media design,
-              made to work together and bring in more customers.
+              Website design for small businesses in Kuala Lumpur and across Malaysia: fast, mobile-first websites and
+              on-brand social media design, made to work together and bring in more customers.
             </motion.p>
             <motion.div {...fade(0.4)} className="flex flex-wrap gap-3 md:col-span-6 md:justify-end">
               <Button to="/#enquire" variant="accent">

@@ -29,7 +29,7 @@ export default function DesignShowcase() {
     <section id="design" className="overflow-hidden bg-paper py-28 md:py-40">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          index="03"
+          index="04"
           label="Design"
           lines={['Campaigns, packaging', '& everything social.']}
           aside={

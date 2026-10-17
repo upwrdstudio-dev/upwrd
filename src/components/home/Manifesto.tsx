@@ -22,10 +22,12 @@ function Word({ children, progress, range }: { children: string; progress: Motio
   )
 }
 
+// Concrete, checkable promises; these double as the page's trust signals.
 const pillars = [
-  { k: '01', title: 'One brand, everywhere', body: 'Website and social design planned together, so you look the same wherever customers find you.' },
-  { k: '02', title: 'Built on outcomes', body: 'Judged by the enquiries and customers it brings in — not by how it looks in a portfolio.' },
-  { k: '03', title: 'Here after launch', body: 'Maintenance, updates and monthly design support, long after go-live.' },
+  { k: '01', title: 'Founder-led', body: 'You talk directly to the person designing and building your website. No account managers, no hand-offs.' },
+  { k: '02', title: 'Fixed quote, no surprises', body: 'Agreed before we start: 50% to begin, 50% on completion, three rounds of revisions included.' },
+  { k: '03', title: 'You own it', body: 'Your domain is registered in your name, and the website is fully yours once it’s paid.' },
+  { k: '04', title: 'We speak your language', body: 'English, Bahasa Malaysia, Mandarin and Cantonese, on WhatsApp or a call.' },
 ]
 
 // The statement "reads itself": each word brightens as the paragraph scrolls
@@ -61,7 +63,7 @@ export default function Manifesto() {
           </p>
         </div>
 
-        <div className="mt-24 grid gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 md:mt-32 md:grid-cols-3">
+        <div className="mt-24 grid gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 sm:grid-cols-2 md:mt-32 lg:grid-cols-4">
           {pillars.map((p, i) => (
             <Reveal key={p.k} delay={i * 0.1} className="h-full">
               <div className="group relative h-full bg-paper p-7 transition-colors duration-500 hover:bg-white md:p-9">

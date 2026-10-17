@@ -59,13 +59,13 @@ export default function Process() {
     <section id="process" data-nav="dark" className="bg-ink py-28 text-paper md:py-40">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          index="04"
+          index="05"
           label="Process"
           tone="dark"
           lines={['A clear sequence,', 'not a scramble.']}
           aside={
             <p className="max-w-xs text-[15px] leading-relaxed text-white/65">
-              A landing page usually takes 1–2 weeks. A full business website, 3–5 weeks.
+              A landing page takes about a week. A full business website, 3–4 weeks.
             </p>
           }
         />

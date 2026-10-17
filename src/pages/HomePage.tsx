@@ -3,11 +3,13 @@ import Hero from '../components/home/Hero'
 import Ticker from '../components/home/Ticker'
 import Manifesto from '../components/home/Manifesto'
 import Services from '../components/home/Services'
+import Industries from '../components/home/Industries'
 import Work from '../components/home/Work'
 import DesignShowcase from '../components/home/DesignShowcase'
 import Process from '../components/home/Process'
 import Pricing from '../components/home/Pricing'
 import FAQ, { faqs } from '../components/home/FAQ'
+import HomeGuides from '../components/home/HomeGuides'
 import { CONTACT, SITE_URL } from '../data/site'
 import { servicePages } from '../data/servicePages'
 
@@ -70,11 +72,13 @@ export default function HomePage() {
       <Ticker />
       <Manifesto />
       <Services />
+      <Industries />
       <Work />
       <DesignShowcase />
       <Process />
       <Pricing />
       <FAQ />
+      <HomeGuides />
     </>
   )
 }

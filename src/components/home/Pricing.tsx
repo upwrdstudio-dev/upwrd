@@ -141,7 +141,7 @@ export default function Pricing() {
     <section id="pricing" className="bg-paper pb-20 pt-28 md:pb-28 md:pt-40">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          index="05"
+          index="06"
           label="Pricing"
           lines={['Clear prices,', 'no surprises.']}
           aside={

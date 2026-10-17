@@ -55,6 +55,12 @@ function SpinningCTA() {
   )
 }
 
+const nextSteps = [
+  { title: 'Send us your details', body: 'Use the form or WhatsApp. A link to your current website or Instagram helps.' },
+  { title: 'We reply within 1 working day', body: 'With honest, practical suggestions for your business.' },
+  { title: 'You get a fixed quote', body: 'Only if you want to go ahead. No obligation, no pressure.' },
+]
+
 const footerLinks = [
   { to: '/#services', label: 'Services' },
   { to: '/work', label: 'Work' },
@@ -113,6 +119,20 @@ export default function Footer() {
               <WhatsAppIcon className="h-6 w-6 text-[#25D366]" />
               {CONTACT.whatsappDisplay}
             </a>
+            <div className="mt-10 border-t border-white/10 pt-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">What happens next</p>
+              <ol className="mt-4 space-y-4">
+                {nextSteps.map((s, i) => (
+                  <li key={s.title} className="grid grid-cols-[2rem_1fr] gap-2">
+                    <span className="font-mono text-xs text-accent-soft">0{i + 1}</span>
+                    <div>
+                      <p className="font-medium">{s.title}</p>
+                      <p className="mt-0.5 text-sm leading-relaxed text-white/55">{s.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </Reveal>
           <Reveal delay={0.1} className="md:col-span-7">
             <EnquiryForm />
