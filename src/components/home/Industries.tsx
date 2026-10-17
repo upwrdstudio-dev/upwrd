@@ -82,9 +82,9 @@ export default function Industries() {
                 <Link to={ind.service.to} tabIndex={-1} aria-hidden="true" className="relative block aspect-[4/3] overflow-hidden bg-paper-dim">
                   {ind.concept ? (
                     <img
+                      loading="lazy"
                       src={thumb(ind.concept.image, 800)}
                       alt=""
-                      loading="lazy"
                       decoding="async"
                       className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
                     />

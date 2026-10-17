@@ -254,7 +254,7 @@ export default function OndehBakehouse() {
                   style={{ background: C.paper }}
                 >
                   <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
-                    <img src={f.img} alt={f.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <img loading="lazy" src={f.img} alt={f.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <span className="absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-medium" style={{ background: C.cream }}>
                       {f.tag}
                     </span>
@@ -439,7 +439,7 @@ export default function OndehBakehouse() {
           {['batch', 'bench', 'space', 'pastries'].map((n, i) => (
             <Reveal key={n} delay={i * 0.06} y={20}>
               <div className="group aspect-square overflow-hidden rounded-2xl">
-                <img src={`${IMG}/${n}.jpg`} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <img loading="lazy" src={`${IMG}/${n}.jpg`} alt="" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
               </div>
             </Reveal>
           ))}

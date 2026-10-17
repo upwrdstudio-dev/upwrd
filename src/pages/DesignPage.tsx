@@ -66,10 +66,10 @@ export default function DesignPage() {
                 className="group relative mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl bg-ink/5 text-left md:mb-4"
               >
                 <img
+                  loading="lazy"
                   src={thumb(item.image, 720)}
                   decoding="async"
                   alt={`${item.category} — ${item.title}`}
-                  loading="lazy"
                   className="block h-auto w-full transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
                 />
                 <div className="absolute inset-x-2 bottom-2 translate-y-2 rounded-xl bg-ink/75 px-3 py-2 opacity-0 backdrop-blur-md transition-all duration-500 ease-out-expo group-hover:translate-y-0 group-hover:opacity-100">

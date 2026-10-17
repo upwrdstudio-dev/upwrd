@@ -43,12 +43,12 @@ export default function ProjectCard({ project, index, tone = 'dark', className =
         </div>
         <div className={`relative overflow-hidden rounded-xl md:rounded-2xl ${frameClassName}`}>
           <img
+            loading="lazy"
             src={thumb(project.image, 800)}
             srcSet={screenshotSrcSet(project.image)}
             sizes="(min-width: 768px) 45vw, 100vw"
             decoding="async"
             alt={`${project.name} website`}
-            loading="lazy"
             className="absolute inset-0 h-full w-full object-cover object-top group-hover:scale-[1.02] group-hover:object-bottom"
             style={{
               transition:

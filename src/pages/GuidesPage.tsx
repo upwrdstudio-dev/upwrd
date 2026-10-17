@@ -3,7 +3,7 @@ import SEO from '../components/SEO'
 import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
 import { Arrow } from '../components/Button'
-import { guides } from '../data/guides'
+import { guideMeta as guides } from '../data/guideMeta'
 
 export default function GuidesPage() {
   return (

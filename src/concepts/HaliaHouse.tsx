@@ -394,7 +394,7 @@ export default function HaliaHouse() {
         {/* Ritual */}
         <section id="ritual" className="grid md:grid-cols-2" style={{ background: C.deep, color: C.linen }}>
           <div className="relative min-h-[60vh] overflow-hidden">
-            <img src={`${IMG}/citrus.jpg`} alt="Citrus slices floating in a bath" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+            <img loading="lazy" src={`${IMG}/citrus.jpg`} alt="Citrus slices floating in a bath" className="absolute inset-0 h-full w-full object-cover" />
           </div>
           <div className="px-5 py-20 md:px-16 md:py-28">
             <Reveal>
@@ -433,7 +433,7 @@ export default function HaliaHouse() {
               <Reveal key={p.name} delay={i * 0.1}>
                 <button type="button" onClick={demo('On a live site, this adds the product to the spa’s online shop cart.')} className="group block w-full text-left">
                   <div className="aspect-[4/5] overflow-hidden rounded-t-[999px]" style={{ background: C.linen }}>
-                    <img src={`${IMG}/${p.img}.jpg`} alt={p.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                    <img loading="lazy" src={`${IMG}/${p.img}.jpg`} alt={p.name} className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                   </div>
                   <div className="mt-4 flex items-baseline justify-between">
                     <div>

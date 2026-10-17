@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom'
 import SectionHeading from '../SectionHeading'
 import Reveal from '../Reveal'
 import Button, { Arrow } from '../Button'
-import { guides } from '../../data/guides'
+import { guideMeta } from '../../data/guideMeta'
 
 // The guides people ask about most before buying a website.
 const picks = ['website-cost-malaysia', 'google-business-profile-malaysia', 'landing-page-vs-website']
 
 export default function HomeGuides() {
-  const list = picks.map((slug) => guides.find((g) => g.slug === slug)).filter((g) => g !== undefined)
+  const list = picks.map((slug) => guideMeta.find((g) => g.slug === slug)).filter((g) => g !== undefined)
 
   return (
     <section id="guides" className="border-t border-ink/10 bg-paper py-28 md:py-40">

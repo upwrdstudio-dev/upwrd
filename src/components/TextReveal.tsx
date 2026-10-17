@@ -24,7 +24,7 @@ const line: Variants = {
   // Far enough below the mask (incl. its descender padding) that no sliver
   // of the line shows before the reveal — visible in the prerendered paint.
   hidden: { y: '145%', rotate: 2 },
-  visible: { y: '0%', rotate: 0, transition: { duration: 1.1, ease: EASE_OUT } },
+  visible: { y: '0%', rotate: 0, transition: { duration: 0.85, ease: EASE_OUT } },
 }
 
 // Each line slides up from behind its own mask, so headings assemble line by

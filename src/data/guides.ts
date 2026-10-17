@@ -2,21 +2,21 @@
 // business owners actually search (and ask AI assistants), in plain language.
 // <head> titles/descriptions live in pageMeta.json under the same path.
 
+import { guideMeta, type GuideMeta } from './guideMeta'
+
+const meta = (slug: string) => {
+  const m = guideMeta.find((g) => g.slug === slug)
+  if (!m) throw new Error(`Missing guide meta: ${slug}`)
+  return m
+}
+
 export type Block =
   | { p: string }
   | { list: string[] }
   | { table: { head: string[]; rows: string[][] } }
   | { note: string }
 
-export type Guide = {
-  slug: string
-  title: string
-  /** Short label for cards and breadcrumbs. */
-  label: string
-  summary: string
-  published: string
-  updated: string
-  readMins: number
+export type Guide = GuideMeta & {
   /** The direct answer, shown first. */
   answer: string
   sections: { heading: string; blocks: Block[] }[]
@@ -27,13 +27,7 @@ export type Guide = {
 
 export const guides: Guide[] = [
   {
-    slug: 'website-cost-malaysia',
-    label: 'Website cost in Malaysia',
-    title: 'How much does a website cost in Malaysia? (2026 guide)',
-    summary: 'Real price ranges for landing pages, business websites and online stores in Malaysia — plus the hidden costs most quotes leave out.',
-    published: '2026-10-13',
-    updated: '2026-10-13',
-    readMins: 6,
+    ...meta('website-cost-malaysia'),
     answer:
       'In Malaysia, a simple landing page usually costs from about RM1,500, a 5–8 page business website roughly RM1,500–6,000 with a freelancer or small studio (RM5,000–15,000 with an agency), and an online store from about RM5,000. On top of that, budget roughly RM50–150 a year for a domain and RM150–500 a month if you want hosting and maintenance handled for you.',
     sections: [
@@ -133,13 +127,7 @@ export const guides: Guide[] = [
     ],
   },
   {
-    slug: 'does-my-business-need-a-website',
-    label: 'Does my business need a website?',
-    title: 'Does my small business need a website in 2026?',
-    summary: 'Social media is great for reach — but here’s why most small businesses still need a website, and what a good one needs to do.',
-    published: '2026-10-13',
-    updated: '2026-10-13',
-    readMins: 5,
+    ...meta('does-my-business-need-a-website'),
     answer:
       'For most small businesses, yes. When people hear about you — from a friend, on Instagram or on Google Maps — they search your name before they visit, call or book. A website is the one place online you fully control, it helps you show up on Google, and it makes a new business look established. Social media alone works as a start, but it shouldn’t be your only home online.',
     sections: [
@@ -211,13 +199,7 @@ export const guides: Guide[] = [
     ],
   },
   {
-    slug: 'wordpress-vs-wix-vs-custom',
-    label: 'WordPress vs Wix vs custom',
-    title: 'WordPress vs Wix vs a custom-coded website: which is right for your business?',
-    summary: 'A plain-language comparison of the three most common ways to build a small-business website — cost, ownership, flexibility and upkeep.',
-    published: '2026-10-13',
-    updated: '2026-10-13',
-    readMins: 6,
+    ...meta('wordpress-vs-wix-vs-custom'),
     answer:
       'For most small businesses, WordPress is the best balance: you can edit it yourself, you own it and can move it to any host, and it can grow with you. Wix is quickest for a simple DIY site, but your site stays on Wix and you keep paying their subscription. A custom-coded site gives the best speed and most unique design, and suits showcase or landing pages where you don’t need to edit often.',
     sections: [
@@ -301,13 +283,7 @@ export const guides: Guide[] = [
     ],
   },
   {
-    slug: 'google-business-profile-malaysia',
-    label: 'Get on Google Maps',
-    title: 'How to get your business on Google Maps in Malaysia (Google Business Profile guide)',
-    summary: 'Set up and verify a free Google Business Profile step by step — including what to do if you work from home or don’t have a shop.',
-    published: '2026-10-15',
-    updated: '2026-10-15',
-    readMins: 7,
+    ...meta('google-business-profile-malaysia'),
     answer:
       'Create a free Google Business Profile at business.google.com: add your business name, category, location or service area, phone number and website, then verify that you run the business. Google chooses which verification options you get — usually a video, a live video call, a phone or SMS code, or email — and reviews take up to 5 business days. If customers don’t come to you (for example, you work from home), set it up as a service-area business and hide your address.',
     sections: [
@@ -425,13 +401,7 @@ export const guides: Guide[] = [
     ],
   },
   {
-    slug: 'com-vs-my-vs-com-my-domain',
-    label: '.com vs .my vs .com.my',
-    title: '.com vs .my vs .com.my: which domain should a Malaysian business choose?',
-    summary: 'The differences between .com, .my and .com.my domains, who can register each one, and how to pick a good domain name for your business.',
-    published: '2026-10-15',
-    updated: '2026-10-15',
-    readMins: 5,
+    ...meta('com-vs-my-vs-com-my-domain'),
     answer:
       'If your customers are mainly in Malaysia, a .com.my or .my domain tells them you’re local; a .com is the most familiar worldwide and works for any business. A .com.my needs an SSM-registered business or company, while .my is also open to individuals with a MyKad. Whichever you choose, register it in your own name, keep it short and easy to spell, and turn on auto-renew.',
     sections: [
@@ -531,13 +501,7 @@ export const guides: Guide[] = [
     ],
   },
   {
-    slug: 'landing-page-vs-website',
-    label: 'Landing page vs full website',
-    title: 'Landing page vs full website: which does your small business need?',
-    summary: 'What a one-page landing page can and can’t do, when a multi-page website is worth it, and what to put on each.',
-    published: '2026-10-15',
-    updated: '2026-10-15',
-    readMins: 5,
+    ...meta('landing-page-vs-website'),
     answer:
       'A landing page is a single page with one job: get visitors to WhatsApp, call or book you. It suits new businesses, a single service or a campaign, and it’s quicker and cheaper to build. A full business website has separate pages for your services, about, contact and more, gives Google more to show in search, and suits businesses with several services or more to explain. Many businesses start with a landing page and grow it into a full website later.',
     sections: [
@@ -631,13 +595,7 @@ export const guides: Guide[] = [
     ],
   },
   {
-    slug: 'restaurant-cafe-website-checklist',
-    label: 'Café & restaurant website checklist',
-    title: 'What should a café or restaurant website have? A checklist for Malaysian F&B',
-    summary: 'The must-haves for a café, restaurant or bakery website in Malaysia — menu, location, booking, halal status and the mistakes to avoid.',
-    published: '2026-10-15',
-    updated: '2026-10-15',
-    readMins: 6,
+    ...meta('restaurant-cafe-website-checklist'),
     answer:
       'A good café or restaurant website answers a hungry customer’s questions in seconds: what you serve (a mobile-friendly menu with prices), where you are (map, parking and landmarks), when you’re open, and how to book or order (one-tap WhatsApp, call or delivery links). Add real photos of your food and space, your halal status if you’re certified, and keep every detail matching your Google Business Profile.',
     sections: [

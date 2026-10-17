@@ -13,10 +13,10 @@ function Tile({ item }: { item: DesignItem }) {
   return (
     <div className="group/tile mr-3 h-[200px] shrink-0 overflow-hidden rounded-2xl bg-ink/5 md:mr-4 md:h-[300px]">
       <img
+        loading="lazy"
         src={thumb(item.image, 720)}
         decoding="async"
         alt={`${item.category} — ${item.title}`}
-        loading="lazy"
         draggable={false}
         className="h-full w-auto max-w-none transition-transform duration-700 ease-out-expo group-hover/tile:scale-105"
       />
