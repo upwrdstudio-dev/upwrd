@@ -58,7 +58,7 @@ const services: Service[] = [
     rule: 'border-white/20',
     visual: <DesignVisual />,
     visualClass: 'bg-accent-deep p-6 md:p-12',
-    href: '/design',
+    href: '/services/social-media-design-malaysia',
   },
 ]
 

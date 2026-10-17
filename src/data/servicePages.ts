@@ -208,4 +208,121 @@ export const servicePages: ServicePage[] = [
     ],
     whatsapp: "Hi UPWRD! I'm interested in an online store for my business.",
   },
+  {
+    slug: 'website-redesign-malaysia',
+    label: 'Website Redesign',
+    eyebrow: 'Website redesign · Malaysia',
+    heading: 'Website redesign',
+    headingAccent: 'for Malaysian businesses.',
+    intro:
+      'Is your website slow, dated or hard to use on a phone? We redesign it to load fast, look like your business today and turn visitors into WhatsApp enquiries, while protecting what already works: your domain, your best content and the pages Google already knows.',
+    includesTitle: 'Every redesign includes',
+    includes: [
+      { title: 'An honest look first', body: 'We review your current site and tell you what is working, what is costing you enquiries, and whether you need a redesign or just a few fixes.' },
+      { title: 'Mobile-first design', body: 'Rebuilt for the phones most of your visitors use, with buttons that are easy to tap.' },
+      { title: 'Faster loading', body: 'Lighter pages and properly sized images, so visitors don’t give up before it loads.' },
+      { title: 'Clearer copy', body: 'We rewrite the key pages so people understand what you do, where you are and how to reach you.' },
+      { title: 'Google rankings protected', body: 'Your domain stays, and any page whose address changes gets a permanent redirect.' },
+      { title: 'Easy to update', body: 'Built on a system you can edit yourself, with a walkthrough at handover.' },
+    ],
+    work: ['Chi Hao (吃好)', 'Justwine', 'Virtue Trustee Berhad'],
+    price: { label: 'Website redesign', value: 'from RM 1,500', note: 'RM 1,500 for a one-page site · from RM 3,800 for a full business website' },
+    faqs: [
+      {
+        q: 'Will I lose my Google rankings if I redesign my website?',
+        a: 'Not if it’s done carefully. We keep your domain, carry over the content that works, and set up permanent (301) redirects for any page whose address changes, so visitors and Google land in the right place.',
+      },
+      {
+        q: 'Can you redesign a WordPress or Wix website?',
+        a: 'Yes. We can rebuild it on WordPress, which you can edit yourself and move to any host. Wix sites can’t be exported, so moving from Wix means rebuilding the pages, but your domain comes with you.',
+      },
+      {
+        q: 'How do I know if my website needs a redesign?',
+        a: 'Common signs: it’s hard to use on a phone, it loads slowly, the information is out of date, or visitors rarely contact you. Send us the link and we’ll tell you honestly whether you need a redesign or just a few fixes.',
+      },
+      {
+        q: 'How long does a redesign take?',
+        a: 'About a week for a one-page site and 3–4 weeks for a full business website, depending on how quickly content and feedback come in.',
+      },
+    ],
+    whatsapp: "Hi UPWRD! I'd like to redesign my website.",
+  },
+  {
+    slug: 'landing-page-design-malaysia',
+    label: 'Landing Page Design',
+    eyebrow: 'Landing pages · Malaysia',
+    heading: 'Landing page design',
+    headingAccent: 'in Malaysia.',
+    intro:
+      'One focused page that tells people what you do, shows why they should trust you, and gets them to WhatsApp, call or book you. Ideal for a new business, a single service or a promotion.',
+    includesTitle: 'Every landing page includes',
+    includes: [
+      { title: 'Mobile-first design', body: 'Designed for phones first, where most people will see it.' },
+      { title: 'WhatsApp & enquiry buttons', body: 'One-tap ways to reach you, near the top and again at the end.' },
+      { title: 'Google Maps & basic SEO', body: 'Your location, page title and description set up so people can find you.' },
+      { title: 'Copywriting included', body: 'We write the words and structure the page. You review and approve.' },
+      { title: 'Ready in about a week', body: 'Quick to launch, so you can start sending people to it straight away.' },
+      { title: 'Room to grow', body: 'The design, copy and photos carry over if you later want a full website.' },
+    ],
+    work: ['Ondeh Bakehouse', 'Halia House'],
+    price: { label: 'Landing page', value: 'RM 1,500', note: 'About 1 week · copywriting included' },
+    faqs: [
+      {
+        q: 'What is the difference between a landing page and a website?',
+        a: 'A landing page is one page with one goal, such as getting WhatsApp enquiries. A business website has separate pages for your services, about and contact, and can show up for more searches on Google. Many businesses start with a landing page and grow it later.',
+      },
+      {
+        q: 'Can a landing page show up on Google?',
+        a: 'Yes, especially for your business name and a few closely related searches. Every landing page is set up with a page title, description and Google Maps link from day one.',
+      },
+      {
+        q: 'Can I run ads to my landing page?',
+        a: 'Yes. A focused landing page is a good place to send Facebook, Instagram or Google ads, because every visitor sees one clear message and one way to act.',
+      },
+      {
+        q: 'Can I add more pages later?',
+        a: 'Yes. When you’re ready, the design, copy and photos carry over into a full business website.',
+      },
+    ],
+    whatsapp: "Hi UPWRD! I'm interested in a landing page for my business.",
+  },
+  {
+    slug: 'social-media-design-malaysia',
+    label: 'Social Media Design',
+    eyebrow: 'Social media design · Malaysia',
+    heading: 'Social media design',
+    headingAccent: 'for Malaysian businesses.',
+    intro:
+      'On-brand posts for your Instagram and Facebook, designed every month, so your social media looks as professional as your website and you’re never stuck for something to post.',
+    includesTitle: 'Social media design includes',
+    includes: [
+      { title: '8 posts a month', body: 'A steady flow of on-brand posts, ready to publish, for RM 800 a month.' },
+      { title: 'Matches your website', body: 'Your colours, fonts and style, so your socials and website look like one brand.' },
+      { title: 'Made for Malaysian audiences', body: 'In English, Bahasa Malaysia or Chinese, for your promotions, new products and festive seasons.' },
+      { title: 'Single designs too', body: 'Need just one post, banner or poster? Single designs start from RM 150.' },
+      { title: 'Menus, posters & packaging', body: 'Print and packaging design available on request, in the same style.' },
+      { title: 'Pairs with a website', body: 'Get a Business Website plus three months of social design in the Digital Foundation bundle.' },
+    ],
+    work: [],
+    price: { label: 'Social media design', value: 'RM 800/month', note: '8 posts a month · single designs from RM 150' },
+    faqs: [
+      {
+        q: 'How much does social media design cost?',
+        a: 'RM 800 a month for 8 posts, or from RM 150 for a single design. Menus, posters and packaging are available on request.',
+      },
+      {
+        q: 'Can you match our website and brand?',
+        a: 'Yes. Posts use your colours, fonts and style, so your social media and website look like the same brand. If we’re also building your website, both are designed together.',
+      },
+      {
+        q: 'Is there a bundle with a website?',
+        a: 'Yes. The Digital Foundation bundle is a Business Website plus three months of social media design (8 posts a month) for RM 5,200.',
+      },
+      {
+        q: 'Where can I see examples?',
+        a: 'Our design portfolio at upwrdstudio.com/design shows social media, campaign and packaging work for Malaysian brands.',
+      },
+    ],
+    whatsapp: "Hi UPWRD! I'm interested in monthly social media design.",
+  },
 ]

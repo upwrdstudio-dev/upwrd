@@ -590,8 +590,8 @@ export const guides: Guide[] = [
       },
     ],
     related: [
+      { label: 'Landing page design', to: '/services/landing-page-design-malaysia' },
       { label: 'Our pricing', to: '/#pricing' },
-      { label: 'Website design in Kuala Lumpur', to: '/services/website-design-kuala-lumpur' },
     ],
   },
   {
