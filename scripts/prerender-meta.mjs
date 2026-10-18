@@ -73,6 +73,20 @@ for (const [path, meta] of Object.entries(pages)) {
   console.log(`prerender: ${path} → ${file.slice(dist.length + 1)}`)
 }
 
+// The not-found page, served with a real 404 status for unknown addresses
+// (wrangler.jsonc: not_found_handling "404-page"), so Google doesn't treat
+// made-up URLs as duplicate copies of the homepage.
+writeFileSync(
+  join(dist, '404.html'),
+  render('/404', {
+    title: 'Page not found | UPWRD Studio',
+    description: "This page doesn't exist or has moved.",
+    image: '/brand/upwrd-og.png',
+    noindex: true,
+  }),
+)
+console.log('prerender: 404 page → 404.html')
+
 const today = new Date().toISOString().slice(0, 10)
 const urls = Object.entries(pages)
   .filter(([, meta]) => !meta.noindex)

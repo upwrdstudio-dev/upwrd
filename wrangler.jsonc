@@ -5,8 +5,9 @@
   "compatibility_date": "2025-09-01",
   "assets": {
     "directory": "./dist",
-    // Unknown paths (/work, /concepts/…) return index.html so the React
-    // router can handle them, instead of a 404 on direct visits.
-    "not_found_handling": "single-page-application"
+    // Every route is prerendered to its own HTML file (scripts/prerender-meta.mjs),
+    // so only genuinely unknown paths reach this: they get 404.html with a real
+    // 404 status, rather than a copy of the homepage (a "soft 404" to Google).
+    "not_found_handling": "404-page"
   }
 }
