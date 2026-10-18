@@ -59,7 +59,7 @@ const jsonLd = {
     address: { '@type': 'PostalAddress', addressLocality: 'Kuala Lumpur', addressCountry: 'MY' },
     email: CONTACT.email,
     telephone: `+${CONTACT.whatsapp}`,
-    sameAs: [CONTACT.instagramUrl, CONTACT.googleProfileUrl],
+    sameAs: [CONTACT.instagramUrl, CONTACT.facebookUrl, CONTACT.googleProfileUrl],
   },
 }
 

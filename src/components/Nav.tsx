@@ -153,6 +153,9 @@ export default function Nav() {
               <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer">
                 Instagram — {CONTACT.instagram}
               </a>
+              <a href={CONTACT.facebookUrl} target="_blank" rel="noopener noreferrer">
+                Facebook — UPWRD Studio
+              </a>
             </motion.div>
           </motion.div>
         )}

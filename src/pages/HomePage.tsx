@@ -47,7 +47,7 @@ const jsonLd = {
         { '@type': 'State', name: 'Selangor' },
         { '@type': 'Country', name: 'Malaysia' },
       ],
-      sameAs: [CONTACT.instagramUrl, CONTACT.googleProfileUrl],
+      sameAs: [CONTACT.instagramUrl, CONTACT.facebookUrl, CONTACT.googleProfileUrl],
       makesOffer: servicePages.map((s) => ({
         '@type': 'Offer',
         itemOffered: { '@type': 'Service', name: s.label, url: `${SITE_URL}/services/${s.slug}` },

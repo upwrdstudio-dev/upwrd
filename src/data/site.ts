@@ -4,6 +4,7 @@ export const CONTACT = {
   email: 'upwrdstudio@gmail.com',
   instagram: '@upwrdstudio',
   instagramUrl: 'https://instagram.com/upwrdstudio',
+  facebookUrl: 'https://www.facebook.com/upwrdstudio',
   /** Google Business Profile (opens the profile panel in Google Search). */
   googleProfileUrl:
     'https://www.google.com/search?q=UPWRD+Studio&stick=H4sIAAAAAAAA_-NgU1I1qLAwsTS2NE02sUhLMUtNNTC2MqgwTTRLM08zSbNINDC2TLM0WMTKE1pQXpSiEFxSmpKZDwBPfCdmOAAAAA',

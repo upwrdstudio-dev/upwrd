@@ -168,12 +168,20 @@ export default function Footer() {
               Instagram {CONTACT.instagram}
             </a>
             <a
+              href={CONTACT.facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 block w-fit bg-gradient-to-r from-accent-soft to-accent-soft bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-1 text-white/70 transition-[background-size] duration-500 ease-out-expo hover:bg-[length:100%_1px]"
+            >
+              Facebook
+            </a>
+            <a
               href={CONTACT.googleProfileUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-1 block w-fit bg-gradient-to-r from-accent-soft to-accent-soft bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-1 text-white/70 transition-[background-size] duration-500 ease-out-expo hover:bg-[length:100%_1px]"
             >
-              Google reviews ★
+              Google profile
             </a>
           </div>
           <div>
