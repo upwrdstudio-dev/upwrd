@@ -436,10 +436,15 @@ export default function OndehBakehouse() {
 
         {/* Gallery */}
         <section className="grid grid-cols-2 gap-2 px-2 md:grid-cols-4">
-          {['batch', 'bench', 'space', 'pastries'].map((n, i) => (
+          {[
+            { n: 'batch', alt: 'A tray of freshly baked croissants' },
+            { n: 'bench', alt: 'Pain au chocolat and croissants with a rolling pin, butter and chocolate' },
+            { n: 'space', alt: 'A bright café with a wooden counter and a menu board' },
+            { n: 'pastries', alt: 'Croissants dusted with icing sugar and chopped nuts' },
+          ].map(({ n, alt }, i) => (
             <Reveal key={n} delay={i * 0.06} y={20}>
               <div className="group aspect-square overflow-hidden rounded-2xl">
-                <img loading="lazy" src={`${IMG}/${n}.jpg`} alt="" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <img loading="lazy" src={`${IMG}/${n}.jpg`} alt={alt} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
               </div>
             </Reveal>
           ))}

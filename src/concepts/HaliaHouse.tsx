@@ -91,7 +91,7 @@ function TreatmentList() {
           >
             <span className={`${serif} hidden text-lg italic opacity-50 md:block`}>0{i + 1}</span>
             <div className="flex items-center gap-4">
-              <img src={`${IMG}/${t.img}.jpg`} alt="" className="h-16 w-16 shrink-0 rounded-full object-cover md:hidden" />
+              <img src={`${IMG}/${t.img}.jpg`} alt={t.name} className="h-16 w-16 shrink-0 rounded-full object-cover md:hidden" />
               <div>
                 <h3 className={`${serif} text-3xl leading-tight transition-transform duration-500 group-hover:translate-x-2 md:text-5xl`}>
                   {t.name}
@@ -119,7 +119,7 @@ function TreatmentList() {
               <motion.img
                 key={active}
                 src={`${IMG}/${treatments[active].img}.jpg`}
-                alt=""
+                alt={treatments[active].name}
                 initial={{ opacity: 0, scale: 0.85, rotate: -4 }}
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}

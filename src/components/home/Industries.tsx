@@ -84,7 +84,7 @@ export default function Industries() {
                     <img
                       loading="lazy"
                       src={thumb(ind.concept.image, 800)}
-                      alt=""
+                      alt={`${ind.concept.name}, a concept website for ${ind.title.toLowerCase()}`}
                       decoding="async"
                       className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
                     />

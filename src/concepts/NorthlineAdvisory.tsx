@@ -372,7 +372,7 @@ export default function NorthlineAdvisory() {
 
         {/* Quote band */}
         <section className="relative overflow-hidden" style={{ color: C.paper }}>
-          <img loading="lazy" src={`${IMG}/towers.jpg`} alt="" className="absolute inset-0 h-full w-full object-cover" />
+          <img loading="lazy" src={`${IMG}/towers.jpg`} alt="Looking up at office towers against the sky" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0" style={{ background: `linear-gradient(90deg, ${C.deep}f2 30%, ${C.deep}80)` }} />
           <div className="relative mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-32">
             <Reveal>
