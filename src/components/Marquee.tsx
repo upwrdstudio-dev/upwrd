@@ -7,6 +7,7 @@ import {
   useSpring,
   useTransform,
   useVelocity,
+  useInView,
 } from 'framer-motion'
 import { prefersReducedMotion } from '../lib/motion'
 
@@ -34,6 +35,9 @@ export default function Marquee({ children, speed = 60, reverse = false, classNa
   const hovering = useRef(false)
   const direction = useRef(reverse ? -1 : 1)
   const reduced = useRef(false)
+  // Off-screen marquees stop ticking, so they cost nothing while you read elsewhere.
+  const rootRef = useRef<HTMLDivElement>(null)
+  const inView = useInView(rootRef)
 
   const { scrollY } = useScroll()
   const velocity = useSpring(useVelocity(scrollY), { damping: 50, stiffness: 400 })
@@ -49,7 +53,7 @@ export default function Marquee({ children, speed = 60, reverse = false, classNa
   }, [])
 
   useAnimationFrame((_, delta) => {
-    if (!copyWidth || reduced.current) return
+    if (!copyWidth || reduced.current || !inView) return
     const b = boost.get()
     if (b < -0.05) direction.current = reverse ? 1 : -1
     else if (b > 0.05) direction.current = reverse ? -1 : 1
@@ -60,6 +64,7 @@ export default function Marquee({ children, speed = 60, reverse = false, classNa
 
   return (
     <div
+      ref={rootRef}
       className={`flex overflow-hidden ${className}`}
       onPointerEnter={() => slowOnHover && (hovering.current = true)}
       onPointerLeave={() => (hovering.current = false)}

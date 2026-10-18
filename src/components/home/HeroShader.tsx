@@ -110,15 +110,54 @@ function startShader(host: HTMLDivElement): (() => void) | undefined {
   // Fades in over the static CSS glow once the first frame is drawn.
   canvas.style.opacity = '0'
   canvas.style.transition = 'opacity 1.2s ease'
-  const gl = canvas.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'low-power' })
+  // failIfMajorPerformanceCaveat: no context when WebGL would run in software
+  // (no GPU). There the field would be drawn by the CPU every frame and stall
+  // the page, so those visitors keep the static CSS glow instead.
+  const gl = canvas.getContext('webgl', {
+    antialias: false,
+    alpha: false,
+    powerPreference: 'low-power',
+    failIfMajorPerformanceCaveat: true,
+  })
   if (!gl) return
+  const info = gl.getExtension('WEBGL_debug_renderer_info')
+  const renderer = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : ''
+  if (/swiftshader|llvmpipe|software|basic render/i.test(renderer)) return
 
   const program = gl.createProgram()
   if (!program) return
   gl.attachShader(program, compile(gl, gl.VERTEX_SHADER, VERT))
   gl.attachShader(program, compile(gl, gl.FRAGMENT_SHADER, FRAG))
   gl.linkProgram(program)
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return
+
+  // Compiling this shader can take a few hundred ms. Where the browser
+  // supports it, let the GPU compile in the background and poll each frame,
+  // instead of freezing the page while we wait for the result.
+  const parallel = gl.getExtension('KHR_parallel_shader_compile')
+  let stopped = false
+  let poll = 0
+  let stop: (() => void) | undefined
+  const whenLinked = () => {
+    if (stopped) return
+    if (parallel && !gl.getProgramParameter(program, parallel.COMPLETION_STATUS_KHR)) {
+      poll = requestAnimationFrame(whenLinked)
+      return
+    }
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return
+    stop = run(gl, program, canvas, host)
+  }
+  whenLinked()
+
+  return () => {
+    stopped = true
+    cancelAnimationFrame(poll)
+    if (stop) stop()
+    else gl.getExtension('WEBGL_lose_context')?.loseContext()
+  }
+}
+
+// Draws the field once the program is linked; returns its cleanup.
+function run(gl: WebGLRenderingContext, program: WebGLProgram, canvas: HTMLCanvasElement, host: HTMLDivElement) {
   gl.useProgram(program)
   host.appendChild(canvas)
 
@@ -167,6 +206,7 @@ function startShader(host: HTMLDivElement): (() => void) | undefined {
 
   const start = performance.now()
   let frame = 0
+  let last = 0
   const render = () => {
     mouse.x += (mouse.tx - mouse.x) * 0.04
     mouse.y += (mouse.ty - mouse.y) * 0.04
@@ -176,10 +216,14 @@ function startShader(host: HTMLDivElement): (() => void) | undefined {
   }
 
   const reduced = prefersReducedMotion()
-  function loop() {
+  // The field drifts slowly, so 30fps looks identical to 60 at half the work.
+  function loop(now = performance.now()) {
     cancelAnimationFrame(frame)
     if (!visible || document.hidden) return
-    render()
+    if (now - last >= 32) {
+      last = now
+      render()
+    }
     if (!reduced) frame = requestAnimationFrame(loop)
   }
   const onVisibility = () => !document.hidden && loop()
