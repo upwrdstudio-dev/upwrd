@@ -7,8 +7,10 @@ import Reveal from '../components/Reveal'
 import Button from '../components/Button'
 import ProjectCard from '../components/ProjectCard'
 import { Eyebrow } from '../components/SectionHeading'
+import { Arrow } from '../components/Button'
 import NotFoundPage from './NotFoundPage'
 import { servicePages, type ServicePage as Page } from '../data/servicePages'
+import { guideMeta } from '../data/guideMeta'
 import { projects } from '../data/projects'
 import { concepts } from '../data/concepts'
 import { SITE_URL, whatsappLink } from '../data/site'
@@ -102,6 +104,7 @@ export default function ServicePage() {
 
   const work = page.work.map((name) => allWork.find((w) => w.name === name)).filter((w) => w !== undefined)
   const others = servicePages.filter((p) => p.slug !== page.slug)
+  const related = (page.guides ?? []).map((slug) => guideMeta.find((g) => g.slug === slug)).filter((g) => g !== undefined)
 
   return (
     <div className="bg-paper">
@@ -155,6 +158,24 @@ export default function ServicePage() {
           ))}
         </div>
       </section>
+
+      {/* Page-specific detail */}
+      {page.details && (
+        <section className="mx-auto max-w-7xl px-5 pb-24 md:px-8 md:pb-32">
+          <div className="grid gap-10 border-t border-ink/10 pt-12 md:grid-cols-12 md:pt-16">
+            <Reveal className="md:col-span-5">
+              <h2 className="text-3xl font-medium tracking-tightest md:text-5xl">{page.details.heading}</h2>
+            </Reveal>
+            <div className="space-y-5 md:col-span-7">
+              {page.details.body.map((p) => (
+                <Reveal key={p}>
+                  <p className="text-[17px] leading-[1.75] text-ink/75">{p}</p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Relevant work */}
       {work.length > 0 && (
@@ -229,6 +250,32 @@ export default function ServicePage() {
         </Reveal>
         <Faq faqs={page.faqs} />
       </section>
+
+      {/* Related guides */}
+      {related.length > 0 && (
+        <section className="mx-auto max-w-7xl px-5 pb-24 md:px-8 md:pb-32">
+          <Reveal>
+            <h2 className="text-3xl font-medium tracking-tightest md:text-5xl">Helpful guides</h2>
+          </Reveal>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {related.map((g, i) => (
+              <Reveal key={g.slug} delay={i * 0.06} className="h-full">
+                <Link
+                  to={`/guides/${g.slug}`}
+                  className="group flex h-full flex-col rounded-3xl border border-ink/10 bg-white p-6 transition-colors duration-500 hover:border-ink/25 md:p-7"
+                >
+                  <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/50">{g.readMins} min read</span>
+                  <h3 className="mt-4 text-xl font-medium leading-snug tracking-[-0.02em]">{g.title}</h3>
+                  <span className="mt-6 flex items-center gap-2 text-sm font-medium">
+                    Read guide
+                    <Arrow className="h-3.5 w-3.5 transition-transform duration-500 ease-out-expo group-hover:rotate-45" />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Other services */}
       <section className="border-t border-ink/10">

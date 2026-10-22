@@ -18,11 +18,16 @@ export type ServicePage = {
   price: { label: string; value: string; note: string }
   faqs: { q: string; a: string }[]
   whatsapp: string
+  /** Copy only this page has, so it isn't just the shared template. */
+  details?: { heading: string; body: string[] }
+  /** Guide slugs (guideMeta.ts) to link from this page. */
+  guides?: string[]
 }
 
 export const servicePages: ServicePage[] = [
   {
     slug: 'website-design-kuala-lumpur',
+    guides: ['website-cost-malaysia', 'does-my-business-need-a-website', 'wordpress-vs-wix-vs-custom'],
     label: 'Website Design Kuala Lumpur',
     eyebrow: 'Website design · Kuala Lumpur',
     heading: 'Website design in',
@@ -77,6 +82,15 @@ export const servicePages: ServicePage[] = [
       { title: 'Private dining & events', body: 'Pages for private rooms, catering, live music or event bookings.' },
       { title: 'Photo-led design', body: 'A layout that lets your dishes and space do the selling.' },
     ],
+    details: {
+      heading: 'Built around how people choose where to eat',
+      body: [
+        'Most diners decide in a few minutes on their phone. They check your menu and prices, look at the photos, see whether you’re open and work out where to park. If any of that is hard to find, they move on to the next place on Google Maps. A good restaurant website answers those questions straight away, then makes booking or ordering a single tap.',
+        'We built Chi Hao (吃好), a Chinese restaurant in TTDI, with WhatsApp reservations, bilingual branding and a private dining showcase, and Justwine, a wine bar with live music, with an editorial design, a chef feature and a photo gallery. Ondeh Bakehouse is a concept we designed to show how a café can take pre-orders on WhatsApp.',
+        'Need menus, posters or social media posts too? We design them in the same style as your website, so your brand looks the same from Instagram to the table.',
+      ],
+    },
+    guides: ['restaurant-cafe-website-checklist', 'website-cost-malaysia', 'google-business-profile-malaysia'],
     work: ['Chi Hao (吃好)', 'Justwine', 'Ondeh Bakehouse'],
     price: { label: 'Restaurant website', value: 'from RM 3,800', note: 'Single-page sites from RM 1,500' },
     faqs: [
@@ -92,11 +106,24 @@ export const servicePages: ServicePage[] = [
         q: 'Do I still need a website if I have Instagram and GrabFood?',
         a: 'Those are great for discovery, but a website is what shows up when people Google your name — with your menu, hours, location and booking in one place you control, without platform commission.',
       },
+      {
+        q: 'Should our menu be a PDF?',
+        a: 'We recommend a menu written on the page instead. PDFs are slow to open and awkward to read on a phone. A menu on the page loads faster, reads well on any screen and is quicker to update when prices change.',
+      },
+      {
+        q: 'Can the website show our halal status?',
+        a: 'Yes. If you hold a valid halal certificate from JAKIM or your state religious authority, we display it clearly. If you’re pork-free but not certified, we describe that accurately instead.',
+      },
+      {
+        q: 'Can our website and menu be in more than one language?',
+        a: 'Yes. We can set up your menu and key pages in English plus Chinese or Bahasa Malaysia, depending on who your customers are.',
+      },
     ],
     whatsapp: "Hi UPWRD! I'm interested in a website for my restaurant/café.",
   },
   {
     slug: 'spa-salon-website-design',
+    guides: ['google-business-profile-malaysia', 'landing-page-vs-website', 'website-cost-malaysia'],
     label: 'Spa & Salon Websites',
     eyebrow: 'For spas, salons & beauty studios',
     heading: 'Spa & salon website',
@@ -132,6 +159,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: 'professional-services-website-design',
+    guides: ['does-my-business-need-a-website', 'com-vs-my-vs-com-my-domain', 'website-cost-malaysia'],
     label: 'Professional Services Websites',
     eyebrow: 'For accounting, legal & advisory firms',
     heading: 'Websites for professional',
@@ -167,6 +195,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: 'ecommerce-website-malaysia',
+    guides: ['website-cost-malaysia', 'com-vs-my-vs-com-my-domain', 'wordpress-vs-wix-vs-custom'],
     label: 'E-commerce Websites',
     eyebrow: 'Online stores · Malaysia',
     heading: 'E-commerce website',
@@ -210,6 +239,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: 'website-redesign-malaysia',
+    guides: ['wordpress-vs-wix-vs-custom', 'website-cost-malaysia', 'google-business-profile-malaysia'],
     label: 'Website Redesign',
     eyebrow: 'Website redesign · Malaysia',
     heading: 'Website redesign',
@@ -249,6 +279,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: 'landing-page-design-malaysia',
+    guides: ['landing-page-vs-website', 'website-cost-malaysia', 'does-my-business-need-a-website'],
     label: 'Landing Page Design',
     eyebrow: 'Landing pages · Malaysia',
     heading: 'Landing page design',
@@ -288,6 +319,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: 'social-media-design-malaysia',
+    guides: ['google-business-profile-malaysia', 'does-my-business-need-a-website', 'restaurant-cafe-website-checklist'],
     label: 'Social Media Design',
     eyebrow: 'Social media design · Malaysia',
     heading: 'Social media design',
